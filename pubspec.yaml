@@ -1,0 +1,33 @@
+name: fit_in_room
+description: "A new Flutter project."
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  domain:
+    path: ./domain
+  core:
+    path: ./core
+  core_ui:
+    path: ./core_ui
+  data:
+    path: ./data
+  navigation:
+    path: ./navigation
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
