@@ -13,6 +13,8 @@ dependencies:
     path: ../core
   core_ui:
     path: ../core_ui
+  home:
+    path: ../features/home
 
   auto_route: ^7.8.4
 
