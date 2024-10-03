@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
-  String appBarTitle = '';
+  String appBarTitle = 'All Rooms';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,35 +22,40 @@ class _HomePageState extends State<HomePage> {
           child: Text(
             appBarTitle,
             style: const TextStyle(
-            fontSize: 48,
-            fontWeight: FontWeight.w900,
-            color: Colors.black,
-          ),
+              fontSize: 48,
+              fontWeight: FontWeight.w900,
+              color: Colors.black,
+            ),
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int value) =>
-        {
+        onDestinationSelected: (int value) {
           setState(() {
             currentPageIndex = value;
-          }),
-          currentPageIndex == 0
-              ? appBarTitle = 'All Rooms'
-              : appBarTitle = 'Test History'
+            appBarTitle = value == 0 ? 'All Rooms' : 'Test History';
+          });
         },
         selectedIndex: currentPageIndex,
+        indicatorColor: Colors.black,
         destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(Icons.home),
             label: 'All rooms',
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.history),
             label: 'Test history',
           ),
         ],
       ),
+
       body:<Widget> [
         const AllRoomsPage(),
         const TestHistoryPage(),
