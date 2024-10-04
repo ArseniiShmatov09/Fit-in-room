@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class RoomParametersWidget extends StatelessWidget {
@@ -23,6 +24,7 @@ class RoomParametersWidget extends StatelessWidget {
                   Text(
                     'Room parameters',
                     style: TextStyle(
+                      fontFamily: FontFamily.sofiaSans,
                       fontSize: 32,
                       fontWeight: FontWeight.w900,
                       color: Colors.black,
@@ -46,6 +48,7 @@ class RoomParametersWidget extends StatelessWidget {
                 child: Text(
                   'height*width*length',
                   style: TextStyle(
+                    fontFamily: FontFamily.sofiaSans,
                     fontSize: 32,
                     fontWeight: FontWeight.w900,
                     color: Colors.black,

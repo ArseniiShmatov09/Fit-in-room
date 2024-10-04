@@ -45,13 +45,13 @@ class App extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return AppErrorHandlerProvider(
-            child: MaterialApp(
+            child: MaterialApp.router(
               debugShowCheckedModeBanner: false,
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               theme: lightTheme,
-              home: const RoomDetailsPage(),
+              routerConfig: appRouter.config(),
             ),
           );
         },

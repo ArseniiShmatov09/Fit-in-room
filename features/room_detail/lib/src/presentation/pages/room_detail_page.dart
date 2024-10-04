@@ -1,21 +1,28 @@
-
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-
+import 'package:navigation/navigation.dart';
 import '../widgets/entry_field_widget.dart';
 import '../widgets/room_parameters_widget.dart';
 import '../widgets/test_room_widget.dart';
 
+@RoutePage()
 class RoomDetailsPage extends StatelessWidget {
-  const RoomDetailsPage({Key? key}) : super(key: key);
+  final int roomId;
+  const RoomDetailsPage({
+    Key? key,
+    @PathParam('id')
+    required this.roomId
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
+        title: Center(
           child: Text(
-            'Room 1',
-            style: TextStyle(
+            'Room $roomId',
+            style: const TextStyle(
+              fontFamily: FontFamily.sofiaSans,
               fontSize: 48,
               fontWeight: FontWeight.w900,
               color: Colors.black,

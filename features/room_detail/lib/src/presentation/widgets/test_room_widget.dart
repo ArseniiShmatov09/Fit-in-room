@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class TestRoomWidget extends StatelessWidget {
@@ -34,6 +35,7 @@ class TestRoomWidget extends StatelessWidget {
                 child: const Text(
                   'Start test',
                   style: TextStyle(
+                    fontFamily: FontFamily.sofiaSans,
                     fontSize: 48,
                     fontWeight: FontWeight.w900,
                     color: Colors.black,
@@ -46,6 +48,7 @@ class TestRoomWidget extends StatelessWidget {
               child: Text(
                 'Test results',
                 style: TextStyle(
+                  fontFamily: FontFamily.sofiaSans,
                   fontSize: 48,
                   fontWeight: FontWeight.w900,
                   color: Color.fromRGBO(0, 255, 42, 1),

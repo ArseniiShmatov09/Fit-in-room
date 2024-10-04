@@ -1,4 +1,4 @@
-name: home
+name: settings
 description: Home feature
 version: 0.0.1
 publish_to: none
@@ -19,13 +19,6 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
-  all_rooms:
-    path: ../all_rooms
-  test_history:
-    path: ../test_history
-  settings:
-    path: ../settings
-
 
 dev_dependencies:
   flutter_test:

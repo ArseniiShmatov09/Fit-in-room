@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/item_info_widget.dart';
 
 class TestHistoryPage extends StatelessWidget {
@@ -11,24 +10,33 @@ class TestHistoryPage extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
-          SizedBox(
-            height: 575, //???????
+          Expanded(
             child: ListView.builder(
               itemExtent: 170,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        ItemInfoWidget(index: index * 2),
+                        ItemInfoWidget(
+                          roomId: index * 2,
+                          itemHigh: 10,
+                          itemWidth: 10,
+                          itemLength: 10,
+                        ),
                         const SizedBox(width: 10,),
-                        ItemInfoWidget(index: index * 2 + 1),
+                        ItemInfoWidget(
+                          roomId: index * 2 + 1,
+                          itemHigh: 10,
+                          itemWidth: 10,
+                          itemLength: 10,
+                        ),
                       ],
                     ),
                   ],
                 );
-              }
+              },
             ),
           ),
           const SizedBox(height: 15,),
@@ -37,4 +45,3 @@ class TestHistoryPage extends StatelessWidget {
     );
   }
 }
-

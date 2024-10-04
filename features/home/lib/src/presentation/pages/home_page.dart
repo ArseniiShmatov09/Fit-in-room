@@ -1,7 +1,10 @@
 import 'package:all_rooms/all_rooms.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:test_history/all_items.dart';
+import 'package:navigation/navigation.dart';
+import 'package:settings/settings.gm.dart';
+import 'package:test_history/test_history.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -22,6 +25,7 @@ class _HomePageState extends State<HomePage> {
           child: Text(
             appBarTitle,
             style: const TextStyle(
+              fontFamily: FontFamily.sofiaSans,
               fontSize: 48,
               fontWeight: FontWeight.w900,
               color: Colors.black,
@@ -31,7 +35,9 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {},
+            onPressed: () {
+              AutoRouter.of(context).push(const SettingsRoute());
+            },
           ),
         ],
       ),
@@ -60,7 +66,6 @@ class _HomePageState extends State<HomePage> {
         const AllRoomsPage(),
         const TestHistoryPage(),
       ][currentPageIndex],
-
     );
   }
 }

@@ -15,6 +15,10 @@ dependencies:
     path: ../core_ui
   home:
     path: ../features/home
+  room_detail:
+    path: ../features/room_detail
+  settings:
+    path: ../features/settings
 
   auto_route: ^7.8.4
 

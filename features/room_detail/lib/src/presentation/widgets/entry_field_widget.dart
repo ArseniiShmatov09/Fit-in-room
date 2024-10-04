@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class EntryFieldWidget extends StatelessWidget {
@@ -14,6 +15,7 @@ class EntryFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           labelStyle: const TextStyle(
+            fontFamily: FontFamily.sofiaSans,
             color: Colors.black,
           ),
           filled: true,
@@ -28,6 +30,7 @@ class EntryFieldWidget extends StatelessWidget {
           ),
         ),
         style: const TextStyle(
+          fontFamily: FontFamily.sofiaSans,
           color: Colors.black,
         ),
       ),

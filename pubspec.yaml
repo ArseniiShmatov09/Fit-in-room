@@ -20,18 +20,16 @@ dependencies:
     path: ./data
   navigation:
     path: ./navigation
-
   all_rooms:
     path: ./features/all_rooms
-
   test_history:
     path: ./features/test_history
-
   home:
     path: ./features/home
-
   room_detail:
     path: ./features/room_detail
+  settings:
+    path: ./features/settings
 
   cupertino_icons: ^1.0.6
 
@@ -40,6 +38,13 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  flutter_gen:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: SofiaSans
+      fonts:
+        - asset: assets/fonts/SofiaSans-Bold.ttf
+          weight: 900
