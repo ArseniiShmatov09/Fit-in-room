@@ -17,7 +17,9 @@ class EditRoomPage extends StatelessWidget {
         title: Center(
           child: Text(
             'Edit room $roomId',
-            style: AppStyles.blackTitleTextStyle,
+            style: AppStyles.blackTitleTextStyle.copyWith(
+                color: AppColors.of(context).black
+            ),
           ),
         ),
       ),
@@ -46,13 +48,19 @@ class EditRoomPage extends StatelessWidget {
             ),
             const SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
               child: ElevatedButton(
                 onPressed: () {},
-                style: AppStyles.whiteRoundButtonStyle,
+                style: AppStyles.whiteRoundButtonStyle.copyWith(
+                  backgroundColor: MaterialStatePropertyAll<Color>(
+                      AppColors.of(context).white
+                  ),
+                ),
                 child: Text(
                   'Edit room',
-                  style: AppStyles.blackTitleTextStyle,
+                  style: AppStyles.blackTitleTextStyle.copyWith(
+                      color: AppColors.of(context).black
+                  ),
                 ),
               ),
             ),

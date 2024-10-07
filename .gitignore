@@ -49,6 +49,7 @@ android/app/build
 **/*.gm.dart
 **/*.graphql.dart
 **/*.gr.dart
+*.gen.dart
 *.env
 
 .vscode

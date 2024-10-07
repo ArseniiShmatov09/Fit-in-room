@@ -28,6 +28,7 @@ class AppDimens {
   static const double PADDING_20 = 20.0;
   static const double PADDING_24 = 24.0;
   static const double PADDING_28 = 28.0;
+  static const double PADDING_30 = 30.0;
 
   static const double MARGIN_4 = 4.0;
   static const double MARGIN_6 = 6.0;
