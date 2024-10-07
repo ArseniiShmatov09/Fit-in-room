@@ -33,6 +33,7 @@ class LightColors implements AppColors {
   Color get black => const Color.fromRGBO(0, 0, 0, 1);
 
   @override
-  Color get gray => const Color(0xffd9d9d9);
+
+  Color get gray => const Color.fromRGBO(217, 217, 217, 1);
 
 }

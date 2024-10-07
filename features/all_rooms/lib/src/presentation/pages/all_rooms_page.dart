@@ -18,7 +18,7 @@ class AllRoomsPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   decoration: AppStyles.grayBoxDecoration.copyWith(
-                      color: AppColors.of(context).gray,
+                      color: AppColors.of(context).gray
                   ),
                   child: ListView.builder(
                     itemExtent: 120,
@@ -34,7 +34,7 @@ class AllRoomsPage extends StatelessWidget {
                                 child: Text(
                                   'Room $index',
                                   style: AppStyles.blackSubtitleTextStyle.copyWith(
-                                    color: AppColors.of(context).black,
+                                    color: AppColors.of(context).black
                                   ),
                                 ),
                               ),

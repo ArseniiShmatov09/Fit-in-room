@@ -14,7 +14,7 @@ class AddRoomPage extends StatelessWidget {
           child: Text(
             'Add new room',
             style: AppStyles.blackTitleTextStyle.copyWith(
-              color: AppColors.of(context).black,
+              color: AppColors.of(context).black
             ),
           ),
         ),
@@ -49,13 +49,13 @@ class AddRoomPage extends StatelessWidget {
                 onPressed: () {},
                 style: AppStyles.whiteRoundButtonStyle.copyWith(
                   backgroundColor: MaterialStatePropertyAll<Color>(
-                    AppColors.of(context).white,
+                    AppColors.of(context).white
                   ),
                 ),
                 child: Text(
                   'Add new room',
                   style: AppStyles.blackTitleTextStyle.copyWith(
-                      color: AppColors.of(context).black,
+                      color: AppColors.of(context).black
                   ),
                 ),
               ),
