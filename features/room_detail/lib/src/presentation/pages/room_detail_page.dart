@@ -1,7 +1,6 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
-import '../widgets/entry_field_widget.dart';
 import '../widgets/room_parameters_widget.dart';
 import '../widgets/test_room_widget.dart';
 
@@ -21,12 +20,7 @@ class RoomDetailsPage extends StatelessWidget {
         title: Center(
           child: Text(
             'Room $roomId',
-            style: const TextStyle(
-              fontFamily: FontFamily.sofiaSans,
-              fontSize: 48,
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-            ),
+            style: AppStyles.blackTitleTextStyle,
           ),
         ),
         actions: <Widget>[

@@ -11,48 +11,29 @@ class TestRoomWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(217, 217, 217, 1),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
+        decoration: AppStyles.grayBoxDecoration,
         height: 190,
         child: Column(
           children: <Widget>[
             const SizedBox(height: 20,),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  minimumSize: const Size(200, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side: const BorderSide(
-                      width: 3.0,
-                    ),
-                  ),
-                ),
-                child: const Text(
-                  'Start test',
-                  style: TextStyle(
-                    fontFamily: FontFamily.sofiaSans,
-                    fontSize: 48,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: AppStyles.whiteRoundButtonStyle,
+                  child: Text(
+                    'Start test',
+                    style: AppStyles.blackHeaderTextStyle,
                   ),
                 ),
               ),
             ),
             const SizedBox(height: 20,),
-            const Center(
+            Center(
               child: Text(
                 'Test results',
-                style: TextStyle(
-                  fontFamily: FontFamily.sofiaSans,
-                  fontSize: 48,
-                  fontWeight: FontWeight.w900,
-                  color: Color.fromRGBO(0, 255, 42, 1),
-                ),
+                style: AppStyles.blackHeaderTextStyle,
               ),
             )
           ],

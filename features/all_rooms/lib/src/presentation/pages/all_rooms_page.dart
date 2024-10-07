@@ -1,3 +1,4 @@
+import 'package:add_room/add_room.gm.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,7 @@ class AllRoomsPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(217, 217, 217, 1),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
+                  decoration: AppStyles.grayBoxDecoration,
                   child: ListView.builder(
                     itemExtent: 120,
                     itemBuilder: (BuildContext context, int index) {
@@ -33,23 +31,11 @@ class AllRoomsPage extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   'Room $index',
-                                  style: const TextStyle(
-                                    fontFamily: FontFamily.sofiaSans,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.black,
-                                  ),
+                                  style: AppStyles.blackSubtitleTextStyle,
                                 ),
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Divider(
-                                color: Color.fromRGBO(128, 128, 128, 1),
-                                thickness: 0.5,
-                                height: 0,
-                              ),
-                            ),
+                            const MainDivider(),
                           ],
                         ),
                       );
@@ -61,20 +47,13 @@ class AllRoomsPage extends StatelessWidget {
           ),
           const SizedBox(height: 15,),
           ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              minimumSize: const Size(double.infinity, 50),
-              shape: const RoundedRectangleBorder(),
-            ),
-            child: const Text(
+            onPressed: () {
+              AutoRouter.of(context).push(const AddRoomRoute());
+            },
+            style: AppStyles.blackButtonStyle,
+            child: Text(
               'Add new room',
-              style: TextStyle(
-                fontFamily: FontFamily.sofiaSans,
-                fontSize: 32,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-              ),
+              style: AppStyles.whiteButtonTextStyle,
             ),
           ),
         ],

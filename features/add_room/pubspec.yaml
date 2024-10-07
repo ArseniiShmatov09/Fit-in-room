@@ -1,4 +1,4 @@
-name: all_rooms
+name: add_room
 description: Home feature
 version: 0.0.1
 publish_to: none
@@ -19,10 +19,6 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
-  room_detail:
-    path: ../room_detail
-  add_room:
-    path: ../add_room
 
 dev_dependencies:
   flutter_test:

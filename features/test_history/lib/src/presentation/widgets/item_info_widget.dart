@@ -1,4 +1,4 @@
-import 'package:core_ui/gen/fonts.gen.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class ItemInfoWidget extends StatelessWidget {
@@ -17,41 +17,23 @@ class ItemInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(217, 217, 217, 1),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
+    return Container(
+      decoration: AppStyles.grayBoxDecoration,
       height: 150,
       width: 170,
       child: Column(
         children: <Widget>[
           Text(
             'Room $roomId',
-            style: const TextStyle(
-              fontFamily: FontFamily.sofiaSans,
-              fontSize: 32,
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-            ),
+            style: AppStyles.blackHeaderTextStyle,
           ),
           Text(
             'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
-            style: const TextStyle(
-              fontFamily: FontFamily.sofiaSans,
-              fontSize: 20,
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-            ),
+            style: AppStyles.blackDetailsTextStyle,
           ),
-          const Text(
+          Text(
             'PASSED',
-            style: TextStyle(
-              fontFamily: FontFamily.sofiaSans,
-              fontSize: 24,
-              fontWeight: FontWeight.w900,
-              color: Color.fromRGBO(0, 255, 42, 1),
-            ),
+            style: AppStyles.blackDetailsTextStyle,
           )
         ],
       ),

@@ -30,6 +30,8 @@ dependencies:
     path: ./features/room_detail
   settings:
     path: ./features/settings
+  add_room:
+    path: ./features/add_room
 
   cupertino_icons: ^1.0.6
 

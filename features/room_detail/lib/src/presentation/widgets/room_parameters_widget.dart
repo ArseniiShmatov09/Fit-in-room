@@ -9,61 +9,34 @@ class RoomParametersWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(217, 217, 217, 1),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
+        decoration: AppStyles.grayBoxDecoration,
         height: 220,
-        child: const Column(
+        child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 25),
+              padding: const EdgeInsets.symmetric(vertical: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Text(
                     'Room parameters',
-                    style: TextStyle(
-                      fontFamily: FontFamily.sofiaSans,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
+                    style: AppStyles.blackHeaderTextStyle,
                   ),
-                  Icon(Icons.edit),
+                  const Icon(Icons.edit),
                 ],
               ),
             ),
+            const MainDivider(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16,),
-              child: Divider(
-                color: Color.fromRGBO(128, 128, 128, 1),
-                thickness: 0.5,
-                height: 0,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 25),
+              padding: const EdgeInsets.symmetric(vertical: 25),
               child: Center(
                 child: Text(
                   'height*width*length',
-                  style: TextStyle(
-                    fontFamily: FontFamily.sofiaSans,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                  ),
+                  style: AppStyles.blackHeaderTextStyle,
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Divider(
-                color: Color.fromRGBO(128, 128, 128, 1),
-                thickness: 0.5,
-                height: 0,
-              ),
-            ),
+            const MainDivider(),
           ],
         ),
       ),

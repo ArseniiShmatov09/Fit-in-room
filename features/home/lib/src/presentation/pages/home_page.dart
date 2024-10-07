@@ -24,12 +24,7 @@ class _HomePageState extends State<HomePage> {
         title: Center(
           child: Text(
             appBarTitle,
-            style: const TextStyle(
-              fontFamily: FontFamily.sofiaSans,
-              fontSize: 48,
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-            ),
+            style: AppStyles.blackTitleTextStyle,
           ),
         ),
         actions: <Widget>[
