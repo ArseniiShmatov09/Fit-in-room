@@ -19,7 +19,7 @@ class ItemInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppStyles.grayBoxDecoration.copyWith(
-          color: AppColors.of(context).gray
+          color: AppColors.of(context).gray,
       ),
       height: 150,
       width: 170,
@@ -28,21 +28,21 @@ class ItemInfoWidget extends StatelessWidget {
           Text(
             'Room $roomId',
             style: AppStyles.blackHeaderTextStyle.copyWith(
-                color: AppColors.of(context).black
+                color: AppColors.of(context).black,
             ),
           ),
           Text(
             'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
             style: AppStyles.blackDetailsTextStyle.copyWith(
-              color: AppColors.of(context).black
+              color: AppColors.of(context).black,
             ),
           ),
           Text(
             'PASSED',
             style: AppStyles.blackDetailsTextStyle.copyWith(
-              color: AppColors.of(context).black
+              color: AppColors.of(context).black,
             ),
-          )
+          ),
         ],
       ),
     );

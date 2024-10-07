@@ -23,7 +23,7 @@ class RoomParametersWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
-            color: AppColors.of(context).gray
+            color: AppColors.of(context).gray,
         ),
         height: 220,
         child: Column(
@@ -36,7 +36,7 @@ class RoomParametersWidget extends StatelessWidget {
                   Text(
                     'Room parameters',
                     style: AppStyles.blackHeaderTextStyle.copyWith(
-                      color: AppColors.of(context).black
+                      color: AppColors.of(context).black,
                     ),
                   ),
                   IconButton(
@@ -55,7 +55,7 @@ class RoomParametersWidget extends StatelessWidget {
                 child: Text(
                   '$roomHeight ⨯ $roomWidth ⨯ $roomLength',
                   style: AppStyles.blackHeaderTextStyle.copyWith(
-                    color: AppColors.of(context).black
+                    color: AppColors.of(context).black,
                   ),
                 ),
               ),

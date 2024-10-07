@@ -23,7 +23,7 @@ class RoomDetailsPage extends StatelessWidget {
           child: Text(
             'Room $roomId',
             style: AppStyles.blackTitleTextStyle.copyWith(
-              color: AppColors.of(context).black
+              color: AppColors.of(context).black,
             ),
           ),
         ),

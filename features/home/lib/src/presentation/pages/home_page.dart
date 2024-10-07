@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           child: Text(
             appBarTitle,
             style: AppStyles.blackTitleTextStyle.copyWith(
-                color: AppColors.of(context).black
+                color: AppColors.of(context).black,
             ),
           ),
         ),

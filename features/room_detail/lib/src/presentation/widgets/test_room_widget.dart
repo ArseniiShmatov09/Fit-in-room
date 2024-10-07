@@ -12,7 +12,7 @@ class TestRoomWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
-            color: AppColors.of(context).gray
+            color: AppColors.of(context).gray,
         ),
         height: 190,
         child: Column(
@@ -25,13 +25,13 @@ class TestRoomWidget extends StatelessWidget {
                   onPressed: () {},
                   style: AppStyles.whiteRoundButtonStyle.copyWith(
                     backgroundColor: MaterialStatePropertyAll<Color>(
-                        AppColors.of(context).white
+                        AppColors.of(context).white,
                     ),
                   ),
                   child: Text(
                     'Start test',
                     style: AppStyles.blackHeaderTextStyle.copyWith(
-                      color: AppColors.of(context).black
+                      color: AppColors.of(context).black,
                     ),
                   ),
                 ),
@@ -42,7 +42,7 @@ class TestRoomWidget extends StatelessWidget {
               child: Text(
                 'Test results',
                 style: AppStyles.blackHeaderTextStyle.copyWith(
-                  color: AppColors.of(context).black
+                  color: AppColors.of(context).black,
                 ),
               ),
             ),

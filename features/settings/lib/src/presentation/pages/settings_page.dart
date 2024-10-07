@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
         title: Text(
           'Settings',
           style: AppStyles.blackTitleTextStyle.copyWith(
-              color: AppColors.of(context).black
+              color: AppColors.of(context).black,
           ),
         ),
       ),
@@ -29,7 +29,7 @@ class SettingsPage extends StatelessWidget {
                 Text(
                   'Dark mode',
                   style: AppStyles.blackHeaderTextStyle.copyWith(
-                    color: AppColors.of(context).black
+                    color: AppColors.of(context).black,
                   ),
                 ),
                 Switch(
@@ -48,7 +48,7 @@ class SettingsPage extends StatelessWidget {
                 Text(
                   'Increase font',
                   style: AppStyles.blackHeaderTextStyle.copyWith(
-                    color: AppColors.of(context).black
+                    color: AppColors.of(context).black,
                   ),
                 ),
                 Switch(
