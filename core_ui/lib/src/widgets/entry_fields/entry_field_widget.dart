@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../gen/fonts.gen.dart';
 
 class EntryFieldWidget extends StatelessWidget {
+  final String labelText;
+  final String initialValue;
+
   const EntryFieldWidget({
     super.key,
     required this.labelText,
+    required this.initialValue,
   });
-  final String labelText;
+
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController(text: initialValue);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
           labelStyle: const TextStyle(
@@ -33,6 +41,10 @@ class EntryFieldWidget extends StatelessWidget {
           fontFamily: FontFamily.sofiaSans,
           color: Colors.black,
         ),
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
       ),
     );
   }

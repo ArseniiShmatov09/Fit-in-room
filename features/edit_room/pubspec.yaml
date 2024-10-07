@@ -1,4 +1,4 @@
-name: room_detail
+name: edit_room
 description: Home feature
 version: 0.0.1
 publish_to: none
@@ -19,8 +19,6 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
-  edit_room:
-    path: .././edit_room
 
 dev_dependencies:
   flutter_test:

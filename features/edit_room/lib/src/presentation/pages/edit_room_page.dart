@@ -3,8 +3,12 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class AddRoomPage extends StatelessWidget {
-  const AddRoomPage({super.key});
+class EditRoomPage extends StatelessWidget {
+  final int roomId;
+  const EditRoomPage({
+    super.key,
+    required this.roomId
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class AddRoomPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Add new room',
+            'Edit room $roomId',
             style: AppStyles.blackTitleTextStyle,
           ),
         ),
@@ -21,24 +25,24 @@ class AddRoomPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 100,),
-            const EntryFieldWidget(
-              labelText: 'Enter room name',
-              initialValue: '',
+            EntryFieldWidget(
+                labelText: 'Enter room name',
+                initialValue: 'Room $roomId',
             ),
             const SizedBox(height: 10,),
             const EntryFieldWidget(
               labelText: 'Enter width',
-              initialValue: '',
+              initialValue: '1',
             ),
             const SizedBox(height: 10,),
             const EntryFieldWidget(
               labelText: 'Enter length',
-              initialValue: '',
+              initialValue: '1',
             ),
             const SizedBox(height: 10,),
             const EntryFieldWidget(
               labelText: 'Enter height',
-              initialValue: '',
+              initialValue: '1',
             ),
             const SizedBox(height: 20,),
             Padding(
@@ -47,7 +51,7 @@ class AddRoomPage extends StatelessWidget {
                 onPressed: () {},
                 style: AppStyles.whiteRoundButtonStyle,
                 child: Text(
-                  'Add new room',
+                  'Edit room',
                   style: AppStyles.blackTitleTextStyle,
                 ),
               ),

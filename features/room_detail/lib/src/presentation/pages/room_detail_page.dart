@@ -7,10 +7,12 @@ import '../widgets/test_room_widget.dart';
 @RoutePage()
 class RoomDetailsPage extends StatelessWidget {
   final int roomId;
+
   const RoomDetailsPage({
     Key? key,
     @PathParam('id')
-    required this.roomId
+    required this.roomId,
+
   }) : super(key: key);
 
   @override
@@ -30,19 +32,33 @@ class RoomDetailsPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 30,),
-            RoomParametersWidget(),
-            SizedBox(height: 20,),
-            EntryFieldWidget(labelText: 'Width'),
-            SizedBox(height: 10,),
-            EntryFieldWidget(labelText: 'Length'),
-            SizedBox(height: 10,),
-            EntryFieldWidget(labelText: 'Height'),
-            SizedBox(height: 20,),
-            TestRoomWidget(),
+            const SizedBox(height: 30,),
+            RoomParametersWidget(
+              roomId: roomId,
+              roomHeight: 1,
+              roomLength: 1,
+              roomWidth: 1,
+            ),
+            const SizedBox(height: 20,),
+            const EntryFieldWidget(
+              labelText: 'Enter width',
+              initialValue: '',
+            ),
+            const SizedBox(height: 10,),
+            const EntryFieldWidget(
+              labelText: 'Enter length',
+              initialValue: '',
+            ),
+            const SizedBox(height: 10,),
+            const EntryFieldWidget(
+              labelText: 'Enter height',
+              initialValue: '',
+            ),
+            const SizedBox(height: 20,),
+            const TestRoomWidget(),
           ],
         ),
       ),

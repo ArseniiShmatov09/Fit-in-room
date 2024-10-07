@@ -21,6 +21,8 @@ dependencies:
     path: ../features/settings
   add_room:
     path: ../features/add_room
+  edit_room:
+    path: ../features/edit_room
 
   auto_route: ^7.8.4
 

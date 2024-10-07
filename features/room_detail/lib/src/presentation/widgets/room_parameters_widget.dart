@@ -1,8 +1,21 @@
 import 'package:core_ui/core_ui.dart';
+import 'package:edit_room/edit_room.gm.dart';
 import 'package:flutter/material.dart';
+import 'package:navigation/navigation.dart';
 
 class RoomParametersWidget extends StatelessWidget {
-  const RoomParametersWidget({super.key});
+  final int roomId;
+  final int roomHeight;
+  final int roomWidth;
+  final int roomLength;
+
+  const RoomParametersWidget({
+    super.key,
+    required this.roomId,
+    required this.roomHeight,
+    required this.roomWidth,
+    required this.roomLength
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +35,12 @@ class RoomParametersWidget extends StatelessWidget {
                     'Room parameters',
                     style: AppStyles.blackHeaderTextStyle,
                   ),
-                  const Icon(Icons.edit),
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {
+                      AutoRouter.of(context).push(EditRoomRoute(roomId: roomId));
+                    },
+                  ),
                 ],
               ),
             ),
@@ -31,7 +49,7 @@ class RoomParametersWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 25),
               child: Center(
                 child: Text(
-                  'height*width*length',
+                  '$roomHeight ⨯ $roomWidth ⨯ $roomLength',
                   style: AppStyles.blackHeaderTextStyle,
                 ),
               ),

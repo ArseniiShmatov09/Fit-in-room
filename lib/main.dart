@@ -4,7 +4,6 @@ import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
-import 'package:room_detail/room_detail.dart';
 
 import 'error_handler/provider/app_error_handler_provider.dart';
 

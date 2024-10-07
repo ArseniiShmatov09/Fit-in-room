@@ -1,6 +1,8 @@
 import 'package:add_room/add_room.dart';
 import 'package:add_room/add_room.gm.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:edit_room/edit_room.dart';
+import 'package:edit_room/edit_room.gm.dart';
 import 'package:home/home.dart';
 import 'package:home/home.gm.dart';
 import 'package:room_detail/room_detail.dart';
@@ -16,6 +18,8 @@ part 'app_router.gr.dart';
     RoomDetailModule,
     SettingsModule,
     AddRoomModule,
+    EditRoomModule,
+
   ],
 )
 class AppRouter extends _$AppRouter {
@@ -25,6 +29,8 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: RoomDetailsRoute.page, path: '/room/:id'),
     AutoRoute(page: SettingsRoute.page, path: '/settings'),
     AutoRoute(page: AddRoomRoute.page, path: '/add_room'),
+    AutoRoute(page: EditRoomRoute.page, path: '/edit_room/:id'),
+
 
   ];
 }
