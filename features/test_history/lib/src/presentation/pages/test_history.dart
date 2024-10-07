@@ -8,7 +8,7 @@ class TestHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.PADDING_16),
+      padding: const EdgeInsets.all(AppDimens.padding16),
       child: Column(
         children: <Widget>[
           Expanded(

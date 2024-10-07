@@ -17,7 +17,7 @@ class EntryFieldWidget extends StatelessWidget {
     final TextEditingController controller = TextEditingController(text: initialValue);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -30,11 +30,11 @@ class EntryFieldWidget extends StatelessWidget {
           fillColor: AppColors.of(context).white,
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 4.0),
-            borderRadius: BorderRadius.all(Radius.circular(AppDimens.BORDER_RADIUS_20)),
+            borderRadius: BorderRadius.all(Radius.circular(AppDimens.borderRadius20)),
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 4.0),
-            borderRadius: BorderRadius.all(Radius.circular(AppDimens.BORDER_RADIUS_20)),
+            borderRadius: BorderRadius.all(Radius.circular(AppDimens.borderRadius20)),
           ),
         ),
         style: TextStyle(

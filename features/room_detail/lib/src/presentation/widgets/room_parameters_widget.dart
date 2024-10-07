@@ -20,7 +20,7 @@ class RoomParametersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
             color: AppColors.of(context).gray,
@@ -29,7 +29,7 @@ class RoomParametersWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_24),
+              padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -50,7 +50,7 @@ class RoomParametersWidget extends StatelessWidget {
             ),
             const MainDivider(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_24),
+              padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
               child: Center(
                 child: Text(
                   '$roomHeight ⨯ $roomWidth ⨯ $roomLength',

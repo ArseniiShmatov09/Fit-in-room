@@ -9,7 +9,7 @@ class TestRoomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
             color: AppColors.of(context).gray,
@@ -19,7 +19,7 @@ class TestRoomWidget extends StatelessWidget {
           children: <Widget>[
             const SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_30),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding30),
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {},

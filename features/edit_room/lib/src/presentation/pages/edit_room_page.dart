@@ -48,7 +48,7 @@ class EditRoomPage extends StatelessWidget {
             ),
             const SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
               child: ElevatedButton(
                 onPressed: () {},
                 style: AppStyles.whiteRoundButtonStyle.copyWith(

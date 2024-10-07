@@ -10,7 +10,7 @@ class AllRoomsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.PADDING_16),
+      padding: const EdgeInsets.all(AppDimens.padding16),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -29,7 +29,7 @@ class AllRoomsPage extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_30),
+                              padding: const EdgeInsets.symmetric(vertical: AppDimens.padding30),
                               child: Center(
                                 child: Text(
                                   'Room $index',

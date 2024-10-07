@@ -35,7 +35,7 @@ class AppStyles {
   static ButtonStyle whiteRoundButtonStyle = ElevatedButton.styleFrom(
     minimumSize: const Size(double.infinity, 50),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppDimens.BORDER_RADIUS_20),
+      borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
       side: const BorderSide(
         width: 3.0,
       ),
@@ -48,7 +48,7 @@ class AppStyles {
   );
 
   static BoxDecoration grayBoxDecoration = BoxDecoration(
-    borderRadius: BorderRadius.circular(AppDimens.BORDER_RADIUS_20),
+    borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
   );
 
 }
