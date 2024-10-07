@@ -24,7 +24,9 @@ class _HomePageState extends State<HomePage> {
         title: Center(
           child: Text(
             appBarTitle,
-            style: AppStyles.blackTitleTextStyle,
+            style: AppStyles.blackTitleTextStyle.copyWith(
+                color: AppColors.of(context).black,
+            ),
           ),
         ),
         actions: <Widget>[
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         selectedIndex: currentPageIndex,
-        indicatorColor: Colors.black,
+        indicatorColor: AppColors.of(context).black,
         destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(Icons.home),

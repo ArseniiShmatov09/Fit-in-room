@@ -6,7 +6,7 @@ final InterceptorsWrapper dioLoggerInterceptor = InterceptorsWrapper(
   onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
     final String headers = options.headers.entries
         .map(
-            (MapEntry<String, dynamic> entry) => '${entry.key}: ${entry.value}')
+            (MapEntry<String, dynamic> entry) => '${entry.key}: ${entry.value}',)
         .join('\n');
     AppLogger().debug(
       'NETWORK REQUEST: ${options.method} ${options.uri}\n'

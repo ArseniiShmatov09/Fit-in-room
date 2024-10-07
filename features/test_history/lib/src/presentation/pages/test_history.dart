@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import '../widgets/item_info_widget.dart';
 
@@ -7,7 +8,7 @@ class TestHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(AppDimens.PADDING_16),
       child: Column(
         children: <Widget>[
           Expanded(

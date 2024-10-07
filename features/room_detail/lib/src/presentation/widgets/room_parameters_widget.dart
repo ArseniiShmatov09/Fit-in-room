@@ -14,26 +14,30 @@ class RoomParametersWidget extends StatelessWidget {
     required this.roomId,
     required this.roomHeight,
     required this.roomWidth,
-    required this.roomLength
+    required this.roomLength,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
       child: Container(
-        decoration: AppStyles.grayBoxDecoration,
+        decoration: AppStyles.grayBoxDecoration.copyWith(
+            color: AppColors.of(context).gray,
+        ),
         height: 220,
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25),
+              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Text(
                     'Room parameters',
-                    style: AppStyles.blackHeaderTextStyle,
+                    style: AppStyles.blackHeaderTextStyle.copyWith(
+                      color: AppColors.of(context).black,
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.edit),
@@ -46,11 +50,13 @@ class RoomParametersWidget extends StatelessWidget {
             ),
             const MainDivider(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25),
+              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_24),
               child: Center(
                 child: Text(
                   '$roomHeight ⨯ $roomWidth ⨯ $roomLength',
-                  style: AppStyles.blackHeaderTextStyle,
+                  style: AppStyles.blackHeaderTextStyle.copyWith(
+                    color: AppColors.of(context).black,
+                  ),
                 ),
               ),
             ),

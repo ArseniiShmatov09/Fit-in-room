@@ -11,12 +11,14 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            'Settings',
-            style: AppStyles.blackTitleTextStyle,
+          'Settings',
+          style: AppStyles.blackTitleTextStyle.copyWith(
+              color: AppColors.of(context).black,
           ),
         ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(AppDimens.PADDING_16),
         child: Column(
           children: <Widget>[
             const MainDivider(),
@@ -26,11 +28,13 @@ class SettingsPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Dark mode',
-                  style: AppStyles.blackHeaderTextStyle,
+                  style: AppStyles.blackHeaderTextStyle.copyWith(
+                    color: AppColors.of(context).black,
+                  ),
                 ),
-                const Switch(
+                Switch(
                   value: false,
-                  activeColor: Colors.black,
+                  activeColor: AppColors.of(context).black,
                   onChanged: null,
                 ),
               ],
@@ -43,11 +47,13 @@ class SettingsPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Increase font',
-                  style: AppStyles.blackHeaderTextStyle,
+                  style: AppStyles.blackHeaderTextStyle.copyWith(
+                    color: AppColors.of(context).black,
+                  ),
                 ),
-                const Switch(
+                Switch(
                   value: false,
-                  activeColor: Colors.black,
+                  activeColor: AppColors.of(context).black,
                   onChanged: null,
                 ),
               ],

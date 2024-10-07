@@ -9,22 +9,30 @@ class TestRoomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
       child: Container(
-        decoration: AppStyles.grayBoxDecoration,
+        decoration: AppStyles.grayBoxDecoration.copyWith(
+            color: AppColors.of(context).gray,
+        ),
         height: 190,
         child: Column(
           children: <Widget>[
             const SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_30),
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {},
-                  style: AppStyles.whiteRoundButtonStyle,
+                  style: AppStyles.whiteRoundButtonStyle.copyWith(
+                    backgroundColor: MaterialStatePropertyAll<Color>(
+                        AppColors.of(context).white,
+                    ),
+                  ),
                   child: Text(
                     'Start test',
-                    style: AppStyles.blackHeaderTextStyle,
+                    style: AppStyles.blackHeaderTextStyle.copyWith(
+                      color: AppColors.of(context).black,
+                    ),
                   ),
                 ),
               ),
@@ -33,9 +41,11 @@ class TestRoomWidget extends StatelessWidget {
             Center(
               child: Text(
                 'Test results',
-                style: AppStyles.blackHeaderTextStyle,
+                style: AppStyles.blackHeaderTextStyle.copyWith(
+                  color: AppColors.of(context).black,
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

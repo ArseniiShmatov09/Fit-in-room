@@ -13,7 +13,9 @@ class AddRoomPage extends StatelessWidget {
         title: Center(
           child: Text(
             'Add new room',
-            style: AppStyles.blackTitleTextStyle,
+            style: AppStyles.blackTitleTextStyle.copyWith(
+              color: AppColors.of(context).black,
+            ),
           ),
         ),
       ),
@@ -42,13 +44,19 @@ class AddRoomPage extends StatelessWidget {
             ),
             const SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_16),
               child: ElevatedButton(
                 onPressed: () {},
-                style: AppStyles.whiteRoundButtonStyle,
+                style: AppStyles.whiteRoundButtonStyle.copyWith(
+                  backgroundColor: MaterialStatePropertyAll<Color>(
+                    AppColors.of(context).white,
+                  ),
+                ),
                 child: Text(
                   'Add new room',
-                  style: AppStyles.blackTitleTextStyle,
+                  style: AppStyles.blackTitleTextStyle.copyWith(
+                      color: AppColors.of(context).black,
+                  ),
                 ),
               ),
             ),

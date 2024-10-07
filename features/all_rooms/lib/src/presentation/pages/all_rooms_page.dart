@@ -10,14 +10,16 @@ class AllRoomsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(AppDimens.PADDING_16),
       child: Column(
         children: <Widget>[
           Expanded(
             child: Stack(
               children: <Widget>[
                 Container(
-                  decoration: AppStyles.grayBoxDecoration,
+                  decoration: AppStyles.grayBoxDecoration.copyWith(
+                      color: AppColors.of(context).gray,
+                  ),
                   child: ListView.builder(
                     itemExtent: 120,
                     itemBuilder: (BuildContext context, int index) {
@@ -27,11 +29,13 @@ class AllRoomsPage extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 30),
+                              padding: const EdgeInsets.symmetric(vertical: AppDimens.PADDING_30),
                               child: Center(
                                 child: Text(
                                   'Room $index',
-                                  style: AppStyles.blackSubtitleTextStyle,
+                                  style: AppStyles.blackSubtitleTextStyle.copyWith(
+                                    color: AppColors.of(context).black,
+                                  ),
                                 ),
                               ),
                             ),
@@ -50,10 +54,16 @@ class AllRoomsPage extends StatelessWidget {
             onPressed: () {
               AutoRouter.of(context).push(const AddRoomRoute());
             },
-            style: AppStyles.blackButtonStyle,
+            style: AppStyles.blackButtonStyle.copyWith(
+              backgroundColor: MaterialStatePropertyAll<Color>(
+                AppColors.of(context).black,
+              ),
+            ),
             child: Text(
               'Add new room',
-              style: AppStyles.whiteButtonTextStyle,
+              style: AppStyles.whiteButtonTextStyle.copyWith(
+                color: AppColors.of(context).white,
+              ),
             ),
           ),
         ],

@@ -7,7 +7,7 @@ class ItemInfoWidget extends StatelessWidget {
     required this.roomId,
     required this.itemWidth,
     required this.itemLength,
-    required this.itemHigh
+    required this.itemHigh,
   }): super(key:key);
 
   final int roomId;
@@ -18,23 +18,31 @@ class ItemInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: AppStyles.grayBoxDecoration,
+      decoration: AppStyles.grayBoxDecoration.copyWith(
+          color: AppColors.of(context).gray,
+      ),
       height: 150,
       width: 170,
       child: Column(
         children: <Widget>[
           Text(
             'Room $roomId',
-            style: AppStyles.blackHeaderTextStyle,
+            style: AppStyles.blackHeaderTextStyle.copyWith(
+                color: AppColors.of(context).black,
+            ),
           ),
           Text(
             'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
-            style: AppStyles.blackDetailsTextStyle,
+            style: AppStyles.blackDetailsTextStyle.copyWith(
+              color: AppColors.of(context).black,
+            ),
           ),
           Text(
             'PASSED',
-            style: AppStyles.blackDetailsTextStyle,
-          )
+            style: AppStyles.blackDetailsTextStyle.copyWith(
+              color: AppColors.of(context).black,
+            ),
+          ),
         ],
       ),
     );
