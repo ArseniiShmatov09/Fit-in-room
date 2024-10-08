@@ -3,7 +3,7 @@ import 'package:domain/domain.dart';
 import '../../data.dart';
 
 class RoomMapper {
-  RoomModel toModel(RoomEntity entity) => RoomModel(
+  RoomModel toDomain(RoomEntity entity) => RoomModel(
         id: entity.id,
         name: entity.name,
         length: entity.length,
@@ -12,7 +12,7 @@ class RoomMapper {
         userId: entity.userId,
       );
 
-  RoomEntity fromModel(RoomModel model) => RoomEntity(
+  RoomEntity toData(RoomModel model) => RoomEntity(
         id: model.id,
         name: model.name,
         length: model.length,

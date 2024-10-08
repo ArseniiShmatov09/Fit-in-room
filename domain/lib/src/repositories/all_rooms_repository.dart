@@ -1,5 +1,5 @@
 import '../../domain.dart';
 
 abstract class AllRoomsRepository {
-  Future<List<RoomModel>> getAllRooms();
+  List<RoomModel> getAllRooms();
 }

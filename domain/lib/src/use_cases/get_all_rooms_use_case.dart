@@ -1,14 +1,15 @@
 import '../../domain.dart';
+import 'use_case.dart';
 
-class GetAllRoomsUseCase {
+class GetAllRoomsUseCase implements UseCase<NoParams, List<RoomModel>>{
   GetAllRoomsUseCase({
     required AllRoomsRepository allRoomsRepository,
   }) : _allRoomsRepository = allRoomsRepository;
 
   final AllRoomsRepository _allRoomsRepository;
 
-  Future<List<RoomModel>> call() async {
-    final List<RoomModel> list = await _allRoomsRepository.getAllRooms();
-    return list;
+  @override
+  List<RoomModel> execute(NoParams noParams) {
+    return _allRoomsRepository.getAllRooms();
   }
 }

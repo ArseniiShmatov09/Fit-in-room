@@ -3,7 +3,7 @@ import 'package:domain/domain.dart';
 import '../../data.dart';
 
 class TestHistoryMapper {
-  TestHistoryModel toModel(TestHistoryEntity entity) => TestHistoryModel(
+  TestHistoryModel toDomain(TestHistoryEntity entity) => TestHistoryModel(
         id: entity.id,
         itemLength: entity.itemLength,
         itemWidth: entity.itemWidth,
@@ -11,7 +11,7 @@ class TestHistoryMapper {
         roomId: entity.roomId,
       );
 
-  TestHistoryEntity fromModel(TestHistoryModel model) => TestHistoryEntity(
+  TestHistoryEntity toData(TestHistoryModel model) => TestHistoryEntity(
         id: model.id,
         itemLength: model.itemLength,
         itemWidth: model.itemWidth,

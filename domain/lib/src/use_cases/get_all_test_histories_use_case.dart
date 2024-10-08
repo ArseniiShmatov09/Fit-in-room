@@ -1,15 +1,20 @@
 import '../../domain.dart';
+import 'use_case.dart';
 
-class GetAllTestHistoriesUseCase {
+class GetAllTestHistoriesUseCase
+    implements UseCase<NoParams, List<TestHistoryModel>> {
   GetAllTestHistoriesUseCase({
     required TestHistoryRepository testHistoryRepository,
   }) : _testHistoryRepository = testHistoryRepository;
 
   final TestHistoryRepository _testHistoryRepository;
 
-  Future<List<TestHistoryModel>> call() async {
-    final List<TestHistoryModel> list =
-        await _testHistoryRepository.getAllTestHistories();
-    return list;
+  List<TestHistoryModel> call() {
+    return _testHistoryRepository.getAllTestHistories();
+  }
+
+  @override
+  List<TestHistoryModel> execute(NoParams noParams) {
+    return _testHistoryRepository.getAllTestHistories();
   }
 }

@@ -4,7 +4,7 @@ class TestHistoryRepositoryImpl implements TestHistoryRepository {
   final List<TestHistoryModel> _allTestHistories = <TestHistoryModel>[];
 
   @override
-  Future<List<TestHistoryModel>> getAllTestHistories() async {
+  List<TestHistoryModel> getAllTestHistories() {
     return _allTestHistories;
   }
 }
