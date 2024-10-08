@@ -17,7 +17,7 @@ class TestRoomWidget extends StatelessWidget {
         height: 190,
         child: Column(
           children: <Widget>[
-            AppDimens.sizedBoxHeight20,
+            const SizedBox(height: AppDimens.sizedBoxHeight20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding30),
               child: Center(
@@ -37,7 +37,7 @@ class TestRoomWidget extends StatelessWidget {
                 ),
               ),
             ),
-            AppDimens.sizedBoxHeight30,
+            const SizedBox(height: AppDimens.sizedBoxHeight30,),
             Center(
               child: Text(
                 'Test results',

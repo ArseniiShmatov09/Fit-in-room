@@ -34,6 +34,7 @@ class AppRouter extends _$AppRouter {
       page: HomeRoute.page,
       initial: true,
       path: '/home',
+
       children: <AutoRoute>[
         AutoRoute(
           page: AllRoomsRoute.page,

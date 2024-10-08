@@ -55,7 +55,7 @@ class AllRoomsPage extends StatelessWidget {
               ],
             ),
           ),
-          AppDimens.sizedBoxHeight15,
+          const SizedBox(height: AppDimens.sizedBoxHeight15,),
           ElevatedButton(
             onPressed: () {
               AutoRouter.of(context).push(const AddRoomRoute());

@@ -28,7 +28,7 @@ class TestHistoryPage extends StatelessWidget {
                           itemWidth: 10,
                           itemLength: 10,
                         ),
-                        AppDimens.sizedBoxWidth10,
+                        const SizedBox(height: AppDimens.sizedBoxWidth10,),
                         ItemInfoWidget(
                           roomId: index * 2 + 1,
                           itemHigh: 10,
@@ -42,7 +42,7 @@ class TestHistoryPage extends StatelessWidget {
               },
             ),
           ),
-          AppDimens.sizedBoxHeight15,
+          const SizedBox(height: AppDimens.sizedBoxHeight15,),
         ],
       ),
     );

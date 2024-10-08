@@ -29,7 +29,6 @@ void _setupDI(Flavor flavor) {
   );
 }
 
-
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
