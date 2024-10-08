@@ -23,6 +23,11 @@ dependencies:
     path: ../features/add_room
   edit_room:
     path: ../features/edit_room
+  all_rooms:
+    path: ../features/all_rooms
+  test_history:
+    path: ../features/test_history
+
 
   auto_route: ^7.8.4
 

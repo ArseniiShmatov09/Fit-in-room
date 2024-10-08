@@ -37,29 +37,29 @@ class RoomDetailsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 30,),
+            AppDimens.sizedBoxHeight30,
             RoomParametersWidget(
               roomId: roomId,
               roomHeight: 1,
               roomLength: 1,
               roomWidth: 1,
             ),
-            const SizedBox(height: 20,),
+            AppDimens.sizedBoxHeight20,
             const EntryFieldWidget(
               labelText: 'Enter width',
               initialValue: '',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter length',
               initialValue: '',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter height',
               initialValue: '',
             ),
-            const SizedBox(height: 20,),
+            AppDimens.sizedBoxHeight20,
             const TestRoomWidget(),
           ],
         ),

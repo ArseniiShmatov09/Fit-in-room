@@ -26,27 +26,27 @@ class EditRoomPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 100,),
+            AppDimens.sizedBoxHeight100,
             EntryFieldWidget(
                 labelText: 'Enter room name',
                 initialValue: 'Room $roomId',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter width',
               initialValue: '1',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter length',
               initialValue: '1',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter height',
               initialValue: '1',
             ),
-            const SizedBox(height: 20,),
+            AppDimens.sizedBoxHeight20,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
               child: ElevatedButton(

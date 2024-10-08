@@ -22,27 +22,27 @@ class AddRoomPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 100,),
+            AppDimens.sizedBoxHeight100,
             const EntryFieldWidget(
               labelText: 'Enter room name',
               initialValue: '',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter width',
               initialValue: '',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter length',
               initialValue: '',
             ),
-            const SizedBox(height: 10,),
+            AppDimens.sizedBoxHeight10,
             const EntryFieldWidget(
               labelText: 'Enter height',
               initialValue: '',
             ),
-            const SizedBox(height: 20,),
+            AppDimens.sizedBoxHeight20,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
               child: ElevatedButton(

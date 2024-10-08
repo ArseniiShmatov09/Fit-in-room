@@ -12,12 +12,12 @@ class TestRoomWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
-            color: AppColors.of(context).gray,
+          color: AppColors.of(context).lightGray,
         ),
         height: 190,
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 20,),
+            AppDimens.sizedBoxHeight20,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding30),
               child: Center(
@@ -25,7 +25,7 @@ class TestRoomWidget extends StatelessWidget {
                   onPressed: () {},
                   style: AppStyles.whiteRoundButtonStyle.copyWith(
                     backgroundColor: MaterialStatePropertyAll<Color>(
-                        AppColors.of(context).white,
+                      AppColors.of(context).white,
                     ),
                   ),
                   child: Text(
@@ -37,7 +37,7 @@ class TestRoomWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 30,),
+            AppDimens.sizedBoxHeight30,
             Center(
               child: Text(
                 'Test results',
@@ -52,4 +52,3 @@ class TestRoomWidget extends StatelessWidget {
     );
   }
 }
-

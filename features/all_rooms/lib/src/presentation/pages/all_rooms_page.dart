@@ -4,6 +4,7 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:room_detail/room_detail.gm.dart';
 
+@RoutePage()
 class AllRoomsPage extends StatelessWidget {
   const AllRoomsPage({Key? key}) : super(key: key);
 
@@ -18,18 +19,23 @@ class AllRoomsPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   decoration: AppStyles.grayBoxDecoration.copyWith(
-                      color: AppColors.of(context).gray,
+                    color: AppColors.of(context).lightGray,
                   ),
                   child: ListView.builder(
                     itemExtent: 120,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-                        onTap: (){
-                          AutoRouter.of(context).push(RoomDetailsRoute(roomId: index));                        },
+                        onTap: () {
+                          AutoRouter.of(context).push(
+                            RoomDetailsRoute(roomId: index,),
+                          );
+                        },
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: AppDimens.padding30),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: AppDimens.padding30,
+                              ),
                               child: Center(
                                 child: Text(
                                   'Room $index',
@@ -49,7 +55,7 @@ class AllRoomsPage extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 15,),
+          AppDimens.sizedBoxHeight15,
           ElevatedButton(
             onPressed: () {
               AutoRouter.of(context).push(const AddRoomRoute());

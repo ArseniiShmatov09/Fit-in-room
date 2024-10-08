@@ -23,13 +23,14 @@ class RoomParametersWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: Container(
         decoration: AppStyles.grayBoxDecoration.copyWith(
-            color: AppColors.of(context).gray,
+          color: AppColors.of(context).lightGray,
         ),
         height: 220,
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
+              padding:
+                  const EdgeInsets.symmetric(vertical: AppDimens.padding24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -42,7 +43,9 @@ class RoomParametersWidget extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () {
-                      AutoRouter.of(context).push(EditRoomRoute(roomId: roomId));
+                      AutoRouter.of(context).push(
+                        EditRoomRoute(roomId: roomId),
+                      );
                     },
                   ),
                 ],

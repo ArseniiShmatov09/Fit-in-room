@@ -19,7 +19,7 @@ class ItemInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppStyles.grayBoxDecoration.copyWith(
-          color: AppColors.of(context).gray,
+          color: AppColors.of(context).lightGray,
       ),
       height: 150,
       width: 170,

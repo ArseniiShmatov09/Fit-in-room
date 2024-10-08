@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const MainDivider(),
-            const SizedBox(height: 15),
+            AppDimens.sizedBoxHeight15,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -39,9 +39,9 @@ class SettingsPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            AppDimens.sizedBoxHeight10,
             const MainDivider(),
-            const SizedBox(height: 15),
+            AppDimens.sizedBoxHeight15,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -58,7 +58,7 @@ class SettingsPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            AppDimens.sizedBoxHeight15,
             const MainDivider(),
           ],
         ),

@@ -1,7 +1,9 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:navigation/navigation.dart';
 import '../widgets/item_info_widget.dart';
 
+@RoutePage()
 class TestHistoryPage extends StatelessWidget {
   const TestHistoryPage({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class TestHistoryPage extends StatelessWidget {
                           itemWidth: 10,
                           itemLength: 10,
                         ),
-                        const SizedBox(width: 10,),
+                        AppDimens.sizedBoxWidth10,
                         ItemInfoWidget(
                           roomId: index * 2 + 1,
                           itemHigh: 10,
@@ -40,7 +42,7 @@ class TestHistoryPage extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 15,),
+          AppDimens.sizedBoxHeight15,
         ],
       ),
     );
