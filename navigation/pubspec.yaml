@@ -13,6 +13,21 @@ dependencies:
     path: ../core
   core_ui:
     path: ../core_ui
+  home:
+    path: ../features/home
+  room_detail:
+    path: ../features/room_detail
+  settings:
+    path: ../features/settings
+  add_room:
+    path: ../features/add_room
+  edit_room:
+    path: ../features/edit_room
+  all_rooms:
+    path: ../features/all_rooms
+  test_history:
+    path: ../features/test_history
+
 
   auto_route: ^7.8.4
 
