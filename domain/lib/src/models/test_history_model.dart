@@ -1,15 +1,23 @@
-class TestHistoryEntity {
+class TestHistoryModel {
   final int id;
   final int itemLength;
   final int itemWidth;
   final int itemHeight;
   final int roomId;
 
-  TestHistoryEntity({
+  TestHistoryModel({
+    required this.id,
     required this.itemLength,
     required this.itemWidth,
     required this.itemHeight,
     required this.roomId,
-    required this.id,
   });
+
+  List<Object?> get props => <Object?>[
+        id,
+        itemLength,
+        itemWidth,
+        itemHeight,
+        roomId,
+      ];
 }
