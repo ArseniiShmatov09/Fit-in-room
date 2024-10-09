@@ -17,13 +17,13 @@ class AllRoomsPage extends StatelessWidget {
     return BlocProvider<AllRoomsBloc>(
       create: (_) => AllRoomsBloc(
         getAllRoomsUseCase: GetIt.I<GetAllRoomsUseCase>(),
-      )..add(const LoadAllRoomsEvent()),
+      ),
       child: BlocBuilder<AllRoomsBloc, AllRoomsState>(
         builder: (BuildContext context, AllRoomsState state) {
-          if (state is AllRoomsLoadingState) {
+          if (state.status == AllRoomsStatus.loading) {
             return const Center(child: CircularProgressIndicator());
           }
-          if (state is AllRoomsLoadedState) {
+          if (state.status == AllRoomsStatus.loaded) {
             return Padding(
               padding: const EdgeInsets.all(AppDimens.padding16),
               child: Column(

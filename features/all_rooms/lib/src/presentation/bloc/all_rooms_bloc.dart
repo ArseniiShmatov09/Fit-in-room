@@ -2,7 +2,6 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'all_rooms_state.dart';
-
 part 'all_rooms_event.dart';
 
 class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
@@ -11,30 +10,37 @@ class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
   })  : _getAllRoomsUseCase = getAllRoomsUseCase,
         super(const AllRoomsState()) {
     on<LoadAllRoomsEvent>(_loadAllRooms);
+    add(const LoadAllRoomsEvent());
   }
 
-  final List<RoomModel> _rooms = <RoomModel>[];
   final GetAllRoomsUseCase _getAllRoomsUseCase;
 
-  void _loadAllRooms(
+  Future<void> _loadAllRooms(
     LoadAllRoomsEvent event,
     Emitter<AllRoomsState> emit,
-  ) {
+  ) async {
     try {
-      if (state is! AllRoomsLoadedState) {
-        emit(const AllRoomsLoadingState());
+      if (state.status == AllRoomsStatus.loading) {
+        emit(
+          state.copyWith(
+            status: AllRoomsStatus.loading,
+          ),
+        );
       }
-      _rooms.addAll(_getAllRoomsUseCase.execute(const NoParams()));
+
+      final List<RoomModel> rooms =
+          await _getAllRoomsUseCase.execute(const NoParams());
 
       emit(
-        AllRoomsLoadedState(
-          List<RoomModel>.from(
-            _rooms,
-          ),
+        state.copyWith(
+          status: AllRoomsStatus.loaded,
+          rooms: rooms,
         ),
       );
     } catch (e) {
-      emit(AllRoomsLoadingFailureState(e));
+      emit(
+        state.copyWith(status: AllRoomsStatus.failure),
+      );
     }
   }
 }

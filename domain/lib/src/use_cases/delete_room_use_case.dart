@@ -1,7 +1,6 @@
 import '../../domain.dart';
-import 'use_case.dart';
 
-class DeleteRoomUseCase implements UseCase<int, void> {
+class DeleteRoomUseCase implements FutureUseCase<int, void> {
   DeleteRoomUseCase({
     required RoomRepository roomRepository,
   }) : _roomRepository = roomRepository;
@@ -13,7 +12,7 @@ class DeleteRoomUseCase implements UseCase<int, void> {
   }
 
   @override
-  void execute(int roomId) {
+  Future<void> execute(int roomId) async {
     _roomRepository.deleteRoom(roomId);
   }
 }

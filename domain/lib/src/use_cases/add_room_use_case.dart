@@ -1,7 +1,6 @@
 import '../../domain.dart';
-import 'use_case.dart';
 
-class AddRoomUseCase implements UseCase<RoomModel, void> {
+class AddRoomUseCase implements FutureUseCase<RoomModel, void> {
   AddRoomUseCase({
     required RoomRepository roomRepository,
   }) : _roomRepository = roomRepository;
@@ -9,7 +8,7 @@ class AddRoomUseCase implements UseCase<RoomModel, void> {
   final RoomRepository _roomRepository;
 
   @override
-  void execute(RoomModel roomModel) {
+  Future<void> execute(RoomModel roomModel) async {
     _roomRepository.addRoom(roomModel);
   }
 }
