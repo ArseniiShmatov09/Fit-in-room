@@ -1,5 +1,4 @@
 import '../../domain.dart';
-import 'use_case.dart';
 
 class GetAllTestHistoriesUseCase
     implements UseCase<NoParams, List<TestHistoryModel>> {
