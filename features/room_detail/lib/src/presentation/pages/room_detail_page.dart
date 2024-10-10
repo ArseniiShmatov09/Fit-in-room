@@ -1,6 +1,9 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
+import '../bloc/room_detail_bloc.dart';
 import '../widgets/room_parameters_widget.dart';
 import '../widgets/test_room_widget.dart';
 
@@ -10,61 +13,91 @@ class RoomDetailsPage extends StatelessWidget {
 
   const RoomDetailsPage({
     Key? key,
-    @PathParam('id')
-    required this.roomId,
-
+    @PathParam('id') required this.roomId,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Room $roomId',
-            style: AppStyles.blackTitleTextStyle.copyWith(
-              color: AppColors.of(context).black,
-            ),
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.delete, size: 45,),
-            onPressed: () {},
-          ),
-        ],
+    return BlocProvider<RoomDetailBloc>(
+      create: (_) => RoomDetailBloc(
+        getRoomUseCase: GetIt.I<GetRoomUseCase>(),
+        roomId: roomId
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: AppDimens.sizedBoxHeight30,),
-            RoomParametersWidget(
-              roomId: roomId,
-              roomHeight: 1,
-              roomLength: 1,
-              roomWidth: 1,
-            ),
-            const SizedBox(height: AppDimens.sizedBoxHeight20,),
-            const EntryFieldWidget(
-              labelText: 'Enter width',
-              initialValue: '',
-            ),
-            const SizedBox(height: AppDimens.sizedBoxHeight10,),
-            const EntryFieldWidget(
-              labelText: 'Enter length',
-              initialValue: '',
-            ),
-            const SizedBox(height: AppDimens.sizedBoxHeight10,),
-            const EntryFieldWidget(
-              labelText: 'Enter height',
-              initialValue: '',
-            ),
-            const SizedBox(height: AppDimens.sizedBoxHeight20,),
-            const TestRoomWidget(),
-          ],
-        ),
+      child: BlocBuilder<RoomDetailBloc, RoomDetailState>(
+        builder: (BuildContext context, RoomDetailState state) {
+          if (state.status == RoomDetailStatus.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state.status == RoomDetailStatus.loaded) {
+            final RoomModel room = state.room ?? RoomModel.empty();
+            return Scaffold(
+              appBar: AppBar(
+                title: Center(
+                  child: Text(
+                    room.name,
+                    style: AppStyles.titleTextStyle.copyWith(
+                      color: AppColors.of(context).black,
+                    ),
+                  ),
+                ),
+                actions: <Widget>[
+                  IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                      size: 45,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight30,
+                    ),
+                    RoomParametersWidget(
+                      roomId: room.id,
+                      roomHeight: room.height,
+                      roomLength: room.length,
+                      roomWidth: room.width,
+                    ),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight20,
+                    ),
+                    const EntryFieldWidget(
+                      labelText: 'Enter width',
+                      initialValue: '',
+                      isDigitsOnlyEntered: true,
+                    ),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight10,
+                    ),
+                    const EntryFieldWidget(
+                      labelText: 'Enter length',
+                      initialValue: '',
+                      isDigitsOnlyEntered: true,
+                    ),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight10,
+                    ),
+                    const EntryFieldWidget(
+                      labelText: 'Enter height',
+                      initialValue: '',
+                      isDigitsOnlyEntered: true,
+                    ),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight20,
+                    ),
+                    const TestRoomWidget(),
+                  ],
+                ),
+              ),
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
       ),
     );
   }
 }
-

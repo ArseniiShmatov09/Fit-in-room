@@ -1,8 +1,8 @@
 import '../../domain.dart';
 
-class GetAllTestHistoriesUseCase
+class GetTestHistoriesUseCase
     implements FutureUseCase<NoParams, List<TestHistoryModel>> {
-  GetAllTestHistoriesUseCase({
+  GetTestHistoriesUseCase({
     required TestHistoryRepository testHistoryRepository,
   }) : _testHistoryRepository = testHistoryRepository;
 

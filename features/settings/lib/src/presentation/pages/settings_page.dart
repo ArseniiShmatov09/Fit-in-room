@@ -12,7 +12,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Settings',
-          style: AppStyles.blackTitleTextStyle.copyWith(
+          style: AppStyles.titleTextStyle.copyWith(
               color: AppColors.of(context).black,
           ),
         ),
@@ -28,7 +28,7 @@ class SettingsPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Dark mode',
-                  style: AppStyles.blackHeaderTextStyle.copyWith(
+                  style: AppStyles.mainHeaderTextStyle.copyWith(
                     color: AppColors.of(context).black,
                   ),
                 ),
@@ -47,7 +47,7 @@ class SettingsPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Increase font',
-                  style: AppStyles.blackHeaderTextStyle.copyWith(
+                  style: AppStyles.mainHeaderTextStyle.copyWith(
                     color: AppColors.of(context).black,
                   ),
                 ),

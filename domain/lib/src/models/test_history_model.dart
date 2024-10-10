@@ -4,6 +4,7 @@ class TestHistoryModel {
   final int itemWidth;
   final int itemHeight;
   final int roomId;
+  final bool isTestPassed;
 
   TestHistoryModel({
     required this.id,
@@ -11,6 +12,7 @@ class TestHistoryModel {
     required this.itemWidth,
     required this.itemHeight,
     required this.roomId,
+    required this.isTestPassed,
   });
 
   List<Object?> get props => <Object?>[
@@ -19,5 +21,6 @@ class TestHistoryModel {
         itemWidth,
         itemHeight,
         roomId,
+        isTestPassed,
       ];
 }

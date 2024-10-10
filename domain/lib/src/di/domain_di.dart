@@ -38,8 +38,8 @@ abstract class DomainDI {
       ),
     );
 
-    locator.registerLazySingleton<GetAllTestHistoriesUseCase>(
-      () => GetAllTestHistoriesUseCase(
+    locator.registerLazySingleton<GetTestHistoriesUseCase>(
+      () => GetTestHistoriesUseCase(
         testHistoryRepository: locator<TestHistoryRepository>(),
       ),
     );

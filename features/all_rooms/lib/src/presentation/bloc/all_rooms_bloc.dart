@@ -2,6 +2,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'all_rooms_state.dart';
+
 part 'all_rooms_event.dart';
 
 class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {

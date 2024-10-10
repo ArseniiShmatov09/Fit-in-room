@@ -1,6 +1,8 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
+import 'test_history_text_info_widget.dart';
+
 class ItemInfoWidget extends StatelessWidget {
   const ItemInfoWidget({
     Key? key,
@@ -8,39 +10,44 @@ class ItemInfoWidget extends StatelessWidget {
     required this.itemWidth,
     required this.itemLength,
     required this.itemHigh,
-  }): super(key:key);
+    required this.isTestPassed,
+  }) : super(key: key);
 
   final int roomId;
   final int itemWidth;
   final int itemLength;
   final int itemHigh;
+  final bool isTestPassed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: AppStyles.grayBoxDecoration.copyWith(
-          color: AppColors.of(context).lightGray,
+      decoration: AppStyles.boxDecoration.copyWith(
+        color: AppColors.of(context).lightGray,
       ),
-      height: 150,
+      height: 200,
       width: 170,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(
-            'Room $roomId',
-            style: AppStyles.blackHeaderTextStyle.copyWith(
-                color: AppColors.of(context).black,
+          TestHistoryInfoTextWidget(
+            text: 'Room $roomId',
+            style: AppStyles.mainHeaderTextStyle.copyWith(
+              color: AppColors.of(context).black,
             ),
           ),
-          Text(
-            'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
-            style: AppStyles.blackDetailsTextStyle.copyWith(
+          TestHistoryInfoTextWidget(
+            text: 'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
+            style: AppStyles.detailsTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
           ),
           Text(
-            'PASSED',
-            style: AppStyles.blackDetailsTextStyle.copyWith(
-              color: AppColors.of(context).black,
+            isTestPassed ? 'PASSED' : 'NOT PASSED',
+            style: AppStyles.headerTextStyle.copyWith(
+              color: isTestPassed
+              ? AppColors.of(context).green
+              : AppColors.of(context).red,
             ),
           ),
         ],

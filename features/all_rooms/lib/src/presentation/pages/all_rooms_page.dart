@@ -32,7 +32,7 @@ class AllRoomsPage extends StatelessWidget {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          decoration: AppStyles.grayBoxDecoration.copyWith(
+                          decoration: AppStyles.boxDecoration.copyWith(
                             color: AppColors.of(context).lightGray,
                           ),
                           child: ListView.builder(
@@ -57,7 +57,7 @@ class AllRoomsPage extends StatelessWidget {
                                         child: Text(
                                           'Room $index',
                                           style: AppStyles
-                                              .blackSubtitleTextStyle
+                                              .subtitleTextStyle
                                               .copyWith(
                                             color: AppColors.of(context).black,
                                           ),
@@ -81,14 +81,14 @@ class AllRoomsPage extends StatelessWidget {
                     onPressed: () {
                       AutoRouter.of(context).push(const AddRoomRoute());
                     },
-                    style: AppStyles.blackButtonStyle.copyWith(
+                    style: AppStyles.buttonStyle.copyWith(
                       backgroundColor: MaterialStatePropertyAll<Color>(
                         AppColors.of(context).black,
                       ),
                     ),
                     child: Text(
                       'Add new room',
-                      style: AppStyles.whiteButtonTextStyle.copyWith(
+                      style: AppStyles.buttonTextStyle.copyWith(
                         color: AppColors.of(context).white,
                       ),
                     ),
