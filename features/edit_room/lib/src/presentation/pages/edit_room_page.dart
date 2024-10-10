@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 @RoutePage()
 class EditRoomPage extends StatelessWidget {
   final int roomId;
+
   const EditRoomPage({
     super.key,
     required this.roomId,
@@ -17,8 +18,8 @@ class EditRoomPage extends StatelessWidget {
         title: Center(
           child: Text(
             'Edit room $roomId',
-            style: AppStyles.blackTitleTextStyle.copyWith(
-                color: AppColors.of(context).black,
+            style: AppStyles.titleTextStyle.copyWith(
+              color: AppColors.of(context).black,
             ),
           ),
         ),
@@ -26,40 +27,55 @@ class EditRoomPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(height: AppDimens.sizedBoxHeight100,),
-            EntryFieldWidget(
-                labelText: 'Enter room name',
-                initialValue: 'Room $roomId',
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight100,
             ),
-            const SizedBox(height: AppDimens.sizedBoxHeight10,),
+            EntryFieldWidget(
+              labelText: 'Enter room name',
+              initialValue: 'Room $roomId',
+              isDigitsOnlyEntered: false,
+            ),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight10,
+            ),
             const EntryFieldWidget(
               labelText: 'Enter width',
               initialValue: '1',
+              isDigitsOnlyEntered: true,
             ),
-            const SizedBox(height: AppDimens.sizedBoxHeight10,),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight10,
+            ),
             const EntryFieldWidget(
               labelText: 'Enter length',
               initialValue: '1',
+              isDigitsOnlyEntered: true,
             ),
-            const SizedBox(height: AppDimens.sizedBoxHeight10,),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight10,
+            ),
             const EntryFieldWidget(
               labelText: 'Enter height',
               initialValue: '1',
+              isDigitsOnlyEntered: true,
             ),
-            const SizedBox(height: AppDimens.sizedBoxHeight20,),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight20,
+            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
               child: ElevatedButton(
                 onPressed: () {},
-                style: AppStyles.whiteRoundButtonStyle.copyWith(
+                style: AppStyles.roundButtonStyle.copyWith(
                   backgroundColor: MaterialStatePropertyAll<Color>(
-                      AppColors.of(context).white,
+                    AppColors.of(context).white,
                   ),
                 ),
                 child: Text(
                   'Edit room',
-                  style: AppStyles.blackTitleTextStyle.copyWith(
-                      color: AppColors.of(context).black,
+                  style: AppStyles.titleTextStyle.copyWith(
+                    color: AppColors.of(context).black,
                   ),
                 ),
               ),

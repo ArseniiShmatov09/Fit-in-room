@@ -1,4 +1,4 @@
-class RoomEntity{
+class RoomEntity {
   final int id;
   final String name;
   final int length;
@@ -14,13 +14,4 @@ class RoomEntity{
     required this.height,
     required this.userId,
   });
-
-  List<Object?> get props => <Object?>[
-    id,
-    name,
-    length,
-    width,
-    height,
-    userId,
-  ];
 }
