@@ -2,6 +2,16 @@ import 'package:domain/domain.dart';
 import '../../data.dart';
 
 class RoomRepositoryImpl implements RoomRepository {
+
+  RoomRepositoryImpl({
+    required ApiProvider apiProvider,
+    required RoomMapper roomMapper,
+  })  : _apiProvider = apiProvider,
+        _roomMapper = roomMapper;
+
+  final ApiProvider _apiProvider;
+  final RoomMapper _roomMapper;
+
   final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
     return RoomEntity(
       id: index,
@@ -13,11 +23,9 @@ class RoomRepositoryImpl implements RoomRepository {
     );
   });
 
-  final RoomMapper _mapper = RoomMapper();
-
   @override
   void addRoom(RoomModel roomModel) {
-    // _rooms.add(roomModel);
+    _apiProvider.addRoom(_roomMapper.toData(roomModel));
   }
 
   @override
@@ -27,7 +35,7 @@ class RoomRepositoryImpl implements RoomRepository {
 
   @override
   RoomModel getRoom(int roomId) {
-    return _mapper.toDomain(_rooms[roomId]);
+    return _roomMapper.toDomain(_rooms[roomId]);
   }
 
   @override

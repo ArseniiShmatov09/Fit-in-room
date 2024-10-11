@@ -31,6 +31,19 @@ class EditRoomPage extends StatelessWidget {
           }
           if (state.status == EditRoomStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
+            final TextEditingController nameController =
+                TextEditingController(text: room.name);
+            final TextEditingController widthController = TextEditingController(
+              text: room.width.toString(),
+            );
+            final TextEditingController lengthController =
+                TextEditingController(
+              text: room.length.toString(),
+            );
+            final TextEditingController heightController =
+                TextEditingController(
+              text: room.height.toString(),
+            );
             return Scaffold(
               appBar: AppBar(
                 title: Center(
@@ -50,7 +63,7 @@ class EditRoomPage extends StatelessWidget {
                     ),
                     EntryFieldWidget(
                       labelText: 'Enter room name',
-                      initialValue: room.name,
+                      controller: nameController,
                       isDigitsOnlyEntered: false,
                     ),
                     const SizedBox(
@@ -58,7 +71,7 @@ class EditRoomPage extends StatelessWidget {
                     ),
                     EntryFieldWidget(
                       labelText: 'Enter width',
-                      initialValue: room.width.toString(),
+                      controller: widthController,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
@@ -66,7 +79,7 @@ class EditRoomPage extends StatelessWidget {
                     ),
                     EntryFieldWidget(
                       labelText: 'Enter length',
-                      initialValue: room.length.toString(),
+                      controller: lengthController,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
@@ -74,7 +87,7 @@ class EditRoomPage extends StatelessWidget {
                     ),
                     EntryFieldWidget(
                       labelText: 'Enter height',
-                      initialValue: room.height.toString(),
+                      controller: heightController,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
