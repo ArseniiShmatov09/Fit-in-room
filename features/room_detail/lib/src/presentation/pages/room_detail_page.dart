@@ -21,12 +21,12 @@ class RoomDetailsPage extends StatelessWidget {
     return BlocProvider<RoomDetailBloc>(
       create: (_) => RoomDetailBloc(
         getRoomUseCase: GetIt.I<GetRoomUseCase>(),
-        roomId: roomId
+        roomId: roomId,
       ),
       child: BlocBuilder<RoomDetailBloc, RoomDetailState>(
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(),);
           }
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
@@ -95,7 +95,7 @@ class RoomDetailsPage extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(),);
         },
       ),
     );

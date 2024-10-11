@@ -4,7 +4,7 @@ import '../../data.dart';
 class RoomRepositoryImpl implements RoomRepository {
   final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
     return RoomEntity(
-      id: index + 1,
+      id: index,
       name: 'Room $index',
       length: 10 + index,
       width: 8 + index,
