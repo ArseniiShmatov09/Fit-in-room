@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             title: Center(
               child: Text(
                 tabsRouter.activeIndex == 0 ? 'All Rooms' : 'Test History',
-                style: AppStyles.blackTitleTextStyle.copyWith(
+                style: AppStyles.titleTextStyle.copyWith(
                   color: AppColors.of(context).black,
                 ),
               ),

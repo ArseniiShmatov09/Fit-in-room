@@ -2,37 +2,43 @@ import 'package:flutter/material.dart';
 import '../../core_ui.dart';
 
 class AppStyles {
-  static TextStyle blackTitleTextStyle = const TextStyle(
+  static TextStyle titleTextStyle = const TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 48,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle blackSubtitleTextStyle = const TextStyle(
+  static TextStyle subtitleTextStyle = const TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 40,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle blackHeaderTextStyle = const TextStyle(
+  static TextStyle mainHeaderTextStyle = const TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 32,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle blackDetailsTextStyle = const TextStyle(
+  static TextStyle headerTextStyle = const TextStyle(
+    fontFamily: FontFamily.sofiaSans,
+    fontSize: 24,
+    fontWeight: FontWeight.w900,
+  );
+
+  static TextStyle detailsTextStyle = const TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 20,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle whiteButtonTextStyle = const TextStyle(
+  static TextStyle buttonTextStyle = const TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 32,
     fontWeight: FontWeight.w900,
   );
 
-  static ButtonStyle whiteRoundButtonStyle = ElevatedButton.styleFrom(
+  static ButtonStyle roundButtonStyle = ElevatedButton.styleFrom(
     minimumSize: const Size(double.infinity, 50),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
@@ -42,12 +48,12 @@ class AppStyles {
     ),
   );
 
-  static ButtonStyle blackButtonStyle = ElevatedButton.styleFrom(
+  static ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     minimumSize: const Size(double.infinity, 50),
     shape: const RoundedRectangleBorder(),
   );
 
-  static BoxDecoration grayBoxDecoration = BoxDecoration(
+  static BoxDecoration boxDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
   );
 
