@@ -2,37 +2,37 @@ import 'package:flutter/material.dart';
 import '../../core_ui.dart';
 
 class AppStyles {
-  static TextStyle titleTextStyle = const TextStyle(
+  static const TextStyle titleTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 48,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle subtitleTextStyle = const TextStyle(
+   static const TextStyle subtitleTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 40,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle mainHeaderTextStyle = const TextStyle(
+  static const TextStyle mainHeaderTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 32,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle headerTextStyle = const TextStyle(
+  static const TextStyle headerTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 24,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle detailsTextStyle = const TextStyle(
+  static const TextStyle detailsTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 20,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle buttonTextStyle = const TextStyle(
+  static const TextStyle buttonTextStyle = TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 32,
     fontWeight: FontWeight.w900,

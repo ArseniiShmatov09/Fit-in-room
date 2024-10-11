@@ -11,7 +11,7 @@ class TestHistoryRepositoryImpl implements TestHistoryRepository {
       itemWidth: index + 3,
       itemHeight: index + 2,
       roomId: index + 1,
-      isTestPassed: index.isEven ? true : false,
+      isTestPassed: index.isEven,
     );
   });
 
