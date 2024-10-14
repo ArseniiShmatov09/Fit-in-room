@@ -8,6 +8,7 @@ abstract class DataDI {
     _initApi(locator);
     _initProviders(locator);
     _initRepositories(locator);
+    _initMappers(locator);
   }
 
   static void _initApi(GetIt locator) {
@@ -24,9 +25,13 @@ abstract class DataDI {
     );
 
     locator.registerLazySingleton<ApiProvider>(
-      () => ApiProvider(
-        locator<DioConfig>().dio,
-      ),
+      ApiProvider.new,
+    );
+  }
+
+  static void _initMappers(GetIt locator) {
+    locator.registerLazySingleton<RoomMapper>(
+      RoomMapper.new,
     );
   }
 
@@ -34,11 +39,17 @@ abstract class DataDI {
 
   static void _initRepositories(GetIt locator) {
     locator.registerLazySingleton<AllRoomsRepository>(
-      AllRoomsRepositoryImpl.new,
+      () => AllRoomsRepositoryImpl(
+        apiProvider: locator<ApiProvider>(),
+        roomMapper: locator<RoomMapper>(),
+      ),
     );
 
     locator.registerLazySingleton<RoomRepository>(
-      RoomRepositoryImpl.new,
+      () => RoomRepositoryImpl(
+        apiProvider: locator<ApiProvider>(),
+        roomMapper: locator<RoomMapper>(),
+      ),
     );
 
     locator.registerLazySingleton<TestHistoryRepository>(

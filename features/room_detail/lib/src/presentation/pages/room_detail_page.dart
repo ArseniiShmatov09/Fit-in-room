@@ -18,15 +18,18 @@ class RoomDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController(text: '');
     return BlocProvider<RoomDetailBloc>(
       create: (_) => RoomDetailBloc(
         getRoomUseCase: GetIt.I<GetRoomUseCase>(),
-        roomId: roomId
+        roomId: roomId,
       ),
       child: BlocBuilder<RoomDetailBloc, RoomDetailState>(
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
@@ -65,25 +68,25 @@ class RoomDetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: AppDimens.sizedBoxHeight20,
                     ),
-                    const EntryFieldWidget(
+                    EntryFieldWidget(
                       labelText: 'Enter width',
-                      initialValue: '',
+                      controller: controller,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
                       height: AppDimens.sizedBoxHeight10,
                     ),
-                    const EntryFieldWidget(
+                    EntryFieldWidget(
                       labelText: 'Enter length',
-                      initialValue: '',
+                      controller: controller,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
                       height: AppDimens.sizedBoxHeight10,
                     ),
-                    const EntryFieldWidget(
+                    EntryFieldWidget(
                       labelText: 'Enter height',
-                      initialValue: '',
+                      controller: controller,
                       isDigitsOnlyEntered: true,
                     ),
                     const SizedBox(
@@ -95,7 +98,9 @@ class RoomDetailsPage extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

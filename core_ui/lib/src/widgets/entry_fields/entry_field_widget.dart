@@ -4,20 +4,18 @@ import '../../../core_ui.dart';
 
 class EntryFieldWidget extends StatelessWidget {
   final String labelText;
-  final String initialValue;
   final bool isDigitsOnlyEntered;
+  final TextEditingController controller;
 
   const EntryFieldWidget({
     super.key,
     required this.labelText,
-    required this.initialValue,
     required this.isDigitsOnlyEntered,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller =
-        TextEditingController(text: initialValue);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),

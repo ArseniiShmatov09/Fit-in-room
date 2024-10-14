@@ -39,6 +39,7 @@ class AllRoomsPage extends StatelessWidget {
                             itemExtent: 120,
                             itemCount: state.rooms.length,
                             itemBuilder: (BuildContext context, int index) {
+                              final RoomModel room = state.rooms[index];
                               return InkWell(
                                 onTap: () {
                                   AutoRouter.of(context).push(
@@ -55,7 +56,7 @@ class AllRoomsPage extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          'Room $index',
+                                          room.name,
                                           style: AppStyles
                                               .subtitleTextStyle
                                               .copyWith(

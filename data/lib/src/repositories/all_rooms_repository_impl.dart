@@ -4,7 +4,7 @@ import '../../data.dart';
 class AllRoomsRepositoryImpl implements AllRoomsRepository {
   final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
     return RoomEntity(
-      id: index + 1,
+      id: index,
       name: 'Room $index',
       length: 10 + index,
       width: 8 + index,
@@ -13,10 +13,17 @@ class AllRoomsRepositoryImpl implements AllRoomsRepository {
     );
   });
 
-  final RoomMapper _mapper = RoomMapper();
+  AllRoomsRepositoryImpl({
+    required ApiProvider apiProvider,
+    required RoomMapper roomMapper,
+  })  : _apiProvider = apiProvider,
+        _roomMapper = roomMapper;
+
+  final ApiProvider _apiProvider;
+  final RoomMapper _roomMapper;
 
   @override
   List<RoomModel> getAllRooms() {
-    return _rooms.map(_mapper.toDomain).toList();
+    return _rooms.map(_roomMapper.toDomain).toList();
   }
 }
