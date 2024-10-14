@@ -1,6 +1,12 @@
 part of 'room_detail_bloc.dart';
 
-enum RoomDetailStatus { loading, loaded, failure }
+enum RoomDetailStatus {
+  loading,
+  loaded,
+  failure,
+  failureDeleted,
+  successfullyDeleted,
+}
 
 class RoomDetailState {
   const RoomDetailState({

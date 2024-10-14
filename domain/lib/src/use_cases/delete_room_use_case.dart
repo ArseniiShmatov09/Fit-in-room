@@ -13,6 +13,6 @@ class DeleteRoomUseCase implements FutureUseCase<int, void> {
 
   @override
   Future<void> execute(int roomId) async {
-    _roomRepository.deleteRoom(roomId);
+    await _roomRepository.deleteRoom(roomId);
   }
 }

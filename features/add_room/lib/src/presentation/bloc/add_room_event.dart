@@ -12,14 +12,16 @@ class LoadAddRoomEvent extends AddRoomEvent {
   final int width;
   final int length;
   final int height;
+  final int userId;
 
-  LoadAddRoomEvent(
-    this.id,
-    this.name,
-    this.width,
-    this.length,
-    this.height,
-  );
+  LoadAddRoomEvent({
+    required this.id,
+    required this.name,
+    required this.width,
+    required this.length,
+    required this.height,
+    required this.userId,
+  });
 
   @override
   List<Object> get props => <Object>[
@@ -28,5 +30,6 @@ class LoadAddRoomEvent extends AddRoomEvent {
         width,
         length,
         height,
+    userId,
       ];
 }

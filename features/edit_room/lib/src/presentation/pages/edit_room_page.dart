@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:room_detail/room_detail.gm.dart';
 
 import '../bloc/edit_room_bloc.dart';
 
@@ -15,11 +16,51 @@ class EditRoomPage extends StatelessWidget {
     required this.roomId,
   });
 
+  void _onEditButtonPressed(
+    String name,
+    String widthText,
+    String lengthText,
+    String heightText,
+    BuildContext context,
+    RoomModel roomModel,
+  ) {
+    if (heightText.isEmpty ||
+        lengthText.isEmpty ||
+        widthText.isEmpty ||
+        name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields.'),
+        ),
+      );
+      return;
+    }
+
+    final int width = int.parse(widthText);
+    final int length = int.parse(lengthText);
+    final int height = int.parse(heightText);
+
+    context.read<EditRoomBloc>().add(
+          UpdateRoomEvent(
+            id: roomModel.id,
+            name: name,
+            width: width,
+            length: length,
+            height: height,
+            userId: roomModel.userId,
+          ),
+        );
+    AutoRouter.of(context).push(
+      RoomDetailsRoute(roomId: roomModel.id),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<EditRoomBloc>(
       create: (_) => EditRoomBloc(
         getRoomUseCase: GetIt.I<GetRoomUseCase>(),
+        updateRoomUseCase: GetIt.I<UpdateRoomUseCase>(),
         roomId: roomId,
       ),
       child: BlocBuilder<EditRoomBloc, EditRoomState>(
@@ -98,7 +139,14 @@ class EditRoomPage extends StatelessWidget {
                         horizontal: AppDimens.padding16,
                       ),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => _onEditButtonPressed(
+                            nameController.text,
+                            widthController.text,
+                            lengthController.text,
+                            heightController.text,
+                            context,
+                            room,
+                        ),
                         style: AppStyles.roundButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll<Color>(
                             AppColors.of(context).white,

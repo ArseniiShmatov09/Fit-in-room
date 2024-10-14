@@ -1,3 +1,4 @@
+import 'package:all_rooms/all_rooms.gm.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
@@ -16,21 +17,69 @@ class RoomDetailsPage extends StatelessWidget {
     @PathParam('id') required this.roomId,
   }) : super(key: key);
 
+  void _onDeleteButtonPressed(BuildContext parentContext, int roomId) {
+    showDialog(
+      context: parentContext,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Deleting room',
+            style: AppStyles.subtitleTextStyle.copyWith(
+              color: AppColors.of(context).black,
+            ),
+          ),
+          content: Text('Are you sure you want to delete this room?',
+              style: AppStyles.detailsTextStyle.copyWith(
+                color: AppColors.of(context).black,
+              ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Back',
+                style: AppStyles.subtitleTextStyle.copyWith(
+                  color: AppColors.of(context).black,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                parentContext.read<RoomDetailBloc>().add(
+                      DeleteRoomDetailEvent(roomId: roomId),
+                    );
+                AutoRouter.of(context).push(const AllRoomsRoute());
+              },
+              child: Text(
+                'Delete',
+                style: AppStyles.subtitleTextStyle.copyWith(
+                  color: AppColors.of(context).red,
+                ),
+              ),
+            ),
+          ],
+          backgroundColor: AppColors.of(context).white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController(text: '');
     return BlocProvider<RoomDetailBloc>(
       create: (_) => RoomDetailBloc(
         getRoomUseCase: GetIt.I<GetRoomUseCase>(),
+        deleteRoomUseCase: GetIt.I<DeleteRoomUseCase>(),
         roomId: roomId,
       ),
       child: BlocBuilder<RoomDetailBloc, RoomDetailState>(
         builder: (BuildContext context, RoomDetailState state) {
-          if (state.status == RoomDetailStatus.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
             return Scaffold(
@@ -49,7 +98,9 @@ class RoomDetailsPage extends StatelessWidget {
                       Icons.delete,
                       size: 45,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _onDeleteButtonPressed(context, room.id);
+                    },
                   ),
                 ],
               ),

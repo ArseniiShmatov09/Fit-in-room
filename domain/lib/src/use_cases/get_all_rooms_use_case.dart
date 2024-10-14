@@ -1,6 +1,6 @@
 import '../../domain.dart';
 
-class GetAllRoomsUseCase implements FutureUseCase<NoParams, List<RoomModel>>{
+class GetAllRoomsUseCase implements StreamUseCase<NoParams, List<RoomModel>>{
   GetAllRoomsUseCase({
     required AllRoomsRepository allRoomsRepository,
   }) : _allRoomsRepository = allRoomsRepository;
@@ -8,7 +8,7 @@ class GetAllRoomsUseCase implements FutureUseCase<NoParams, List<RoomModel>>{
   final AllRoomsRepository _allRoomsRepository;
 
   @override
-  Future<List<RoomModel>> execute(NoParams noParams) async {
+  Stream<List<RoomModel>> execute(NoParams noParams) {
     return _allRoomsRepository.getAllRooms();
   }
 }

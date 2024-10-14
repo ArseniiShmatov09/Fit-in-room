@@ -1,18 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domain/domain.dart';
 import '../../data.dart';
 
 class AllRoomsRepositoryImpl implements AllRoomsRepository {
-  final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
-    return RoomEntity(
-      id: index,
-      name: 'Room $index',
-      length: 10 + index,
-      width: 8 + index,
-      height: 3,
-      userId: index % 10,
-    );
-  });
-
   AllRoomsRepositoryImpl({
     required ApiProvider apiProvider,
     required RoomMapper roomMapper,
@@ -23,7 +13,20 @@ class AllRoomsRepositoryImpl implements AllRoomsRepository {
   final RoomMapper _roomMapper;
 
   @override
-  List<RoomModel> getAllRooms() {
-    return _rooms.map(_roomMapper.toDomain).toList();
+  Stream<List<RoomModel>> getAllRooms() {
+    return _apiProvider.getAllRooms().map(
+      (QuerySnapshot<Map<String, dynamic>> querySnapshot) {
+        return querySnapshot.docs
+            .map(
+              (QueryDocumentSnapshot<Map<String, dynamic>> doc) {
+                final RoomEntity roomEntity = RoomEntity.fromDocument(doc);
+                return _roomMapper.toDomain(roomEntity);
+              },
+            )
+            .where((RoomModel? room) => room != null)
+            .cast<RoomModel>()
+            .toList();
+      },
+    );
   }
 }

@@ -1,11 +1,13 @@
+import 'package:tuple/tuple.dart';
+
 import '../../domain.dart';
 
 abstract class RoomRepository {
-  RoomModel getRoom(int roomId);
+  Stream<Tuple2<String, RoomModel>> getRoom(int roomId);
 
   void addRoom(RoomModel roomModel);
 
-  void deleteRoom(int roomId);
+  Future<void> deleteRoom(int roomId);
 
-  void updateRoom(RoomModel newRoom);
+  Future<void> updateRoom(RoomModel newRoom);
 }

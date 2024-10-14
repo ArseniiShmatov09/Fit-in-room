@@ -16,3 +16,31 @@ class LoadEditRoomEvent extends EditRoomEvent {
         roomId,
       ];
 }
+
+class UpdateRoomEvent extends EditRoomEvent {
+  final int id;
+  final String name;
+  final int width;
+  final int length;
+  final int height;
+  final int userId;
+
+  UpdateRoomEvent({
+    required this.id,
+    required this.name,
+    required this.width,
+    required this.length,
+    required this.height,
+    required this.userId,
+  });
+
+  @override
+  List<Object> get props => <Object>[
+        id,
+        name,
+        width,
+        length,
+        height,
+        userId,
+      ];
+}

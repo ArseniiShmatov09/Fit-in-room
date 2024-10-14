@@ -7,7 +7,22 @@ sealed class RoomDetailEvent {
 }
 
 class LoadRoomDetailEvent extends RoomDetailEvent {
-  const LoadRoomDetailEvent(this.roomId);
+  const LoadRoomDetailEvent({
+    required this.roomId,
+  });
+
+  final int roomId;
+
+  @override
+  List<Object> get props => <Object>[
+        roomId,
+      ];
+}
+
+class DeleteRoomDetailEvent extends RoomDetailEvent {
+  const DeleteRoomDetailEvent({
+    required this.roomId,
+  });
 
   final int roomId;
 

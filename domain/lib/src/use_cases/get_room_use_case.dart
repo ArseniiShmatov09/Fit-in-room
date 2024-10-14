@@ -1,6 +1,8 @@
+import 'package:tuple/tuple.dart';
+
 import '../../domain.dart';
 
-class GetRoomUseCase implements FutureUseCase<int, RoomModel> {
+class GetRoomUseCase implements StreamUseCase<int, Tuple2<String,RoomModel>> {
   GetRoomUseCase({
     required RoomRepository roomRepository,
   }) : _roomRepository = roomRepository;
@@ -8,7 +10,7 @@ class GetRoomUseCase implements FutureUseCase<int, RoomModel> {
   final RoomRepository _roomRepository;
 
   @override
-  Future<RoomModel> execute(int roomId) async {
+  Stream<Tuple2<String,RoomModel>> execute(int roomId) {
     return _roomRepository.getRoom(roomId);
   }
 }

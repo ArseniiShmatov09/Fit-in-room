@@ -1,13 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../data.dart';
 
 abstract class AbstractApiProvider {
   Future<void> addRoom(RoomEntity roomEntity);
 
-  Future<RoomEntity> getRoom(int roomId);
+  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(int roomId);
 
-  Future<List<RoomEntity>> getAllRooms();
+  Stream<QuerySnapshot<Map<String, dynamic>>> getAllRooms();
 
-  Future<void> updateRoom(RoomEntity newRoom);
+  Future<void> updateRoom(String docId, RoomEntity newRoom);
 
-  Future<void> deleteRoom(int roomId);
+  Future<void> deleteRoom(String docId);
 }

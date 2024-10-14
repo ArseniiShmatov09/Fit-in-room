@@ -3,12 +3,49 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import '../bloc/add_room_bloc.dart';
 
 @RoutePage()
 class AddRoomPage extends StatelessWidget {
   const AddRoomPage({super.key});
+
+  void _onEditButtonPressed(
+    String name,
+    String widthText,
+    String lengthText,
+    String heightText,
+    BuildContext context,
+  ) {
+    if (heightText.isEmpty ||
+        lengthText.isEmpty ||
+        widthText.isEmpty ||
+        name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields.'),
+        ),
+      );
+      return;
+    }
+
+    final int width = int.parse(widthText);
+    final int length = int.parse(lengthText);
+    final int height = int.parse(heightText);
+    //final String uniqueId = (Uuid().v4());
+
+    context.read<AddRoomBloc>().add(
+          LoadAddRoomEvent(
+            id: 1,
+            name: name,
+            width: width,
+            length: length,
+            height: height,
+            userId: 1,
+          ),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,34 +120,13 @@ class AddRoomPage extends StatelessWidget {
                         horizontal: AppDimens.padding16,
                       ),
                       child: ElevatedButton(
-                        onPressed: () {
-                          final String name = nameController.text;
-                          if (widthController.text.isEmpty ||
-                              lengthController.text.isEmpty ||
-                              heightController.text.isEmpty ||
-                              name.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Please fill in all fields.'),
-                              ),
-                            );
-                            return;
-                          }
-
-                          final int width = int.parse(widthController.text);
-                          final int length = int.parse(lengthController.text);
-                          final int height = int.parse(heightController.text);
-
-                          context.read<AddRoomBloc>().add(
-                            LoadAddRoomEvent(
-                              1, //TODO do smth w id
-                              name,
-                              width,
-                              length,
-                              height,
-                            ),
-                          );
-                        },
+                        onPressed: () => _onEditButtonPressed(
+                          nameController.text,
+                          widthController.text,
+                          lengthController.text,
+                          heightController.text,
+                          context,
+                        ),
                         style: AppStyles.roundButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll<Color>(
                             AppColors.of(context).white,

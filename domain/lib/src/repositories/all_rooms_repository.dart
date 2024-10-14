@@ -1,5 +1,5 @@
 import '../../domain.dart';
 
 abstract class AllRoomsRepository {
-  List<RoomModel> getAllRooms();
+  Stream<List<RoomModel>> getAllRooms();
 }

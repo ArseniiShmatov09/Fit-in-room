@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:domain/domain.dart';
+import 'package:tuple/tuple.dart';
 import '../../data.dart';
 
 class RoomRepositoryImpl implements RoomRepository {
@@ -12,34 +14,35 @@ class RoomRepositoryImpl implements RoomRepository {
   final ApiProvider _apiProvider;
   final RoomMapper _roomMapper;
 
-  final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
-    return RoomEntity(
-      id: index,
-      name: 'Room $index',
-      length: 10 + index,
-      width: 8 + index,
-      height: 3,
-      userId: index % 10,
-    );
-  });
-
   @override
   void addRoom(RoomModel roomModel) {
     _apiProvider.addRoom(_roomMapper.toData(roomModel));
   }
 
   @override
-  void deleteRoom(int roomId) {
-    // _rooms.removeWhere((RoomModel room) => room.id == roomId);
+  Future<void> deleteRoom(int roomId) async {
+    final Tuple2<String, RoomModel> roomData = await getRoom(roomId).first;
+    final String docId = roomData.item1;
+    return _apiProvider.deleteRoom(docId);
   }
 
   @override
-  RoomModel getRoom(int roomId) {
-    return _roomMapper.toDomain(_rooms[roomId]);
+  Stream<Tuple2<String, RoomModel>> getRoom(int roomId) {
+    return _apiProvider.getRoom(roomId).map((QuerySnapshot<Map<String, dynamic>> snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        final RoomEntity roomEntity = RoomEntity.fromDocument(snapshot.docs.first);
+        return Tuple2<String, RoomModel>(snapshot.docs.first.id, _roomMapper.toDomain(roomEntity));
+      } else {
+        throw Exception('Room not found');
+      }
+    });
   }
 
   @override
-  void updateRoom(RoomModel newRoom) {
-    //_rooms[oldRoomId] = newRoom;
+  Future<void> updateRoom(RoomModel newRoom) async {
+    final Tuple2<String, RoomModel> roomData = await getRoom(newRoom.id).first;
+    final String docId = roomData.item1;
+
+    return _apiProvider.updateRoom(docId, _roomMapper.toData(newRoom));
   }
 }

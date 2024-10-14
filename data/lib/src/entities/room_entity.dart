@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class RoomEntity {
   final int id;
   final String name;
@@ -14,4 +16,27 @@ class RoomEntity {
     required this.height,
     required this.userId,
   });
+
+  factory RoomEntity.fromDocument(DocumentSnapshot<Map<String, dynamic>> doc) {
+    final Map<String, dynamic> data = doc.data()!;
+    return RoomEntity(
+      id: data['id'] as int,
+      name: data['name'] as String,
+      width: data['width'] as int,
+      length: data['length'] as int,
+      height: data['height'] as int,
+      userId: data['userId'] as int,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'width': width,
+      'length': length,
+      'height': height,
+      'userId': userId,
+    };
+  }
 }

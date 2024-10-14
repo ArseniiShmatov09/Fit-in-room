@@ -4,41 +4,50 @@ import '../entities/room_entity.dart';
 import 'abstract_api_provider.dart';
 
 class ApiProvider implements AbstractApiProvider {
-  final CollectionReference<Map<String, dynamic>> rooms =
+  final CollectionReference<Map<String, dynamic>> _rooms =
       FirebaseFirestore.instance.collection('rooms');
 
   @override
   Future<void> addRoom(RoomEntity roomEntity) {
-    return rooms.add(<String, dynamic>{
+    return _rooms.add(<String, dynamic>{
       'id': roomEntity.id,
-      'name' : roomEntity.name,
-      'length' : roomEntity.length,
-      'width' : roomEntity.width,
-      'height' : roomEntity.userId,
+      'name': roomEntity.name,
+      'length': roomEntity.length,
+      'width': roomEntity.width,
+      'height': roomEntity.height,
+      'userId': roomEntity.userId,
     });
   }
 
   @override
-  Future<void> deleteRoom(int roomId) {
-    // TODO: implement deleteRoom
-    throw UnimplementedError();
+  Future<void> deleteRoom(String docId) async {
+    await _rooms.doc(docId).delete();
   }
 
   @override
-  Future<List<RoomEntity>> getAllRooms() {
-    // TODO: implement getAllRooms
-    throw UnimplementedError();
+  Stream<QuerySnapshot<Map<String, dynamic>>> getAllRooms() {
+    return _rooms
+        .orderBy(
+          'id',
+          descending: false,
+        )
+        .snapshots();
   }
 
   @override
-  Future<RoomEntity> getRoom(int roomId) {
-    // TODO: implement getRoom
-    throw UnimplementedError();
+  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(int roomId) {
+    return _rooms.where('id', isEqualTo: roomId).snapshots();
   }
 
   @override
-  Future<void> updateRoom(RoomEntity newRoom) {
-    // TODO: implement updateRoom
-    throw UnimplementedError();
+  Future<void> updateRoom(String docId, RoomEntity roomEntity) {
+    return _rooms.doc(docId).update(<Object, Object?>{
+      'id': roomEntity.id,
+      'name': roomEntity.name,
+      'length': roomEntity.length,
+      'width': roomEntity.width,
+      'height': roomEntity.height,
+      'userId': roomEntity.userId,
+    });
   }
 }
