@@ -33,11 +33,11 @@ class AddRoomPage extends StatelessWidget {
     final int width = int.parse(widthText);
     final int length = int.parse(lengthText);
     final int height = int.parse(heightText);
-    //final String uniqueId = (Uuid().v4());
+    final String uniqueId = const Uuid().v4();
 
     context.read<AddRoomBloc>().add(
           LoadAddRoomEvent(
-            id: 1,
+            id: uniqueId,
             name: name,
             width: width,
             length: length,

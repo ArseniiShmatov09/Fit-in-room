@@ -35,7 +35,7 @@ class ApiProvider implements AbstractApiProvider {
   }
 
   @override
-  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(int roomId) {
+  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(String roomId) {
     return _rooms.where('id', isEqualTo: roomId).snapshots();
   }
 

@@ -10,14 +10,14 @@ import '../widgets/test_room_widget.dart';
 
 @RoutePage()
 class RoomDetailsPage extends StatelessWidget {
-  final int roomId;
+  final String roomId;
 
   const RoomDetailsPage({
     Key? key,
     @PathParam('id') required this.roomId,
   }) : super(key: key);
 
-  void _onDeleteButtonPressed(BuildContext parentContext, int roomId) {
+  void _onDeleteButtonPressed(BuildContext parentContext, String roomId) {
     showDialog(
       context: parentContext,
       builder: (BuildContext context) {
@@ -28,10 +28,11 @@ class RoomDetailsPage extends StatelessWidget {
               color: AppColors.of(context).black,
             ),
           ),
-          content: Text('Are you sure you want to delete this room?',
-              style: AppStyles.detailsTextStyle.copyWith(
-                color: AppColors.of(context).black,
-              ),
+          content: Text(
+            'Are you sure you want to delete this room?',
+            style: AppStyles.detailsTextStyle.copyWith(
+              color: AppColors.of(context).black,
+            ),
           ),
           actions: <Widget>[
             TextButton(
@@ -69,9 +70,17 @@ class RoomDetailsPage extends StatelessWidget {
     );
   }
 
+  Future<bool> _onPopInvoked(BuildContext context) async {
+    await AutoRouter.of(context).replace(const AllRoomsRoute());
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController(text: '');
+    final TextEditingController itemWidthController = TextEditingController(text: '');
+    final TextEditingController itemLengthController = TextEditingController(text: '');
+    final TextEditingController itemHeightController = TextEditingController(text: '');
+
     return BlocProvider<RoomDetailBloc>(
       create: (_) => RoomDetailBloc(
         getRoomUseCase: GetIt.I<GetRoomUseCase>(),
@@ -82,69 +91,79 @@ class RoomDetailsPage extends StatelessWidget {
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
-            return Scaffold(
-              appBar: AppBar(
-                title: Center(
-                  child: Text(
-                    room.name,
-                    style: AppStyles.titleTextStyle.copyWith(
-                      color: AppColors.of(context).black,
-                    ),
-                  ),
-                ),
-                actions: <Widget>[
-                  IconButton(
-                    icon: const Icon(
-                      Icons.delete,
-                      size: 45,
-                    ),
+            return PopScope(
+              onPopInvoked: (bool a) => _onPopInvoked(context),
+              child: Scaffold(
+                appBar: AppBar(
+                  automaticallyImplyLeading: false,
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      _onDeleteButtonPressed(context, room.id);
+                      AutoRouter.of(context).replace(const AllRoomsRoute());
                     },
                   ),
-                ],
-              ),
-              body: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    const SizedBox(
-                      height: AppDimens.sizedBoxHeight30,
+                  title: Center(
+                    child: Text(
+                      room.name,
+                      style: AppStyles.titleTextStyle.copyWith(
+                        color: AppColors.of(context).black,
+                      ),
                     ),
-                    RoomParametersWidget(
-                      roomId: room.id,
-                      roomHeight: room.height,
-                      roomLength: room.length,
-                      roomWidth: room.width,
+                  ),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        size: 45,
+                      ),
+                      onPressed: () {
+                        _onDeleteButtonPressed(context, room.id);
+                      },
                     ),
-                    const SizedBox(
-                      height: AppDimens.sizedBoxHeight20,
-                    ),
-                    EntryFieldWidget(
-                      labelText: 'Enter width',
-                      controller: controller,
-                      isDigitsOnlyEntered: true,
-                    ),
-                    const SizedBox(
-                      height: AppDimens.sizedBoxHeight10,
-                    ),
-                    EntryFieldWidget(
-                      labelText: 'Enter length',
-                      controller: controller,
-                      isDigitsOnlyEntered: true,
-                    ),
-                    const SizedBox(
-                      height: AppDimens.sizedBoxHeight10,
-                    ),
-                    EntryFieldWidget(
-                      labelText: 'Enter height',
-                      controller: controller,
-                      isDigitsOnlyEntered: true,
-                    ),
-                    const SizedBox(
-                      height: AppDimens.sizedBoxHeight20,
-                    ),
-                    const TestRoomWidget(),
                   ],
+                ),
+                body: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      const SizedBox(
+                        height: AppDimens.sizedBoxHeight30,
+                      ),
+                      RoomParametersWidget(
+                        roomId: room.id,
+                        roomHeight: room.height,
+                        roomLength: room.length,
+                        roomWidth: room.width,
+                      ),
+                      const SizedBox(
+                        height: AppDimens.sizedBoxHeight20,
+                      ),
+                      EntryFieldWidget(
+                        labelText: 'Enter width',
+                        controller: itemWidthController,
+                        isDigitsOnlyEntered: true,
+                      ),
+                      const SizedBox(
+                        height: AppDimens.sizedBoxHeight10,
+                      ),
+                      EntryFieldWidget(
+                        labelText: 'Enter length',
+                        controller: itemLengthController,
+                        isDigitsOnlyEntered: true,
+                      ),
+                      const SizedBox(
+                        height: AppDimens.sizedBoxHeight10,
+                      ),
+                      EntryFieldWidget(
+                        labelText: 'Enter height',
+                        controller: itemHeightController,
+                        isDigitsOnlyEntered: true,
+                      ),
+                      const SizedBox(
+                        height: AppDimens.sizedBoxHeight20,
+                      ),
+                      const TestRoomWidget(),
+                    ],
+                  ),
                 ),
               ),
             );

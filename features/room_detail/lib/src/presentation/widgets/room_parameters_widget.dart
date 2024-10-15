@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
 
 class RoomParametersWidget extends StatelessWidget {
-  final int roomId;
+  final String roomId;
   final int roomHeight;
   final int roomWidth;
   final int roomLength;

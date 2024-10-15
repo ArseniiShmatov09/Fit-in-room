@@ -9,7 +9,7 @@ import '../bloc/edit_room_bloc.dart';
 
 @RoutePage()
 class EditRoomPage extends StatelessWidget {
-  final int roomId;
+  final String roomId;
 
   const EditRoomPage({
     super.key,

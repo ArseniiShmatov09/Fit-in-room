@@ -11,7 +11,7 @@ class LoadRoomDetailEvent extends RoomDetailEvent {
     required this.roomId,
   });
 
-  final int roomId;
+  final String roomId;
 
   @override
   List<Object> get props => <Object>[
@@ -24,7 +24,7 @@ class DeleteRoomDetailEvent extends RoomDetailEvent {
     required this.roomId,
   });
 
-  final int roomId;
+  final String roomId;
 
   @override
   List<Object> get props => <Object>[

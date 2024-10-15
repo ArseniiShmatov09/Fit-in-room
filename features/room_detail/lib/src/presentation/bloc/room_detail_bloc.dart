@@ -10,7 +10,7 @@ class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
   RoomDetailBloc({
     required GetRoomUseCase getRoomUseCase,
     required DeleteRoomUseCase deleteRoomUseCase,
-    required int roomId,
+    required String roomId,
   })  : _getRoomUseCase = getRoomUseCase,
         _deleteRoomUseCase = deleteRoomUseCase,
         super(const RoomDetailState()) {

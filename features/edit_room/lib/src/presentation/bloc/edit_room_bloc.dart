@@ -10,7 +10,7 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
   EditRoomBloc({
     required GetRoomUseCase getRoomUseCase,
     required UpdateRoomUseCase updateRoomUseCase,
-    required int roomId,
+    required String roomId,
   })  : _getRoomUseCase = getRoomUseCase,
         _updateRoomUseCase = updateRoomUseCase,
         super(const EditRoomState()) {

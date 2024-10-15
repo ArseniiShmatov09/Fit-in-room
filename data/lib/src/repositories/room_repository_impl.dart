@@ -20,14 +20,14 @@ class RoomRepositoryImpl implements RoomRepository {
   }
 
   @override
-  Future<void> deleteRoom(int roomId) async {
+  Future<void> deleteRoom(String roomId) async {
     final Tuple2<String, RoomModel> roomData = await getRoom(roomId).first;
     final String docId = roomData.item1;
     return _apiProvider.deleteRoom(docId);
   }
 
   @override
-  Stream<Tuple2<String, RoomModel>> getRoom(int roomId) {
+  Stream<Tuple2<String, RoomModel>> getRoom(String roomId) {
     return _apiProvider.getRoom(roomId).map((QuerySnapshot<Map<String, dynamic>> snapshot) {
       if (snapshot.docs.isNotEmpty) {
         final RoomEntity roomEntity = RoomEntity.fromDocument(snapshot.docs.first);

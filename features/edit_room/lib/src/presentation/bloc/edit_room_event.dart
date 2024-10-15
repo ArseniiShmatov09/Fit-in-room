@@ -9,7 +9,7 @@ sealed class EditRoomEvent {
 class LoadEditRoomEvent extends EditRoomEvent {
   const LoadEditRoomEvent(this.roomId);
 
-  final int roomId;
+  final String roomId;
 
   @override
   List<Object> get props => <Object>[
@@ -18,7 +18,7 @@ class LoadEditRoomEvent extends EditRoomEvent {
 }
 
 class UpdateRoomEvent extends EditRoomEvent {
-  final int id;
+  final String id;
   final String name;
   final int width;
   final int length;

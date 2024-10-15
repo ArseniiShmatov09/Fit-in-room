@@ -5,7 +5,7 @@ import '../../data.dart';
 abstract class AbstractApiProvider {
   Future<void> addRoom(RoomEntity roomEntity);
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(int roomId);
+  Stream<QuerySnapshot<Map<String, dynamic>>> getRoom(String roomId);
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getAllRooms();
 

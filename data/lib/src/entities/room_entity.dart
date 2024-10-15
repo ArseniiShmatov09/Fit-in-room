@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RoomEntity {
-  final int id;
+  final String id;
   final String name;
   final int length;
   final int width;
@@ -20,7 +20,7 @@ class RoomEntity {
   factory RoomEntity.fromDocument(DocumentSnapshot<Map<String, dynamic>> doc) {
     final Map<String, dynamic> data = doc.data()!;
     return RoomEntity(
-      id: data['id'] as int,
+      id: data['id'] as String,
       name: data['name'] as String,
       width: data['width'] as int,
       length: data['length'] as int,

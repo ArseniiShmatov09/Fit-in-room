@@ -7,7 +7,7 @@ sealed class AddRoomEvent {
 }
 
 class LoadAddRoomEvent extends AddRoomEvent {
-  final int id;
+  final String id;
   final String name;
   final int width;
   final int length;
