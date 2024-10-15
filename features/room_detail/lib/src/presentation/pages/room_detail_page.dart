@@ -4,7 +4,7 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
-import '../bloc/room_detail_bloc.dart';
+import '../bloc/room_detail_bloc/room_detail_bloc.dart';
 import '../widgets/room_parameters_widget.dart';
 import '../widgets/test_room_widget.dart';
 
@@ -77,9 +77,12 @@ class RoomDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController itemWidthController = TextEditingController(text: '');
-    final TextEditingController itemLengthController = TextEditingController(text: '');
-    final TextEditingController itemHeightController = TextEditingController(text: '');
+    final TextEditingController itemWidthController =
+        TextEditingController(text: '');
+    final TextEditingController itemLengthController =
+        TextEditingController(text: '');
+    final TextEditingController itemHeightController =
+        TextEditingController(text: '');
 
     return BlocProvider<RoomDetailBloc>(
       create: (_) => RoomDetailBloc(
@@ -161,7 +164,14 @@ class RoomDetailsPage extends StatelessWidget {
                       const SizedBox(
                         height: AppDimens.sizedBoxHeight20,
                       ),
-                      const TestRoomWidget(),
+                      TestRoomWidget(
+                        roomWidth: room.width,
+                        roomLength: room.length,
+                        roomHeight: room.height,
+                        itemWidthController: itemWidthController,
+                        itemLengthController: itemLengthController,
+                        itemHeightController: itemHeightController,
+                      ),
                     ],
                   ),
                 ),

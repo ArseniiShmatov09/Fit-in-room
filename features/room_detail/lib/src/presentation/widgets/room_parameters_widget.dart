@@ -56,7 +56,7 @@ class RoomParametersWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
               child: Center(
                 child: Text(
-                  '$roomHeight ⨯ $roomWidth ⨯ $roomLength',
+                  '$roomWidth ⨯ $roomLength ⨯ $roomHeight',
                   style: AppStyles.mainHeaderTextStyle.copyWith(
                     color: AppColors.of(context).black,
                   ),
