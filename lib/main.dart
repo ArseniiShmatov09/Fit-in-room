@@ -9,7 +9,6 @@ import 'package:navigation/navigation.dart';
 import 'error_handler/provider/app_error_handler_provider.dart';
 import 'firebase_options.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -40,21 +39,27 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppRouter appRouter = appLocator<AppRouter>();
-
-    return EasyLocalization(
-      path: AppLocalization.langFolderPath,
-      supportedLocales: AppLocalization.supportedLocales,
-      fallbackLocale: AppLocalization.fallbackLocale,
-      child: Builder(
-        builder: (BuildContext context) {
-          return AppErrorHandlerProvider(
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: lightTheme,
-              routerConfig: appRouter.config(),
+    return BlocProvider<ThemeCubit>(
+      create: (BuildContext context) => ThemeCubit(themeRepository: GetIt.I<ThemeRepository>()),
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (BuildContext context, ThemeState state) {
+          return EasyLocalization(
+            path: AppLocalization.langFolderPath,
+            supportedLocales: AppLocalization.supportedLocales,
+            fallbackLocale: AppLocalization.fallbackLocale,
+            child: Builder(
+              builder: (BuildContext context) {
+                return AppErrorHandlerProvider(
+                  child: MaterialApp.router(
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    theme: state.brightness == Brightness.dark ? darkTheme : lightTheme,
+                    routerConfig: appRouter.config(),
+                  ),
+                );
+              },
             ),
           );
         },
@@ -62,5 +67,3 @@ class App extends StatelessWidget {
     );
   }
 }
-  
-  

@@ -13,8 +13,8 @@ class RoomRepositoryImpl implements RoomRepository {
   final RoomMapper _roomMapper;
 
   @override
-  void addRoom(RoomModel roomModel) {
-    _apiProvider.addRoom(_roomMapper.toData(roomModel).toJson());
+  Future<void> addRoom(RoomModel roomModel) {
+    return _apiProvider.addRoom(_roomMapper.toData(roomModel).toJson());
   }
 
   @override

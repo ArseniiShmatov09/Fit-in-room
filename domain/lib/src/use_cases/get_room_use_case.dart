@@ -8,7 +8,7 @@ class GetRoomUseCase implements FutureUseCase<String, RoomModel> {
   final RoomRepository _roomRepository;
 
   @override
-  Future<RoomModel> execute(String roomId) async {
+  Future<RoomModel> execute(String roomId)  {
     return _roomRepository.getRoom(roomId);
   }
 }

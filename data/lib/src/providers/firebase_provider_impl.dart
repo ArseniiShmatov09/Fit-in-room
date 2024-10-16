@@ -46,7 +46,7 @@ class FirebaseProviderImpl implements FirebaseProvider {
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs.first.data();
     } else {
-      return {};
+      return <String, dynamic>{};
     }
   }
 

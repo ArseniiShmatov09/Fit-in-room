@@ -15,6 +15,10 @@ class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
         super(const RoomDetailState()) {
     on<LoadRoomDetailEvent>(_loadRoom);
     on<DeleteRoomDetailEvent>(_deleteRoom);
+    on<UpdateRoomDetailEvent>(
+        (UpdateRoomDetailEvent event, Emitter<RoomDetailState> emit) async {
+      await _loadRoom(LoadRoomDetailEvent(roomId: event.roomId), emit);
+    });
     add(
       LoadRoomDetailEvent(roomId: roomId),
     );
@@ -36,8 +40,7 @@ class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
         );
       }
 
-      final RoomModel room = await
-          _getRoomUseCase.execute(event.roomId);
+      final RoomModel room = await _getRoomUseCase.execute(event.roomId);
 
       emit(
         state.copyWith(

@@ -1,4 +1,3 @@
-import '../../data.dart';
 
 abstract class FirebaseProvider {
   Future<void> addRoom(Map<String, dynamic> roomData);

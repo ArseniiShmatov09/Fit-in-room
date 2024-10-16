@@ -21,7 +21,7 @@ dependencies:
     path: ../../navigation
   room_detail:
     path: ../room_detail
-  tuple: ^2.0.2
+
 
 dev_dependencies:
   flutter_test:

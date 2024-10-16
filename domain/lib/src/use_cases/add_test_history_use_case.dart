@@ -8,7 +8,7 @@ class AddTestHistoryUseCase implements FutureUseCase<TestHistoryModel, void> {
   final TestHistoryRepository _testHistoryRepository;
 
   @override
-  Future<void> execute(TestHistoryModel testHistoryModel) async {
-    _testHistoryRepository.addTestHistory(testHistoryModel);
+  Future<void> execute(TestHistoryModel testHistoryModel) {
+    return _testHistoryRepository.addTestHistory(testHistoryModel);
   }
 }

@@ -56,6 +56,7 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
     UpdateRoomEvent event,
     Emitter<EditRoomState> emit,
   ) async {
+    emit(state.copyWith(status: EditRoomStatus.loading));
     try {
       final RoomModel roomModel = RoomModel(
         id: event.id,

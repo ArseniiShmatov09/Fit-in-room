@@ -21,8 +21,8 @@ class TestHistoryRepositoryImpl implements TestHistoryRepository {
   }
 
   @override
-  void addTestHistory(TestHistoryModel testHistoryModel) {
-    _apiProvider
+  Future<void> addTestHistory(TestHistoryModel testHistoryModel) {
+   return _apiProvider
         .addTestHistory(_testHistoryMapper.toData(testHistoryModel).toJson());
   }
 }

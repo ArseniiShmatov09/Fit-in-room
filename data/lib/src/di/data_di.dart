@@ -1,8 +1,10 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data.dart';
 import '../repositories/test_room_fit_repository_impl.dart';
+import '../repositories/theme_repository_impl.dart';
 
 abstract class DataDI {
   static void initDependencies(GetIt locator) {
@@ -10,6 +12,7 @@ abstract class DataDI {
     _initProviders(locator);
     _initRepositories(locator);
     _initMappers(locator);
+    _initSharedPreferences(locator);
   }
 
   static void _initApi(GetIt locator) {
@@ -28,6 +31,13 @@ abstract class DataDI {
     locator.registerLazySingleton<FirebaseProviderImpl>(
       FirebaseProviderImpl.new,
     );
+  }
+
+  static Future<void> _initSharedPreferences(GetIt locator) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    locator.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   }
 
   static void _initMappers(GetIt locator) {
@@ -65,7 +75,12 @@ abstract class DataDI {
     );
 
     locator.registerLazySingleton<TestRoomFitRepository>(
-        TestRoomFitRepositoryImpl.new,
+      TestRoomFitRepositoryImpl.new,
+    );
+    locator.registerLazySingleton<ThemeRepository>(
+      () => ThemeRepositoryImpl(
+        preferences: locator<SharedPreferences>(),
+      ),
     );
   }
 }

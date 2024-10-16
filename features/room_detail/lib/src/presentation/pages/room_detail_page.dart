@@ -71,7 +71,7 @@ class RoomDetailsPage extends StatelessWidget {
   }
 
   Future<bool> _onPopInvoked(BuildContext context) async {
-    await AutoRouter.of(context).replace(const AllRoomsRoute());
+    await AutoRouter.of(context).maybePop();
     return false;
   }
 

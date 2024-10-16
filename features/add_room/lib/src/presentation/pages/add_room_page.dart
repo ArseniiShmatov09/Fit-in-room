@@ -1,3 +1,4 @@
+import 'package:all_rooms/all_rooms.gm.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
@@ -75,7 +76,7 @@ class AddRoomPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Room added successfully!')),
               );
-              AutoRouter.of(context).back();
+              AutoRouter.of(context).push(const AllRoomsRoute());
             } else if (state.status == AddRoomStatus.failure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(

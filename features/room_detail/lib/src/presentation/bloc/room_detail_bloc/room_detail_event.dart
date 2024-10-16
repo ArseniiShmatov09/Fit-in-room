@@ -31,3 +31,16 @@ class DeleteRoomDetailEvent extends RoomDetailEvent {
         roomId,
       ];
 }
+
+class UpdateRoomDetailEvent extends RoomDetailEvent {
+  const UpdateRoomDetailEvent({
+    required this.roomId,
+  });
+
+  final String roomId;
+
+  @override
+  List<Object> get props => <Object>[
+        roomId,
+      ];
+}
