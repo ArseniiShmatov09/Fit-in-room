@@ -2,6 +2,7 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'test_history_state.dart';
+
 part 'test_history_event.dart';
 
 class TestHistoryBloc extends Bloc<TestHistoryEvent, TestHistoryState> {
@@ -29,12 +30,14 @@ class TestHistoryBloc extends Bloc<TestHistoryEvent, TestHistoryState> {
       }
 
       final List<TestHistoryModel> testHistories =
-          await _getTestHistoriesUseCase.execute(const NoParams());
+          await _getTestHistoriesUseCase.execute(
+        const NoParams(),
+      );
 
       emit(
         state.copyWith(
-          status: TestHistoryStatus.loaded,
           testHistories: testHistories,
+          status: TestHistoryStatus.loaded,
         ),
       );
     } catch (e) {

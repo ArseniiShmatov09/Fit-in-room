@@ -110,16 +110,7 @@ class AllRoomsPage extends StatelessWidget {
               ),
             );
           }
-          if (state.status == AllRoomsStatus.failure) {
-            return Center(
-              child: Text(
-                'Failed to load rooms',
-                style: AppStyles.titleTextStyle.copyWith(
-                  color: AppColors.of(context).black,
-                ),
-              ),
-            );
-          }
+
           return const Center(child: CircularProgressIndicator());
         },
       ),

@@ -3,6 +3,7 @@ part of 'test_room_bloc.dart';
 abstract class TestRoomEvent {}
 
 class ValidateInputEvent extends TestRoomEvent {
+
   final String itemWidth;
   final String itemLength;
   final String itemHeight;
@@ -11,6 +12,7 @@ class ValidateInputEvent extends TestRoomEvent {
   final int roomHeight;
 
   ValidateInputEvent({
+
     required this.itemWidth,
     required this.itemLength,
     required this.itemHeight,
@@ -22,6 +24,8 @@ class ValidateInputEvent extends TestRoomEvent {
 
 
 class RunTestEvent extends TestRoomEvent {
+  final String id;
+  final String roomName;
   final int itemWidth;
   final int itemLength;
   final int itemHeight;
@@ -30,6 +34,8 @@ class RunTestEvent extends TestRoomEvent {
   final int roomHeight;
 
   RunTestEvent({
+    required this.id,
+    required this.roomName,
     required this.itemWidth,
     required this.itemLength,
     required this.itemHeight,

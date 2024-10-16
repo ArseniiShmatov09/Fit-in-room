@@ -165,6 +165,7 @@ class RoomDetailsPage extends StatelessWidget {
                         height: AppDimens.sizedBoxHeight20,
                       ),
                       TestRoomWidget(
+                        roomName: room.name,
                         roomWidth: room.width,
                         roomLength: room.length,
                         roomHeight: room.height,

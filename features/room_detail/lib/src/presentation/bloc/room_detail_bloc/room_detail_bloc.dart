@@ -1,6 +1,5 @@
 import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tuple/tuple.dart';
 
 part 'room_detail_state.dart';
 
@@ -37,19 +36,14 @@ class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
         );
       }
 
-      final Stream<Tuple2<String, RoomModel>> roomStream =
+      final RoomModel room = await
           _getRoomUseCase.execute(event.roomId);
 
-      await emit.forEach<Tuple2<String, RoomModel>>(
-        roomStream,
-        onData: (Tuple2<String, RoomModel> roomData) {
-          final RoomModel room = roomData.item2;
-          return state.copyWith(
-            status: RoomDetailStatus.loaded,
-            room: room,
-          );
-        },
-        onError: (_, __) => state.copyWith(status: RoomDetailStatus.failure),
+      emit(
+        state.copyWith(
+          room: room,
+          status: RoomDetailStatus.loaded,
+        ),
       );
     } catch (e) {
       emit(

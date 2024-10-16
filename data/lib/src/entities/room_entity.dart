@@ -1,5 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'room_entity.g.dart';
+
+@JsonSerializable()
 class RoomEntity {
   final String id;
   final String name;
@@ -17,26 +20,8 @@ class RoomEntity {
     required this.userId,
   });
 
-  factory RoomEntity.fromDocument(DocumentSnapshot<Map<String, dynamic>> doc) {
-    final Map<String, dynamic> data = doc.data()!;
-    return RoomEntity(
-      id: data['id'] as String,
-      name: data['name'] as String,
-      width: data['width'] as int,
-      length: data['length'] as int,
-      height: data['height'] as int,
-      userId: data['userId'] as int,
-    );
-  }
+  factory RoomEntity.fromJson(Map<String, dynamic> json) => _$RoomEntityFromJson(json);
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'width': width,
-      'length': length,
-      'height': height,
-      'userId': userId,
-    };
-  }
+  Map<String, dynamic> toJson() => _$RoomEntityToJson(this);
+
 }

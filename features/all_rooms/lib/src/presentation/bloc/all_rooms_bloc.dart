@@ -22,17 +22,13 @@ class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
     try {
       emit(state.copyWith(status: AllRoomsStatus.loading));
 
-      final Stream<List<RoomModel>> roomsStream = _getAllRoomsUseCase.execute(const NoParams());
+      final List<RoomModel> rooms = await _getAllRoomsUseCase.execute(const NoParams());
 
-      await emit.forEach<List<RoomModel>>(
-        roomsStream,
-        onData: (List<RoomModel> rooms) {
-          return state.copyWith(
-            status: AllRoomsStatus.loaded,
-            rooms: rooms,
-          );
-        },
-        onError: (_, __) => state.copyWith(status: AllRoomsStatus.failure),
+      emit(
+        state.copyWith(
+          rooms: rooms,
+          status: AllRoomsStatus.loaded,
+        ),
       );
     } catch (e) {
       emit(state.copyWith(status: AllRoomsStatus.failure));

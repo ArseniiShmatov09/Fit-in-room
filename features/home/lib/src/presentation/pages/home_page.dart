@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Center(
               child: Text(
                 tabsRouter.activeIndex == 0 ? 'All Rooms' : 'Test History',

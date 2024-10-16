@@ -8,7 +8,7 @@ class TestHistoryMapper {
         itemLength: entity.itemLength,
         itemWidth: entity.itemWidth,
         itemHeight: entity.itemHeight,
-        roomId: entity.roomId,
+        roomName: entity.roomName,
         isTestPassed: entity.isTestPassed,
       );
 
@@ -17,7 +17,7 @@ class TestHistoryMapper {
         itemLength: model.itemLength,
         itemWidth: model.itemWidth,
         itemHeight: model.itemHeight,
-        roomId: model.roomId,
+        roomName: model.roomName,
         isTestPassed: model.isTestPassed,
       );
 }

@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   core:
     path: ../core
-  tuple: ^2.0.2
 
 dev_dependencies:
   flutter_test:

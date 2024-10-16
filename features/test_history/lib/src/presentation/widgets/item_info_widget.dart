@@ -6,14 +6,14 @@ import 'test_history_text_info_widget.dart';
 class ItemInfoWidget extends StatelessWidget {
   const ItemInfoWidget({
     Key? key,
-    required this.roomId,
+    required this.roomName,
     required this.itemWidth,
     required this.itemLength,
     required this.itemHigh,
     required this.isTestPassed,
   }) : super(key: key);
 
-  final int roomId;
+  final String roomName;
   final int itemWidth;
   final int itemLength;
   final int itemHigh;
@@ -31,7 +31,7 @@ class ItemInfoWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           TestHistoryInfoTextWidget(
-            text: 'Room $roomId',
+            text: roomName,
             style: AppStyles.mainHeaderTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),

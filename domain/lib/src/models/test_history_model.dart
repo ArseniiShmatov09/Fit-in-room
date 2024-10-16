@@ -1,9 +1,9 @@
 class TestHistoryModel {
-  final int id;
+  final String id;
   final int itemLength;
   final int itemWidth;
   final int itemHeight;
-  final int roomId;
+  final String roomName;
   final bool isTestPassed;
 
   TestHistoryModel({
@@ -11,7 +11,7 @@ class TestHistoryModel {
     required this.itemLength,
     required this.itemWidth,
     required this.itemHeight,
-    required this.roomId,
+    required this.roomName,
     required this.isTestPassed,
   });
 
@@ -20,7 +20,7 @@ class TestHistoryModel {
         itemLength,
         itemWidth,
         itemHeight,
-        roomId,
+        roomName,
         isTestPassed,
       ];
 }

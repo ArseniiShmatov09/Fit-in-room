@@ -1,19 +1,27 @@
 part of 'test_room_bloc.dart';
 
-abstract class TestRoomState {}
+enum TestRoomStatus { initial, loading, passed, notPassed, inputError }
 
-class InitialState extends TestRoomState {}
+class TestRoomState {
+  final TestRoomStatus status;
+  final String errorMessage;
+  final TestHistoryModel? testHistoryModel;
 
-class InputErrorState extends TestRoomState {
-  final String error;
+  const TestRoomState({
+    this.status = TestRoomStatus.initial,
+    this.errorMessage = '',
+    this.testHistoryModel,
+  });
 
-  InputErrorState(this.error);
-}
-
-class TestInProgressState extends TestRoomState {}
-
-class TestResultState extends TestRoomState {
-  final bool isPassed;
-
-  TestResultState({required this.isPassed});
+  TestRoomState copyWith({
+    TestRoomStatus? status,
+    String? errorMessage,
+    TestHistoryModel? testHistoryModel,
+  }) {
+    return TestRoomState(
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+      testHistoryModel: testHistoryModel ?? this.testHistoryModel,
+    );
+  }
 }

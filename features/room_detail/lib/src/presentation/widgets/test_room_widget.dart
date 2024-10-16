@@ -1,6 +1,8 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uuid/uuid.dart';
 
 import '../bloc/test_room_bloc/test_room_bloc.dart';
 
@@ -11,6 +13,7 @@ class TestRoomWidget extends StatelessWidget {
   final int roomWidth;
   final int roomLength;
   final int roomHeight;
+  final String roomName;
 
   const TestRoomWidget({
     super.key,
@@ -20,17 +23,20 @@ class TestRoomWidget extends StatelessWidget {
     required this.roomWidth,
     required this.roomLength,
     required this.roomHeight,
+    required this.roomName,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TestRoomBloc>(
-      create: (_) => TestRoomBloc(),
+      create: (_) => TestRoomBloc(
+        testRoomFitUseCase: GetIt.I<TestRoomFitUseCase>(),
+        addTestHistoryUseCase: GetIt.I<AddTestHistoryUseCase>(),
+      ),
       child: BlocBuilder<TestRoomBloc, TestRoomState>(
         builder: (BuildContext context, TestRoomState state) {
           return Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
             child: Container(
               decoration: AppStyles.boxDecoration.copyWith(
                 color: AppColors.of(context).lightGray,
@@ -38,30 +44,37 @@ class TestRoomWidget extends StatelessWidget {
               height: 190,
               child: Column(
                 children: <Widget>[
-                  const SizedBox(
-                    height: AppDimens.sizedBoxHeight20,
-                  ),
+                  const SizedBox(height: AppDimens.sizedBoxHeight20),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppDimens.padding30,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding30),
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          final String itemWidth = itemWidthController.text;
-                          final String itemLength = itemLengthController.text;
-                          final String itemHeight = itemHeightController.text;
+                          final int itemWidth = int.tryParse(itemWidthController.text) ?? 0;
+                          final int itemLength = int.tryParse(itemLengthController.text) ?? 0;
+                          final int itemHeight = int.tryParse(itemHeightController.text) ?? 0;
+                          final String uniqueId = const Uuid().v4();
 
-                          context.read<TestRoomBloc>().add(
-                                ValidateInputEvent(
-                                  itemWidth: itemWidth,
-                                  itemLength: itemLength,
-                                  itemHeight: itemHeight,
-                                  roomWidth: roomWidth,
-                                  roomLength: roomLength,
-                                  roomHeight: roomHeight,
-                                ),
-                              );
+                          if (itemWidth <= 0 || itemLength <= 0 || itemHeight <= 0) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('All dimensions must be greater than zero.'),
+                              ),
+                            );
+                          } else {
+                            context.read<TestRoomBloc>().add(
+                              RunTestEvent(
+                                itemWidth: itemWidth,
+                                itemLength: itemLength,
+                                itemHeight: itemHeight,
+                                roomWidth: roomWidth,
+                                roomLength: roomLength,
+                                roomHeight: roomHeight,
+                                id: uniqueId,
+                                roomName: roomName,
+                              ),
+                            );
+                          }
                         },
                         style: AppStyles.roundButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll<Color>(
@@ -77,31 +90,21 @@ class TestRoomWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: AppDimens.sizedBoxHeight30,
-                  ),
-                  if (state is InputErrorState)
-                    Center(
-                      child: Text(
-                        state.error,
-                        textAlign: TextAlign.center,
-                        style: AppStyles.detailsTextStyle.copyWith(
-                          color: AppColors.of(context).red,
-                        ),
-                      ),
-                    ),
-                  if (state is TestInProgressState)
+                  const SizedBox(height: AppDimens.sizedBoxHeight30),
+
+                  if (state.status == TestRoomStatus.loading)
                     Center(
                       child: CircularProgressIndicator(
                         color: AppColors.of(context).black,
                       ),
                     ),
-                  if (state is TestResultState)
+
+                  if (state.status == TestRoomStatus.passed || state.status == TestRoomStatus.notPassed)
                     Center(
                       child: Text(
-                        state.isPassed ? 'PASSED' : 'NOT PASSED',
+                        state.status == TestRoomStatus.passed ? 'PASSED' : 'NOT PASSED',
                         style: AppStyles.mainHeaderTextStyle.copyWith(
-                          color: state.isPassed
+                          color: state.status == TestRoomStatus.passed
                               ? AppColors.of(context).green
                               : AppColors.of(context).red,
                         ),

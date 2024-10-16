@@ -1,5 +1,6 @@
 import '../../domain.dart';
 
 abstract class TestHistoryRepository {
-  List<TestHistoryModel> getAllTestHistories();
+  Future<List<TestHistoryModel>> getAllTestHistories();
+  void addTestHistory(TestHistoryModel testHistoryModel);
 }

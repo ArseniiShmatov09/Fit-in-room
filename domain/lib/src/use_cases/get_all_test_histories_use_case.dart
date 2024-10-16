@@ -8,12 +8,9 @@ class GetTestHistoriesUseCase
 
   final TestHistoryRepository _testHistoryRepository;
 
-  List<TestHistoryModel> call() {
+  @override
+  Future<List<TestHistoryModel>> execute(NoParams noParams) {
     return _testHistoryRepository.getAllTestHistories();
   }
 
-  @override
-  Future<List<TestHistoryModel>> execute(NoParams noParams) async {
-    return _testHistoryRepository.getAllTestHistories();
-  }
 }

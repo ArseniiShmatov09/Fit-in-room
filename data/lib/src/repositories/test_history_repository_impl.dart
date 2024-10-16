@@ -1,24 +1,28 @@
 import 'package:domain/domain.dart';
-
 import '../../data.dart';
 
 class TestHistoryRepositoryImpl implements TestHistoryRepository {
-  final List<TestHistoryEntity> _allTestHistories =
-      List<TestHistoryEntity>.generate(999, (int index) {
-    return TestHistoryEntity(
-      id: index + 1,
-      itemLength: index + 4,
-      itemWidth: index + 3,
-      itemHeight: index + 2,
-      roomId: index + 1,
-      isTestPassed: index.isEven,
-    );
-  });
+  TestHistoryRepositoryImpl({
+    required FirebaseProviderImpl apiProvider,
+    required TestHistoryMapper testHistoryMapper,
+  })  : _apiProvider = apiProvider,
+        _testHistoryMapper = testHistoryMapper;
 
-  final TestHistoryMapper _testHistoryMapper = TestHistoryMapper();
+  final FirebaseProviderImpl _apiProvider;
+  final TestHistoryMapper _testHistoryMapper;
 
   @override
-  List<TestHistoryModel> getAllTestHistories() {
-    return _allTestHistories.map(_testHistoryMapper.toDomain).toList();
+  Future<List<TestHistoryModel>> getAllTestHistories() async {
+    final List<Map<String, dynamic>> testHistoryData =
+        await _apiProvider.getAllTestHistories();
+    final List<TestHistoryEntity> testHistoryEntities =
+        testHistoryData.map(TestHistoryEntity.fromJson).toList();
+    return testHistoryEntities.map(_testHistoryMapper.toDomain).toList();
+  }
+
+  @override
+  void addTestHistory(TestHistoryModel testHistoryModel) {
+    _apiProvider
+        .addTestHistory(_testHistoryMapper.toData(testHistoryModel).toJson());
   }
 }
