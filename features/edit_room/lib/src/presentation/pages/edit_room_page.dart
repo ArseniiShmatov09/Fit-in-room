@@ -4,6 +4,7 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:room_detail/room_detail.dart';
+import 'package:room_detail/room_detail.gm.dart';
 
 import '../bloc/edit_room_bloc.dart';
 
@@ -65,8 +66,8 @@ class EditRoomPage extends StatelessWidget {
             previous.status != current.status &&
             current.status == EditRoomStatus.edited,
         listener: (BuildContext context, EditRoomState state) {
-          AutoRouter.of(context).maybePop(
-            state.room,
+          AutoRouter.of(context).push(
+            RoomDetailsRoute(roomId: roomId),
           );
         },
         child: BlocBuilder<EditRoomBloc, EditRoomState>(

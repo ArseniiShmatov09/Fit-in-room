@@ -70,11 +70,6 @@ class RoomDetailsPage extends StatelessWidget {
     );
   }
 
-  Future<bool> _onPopInvoked(BuildContext context) async {
-    await AutoRouter.of(context).maybePop();
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     final TextEditingController itemWidthController =
@@ -95,7 +90,7 @@ class RoomDetailsPage extends StatelessWidget {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
             return PopScope(
-              onPopInvoked: (bool a) => _onPopInvoked(context),
+              onPopInvoked: (bool a) => {},
               child: Scaffold(
                 appBar: AppBar(
                   automaticallyImplyLeading: false,

@@ -36,8 +36,7 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
         );
       }
 
-      final RoomModel room = await
-          _getRoomUseCase.execute(event.roomId);
+      final RoomModel room = await _getRoomUseCase.execute(event.roomId);
 
       emit(
         state.copyWith(
@@ -69,7 +68,7 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
 
       await _updateRoomUseCase.execute(roomModel);
       emit(
-        state.copyWith(status: EditRoomStatus.edited),
+        state.copyWith(status: EditRoomStatus.edited, room: roomModel),
       );
     } catch (e) {
       emit(
