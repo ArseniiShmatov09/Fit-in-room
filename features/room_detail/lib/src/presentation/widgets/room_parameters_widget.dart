@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
 
 class RoomParametersWidget extends StatelessWidget {
-  final int roomId;
+  final String roomId;
   final int roomHeight;
   final int roomWidth;
   final int roomLength;
@@ -56,7 +56,7 @@ class RoomParametersWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
               child: Center(
                 child: Text(
-                  '$roomHeight ⨯ $roomWidth ⨯ $roomLength',
+                  '$roomWidth ⨯ $roomLength ⨯ $roomHeight',
                   style: AppStyles.mainHeaderTextStyle.copyWith(
                     color: AppColors.of(context).black,
                   ),

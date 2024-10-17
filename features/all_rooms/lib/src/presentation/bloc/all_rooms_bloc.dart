@@ -11,6 +11,7 @@ class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
   })  : _getAllRoomsUseCase = getAllRoomsUseCase,
         super(const AllRoomsState()) {
     on<LoadAllRoomsEvent>(_loadAllRooms);
+
     add(const LoadAllRoomsEvent());
   }
 
@@ -21,21 +22,15 @@ class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
     Emitter<AllRoomsState> emit,
   ) async {
     try {
-      if (state.status == AllRoomsStatus.loading) {
-        emit(
-          state.copyWith(
-            status: AllRoomsStatus.loading,
-          ),
-        );
-      }
+      emit(state.copyWith(status: AllRoomsStatus.loading));
 
       final List<RoomModel> rooms =
           await _getAllRoomsUseCase.execute(const NoParams());
 
       emit(
         state.copyWith(
-          status: AllRoomsStatus.loaded,
           rooms: rooms,
+          status: AllRoomsStatus.loaded,
         ),
       );
     } catch (e) {

@@ -19,6 +19,9 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
+  room_detail:
+    path: ../room_detail
+
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,5 @@
 class RoomModel {
-  final int id;
+  final String id;
   final String name;
   final int length;
   final int width;
@@ -8,7 +8,7 @@ class RoomModel {
 
   factory RoomModel.empty() {
     return RoomModel(
-      id: 1,
+      id: '1',
       name: '',
       width: 0,
       length: 0,

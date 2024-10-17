@@ -40,34 +40,52 @@ class TestHistoryPage extends StatelessWidget {
                             (index * 2 + 1 < testHistoriesLength)
                                 ? state.testHistories[index * 2 + 1]
                                 : null;
-                        return Column(
-                          children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                ItemInfoWidget(
-                                  roomId: testHistoryItemLeft.roomId,
-                                  itemHigh: testHistoryItemLeft.itemHeight,
-                                  itemWidth: testHistoryItemLeft.itemWidth,
-                                  itemLength: testHistoryItemLeft.itemLength,
-                                  isTestPassed:
-                                      testHistoryItemLeft.isTestPassed,
-                                ),
-                                const SizedBox(
-                                  height: AppDimens.sizedBoxWidth10,
-                                ),
-                                if (testHistoryItemRight != null)
-                                  ItemInfoWidget(
-                                    roomId: testHistoryItemRight.roomId,
-                                    itemHigh: testHistoryItemRight.itemHeight,
-                                    itemWidth: testHistoryItemRight.itemWidth,
-                                    itemLength: testHistoryItemRight.itemLength,
-                                    isTestPassed: testHistoryItemRight.isTestPassed,
+                        return testHistoriesLength == 0
+                            ? Center(
+                                child: Text(
+                                  'No available data',
+                                  style: AppStyles.subtitleTextStyle.copyWith(
+                                    color: AppColors.of(context).black,
                                   ),
-                              ],
-                            ),
-                          ],
-                        );
+                                ),
+                              )
+                            : Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      ItemInfoWidget(
+                                        roomName: testHistoryItemLeft.roomName,
+                                        itemHigh:
+                                            testHistoryItemLeft.itemHeight,
+                                        itemWidth:
+                                            testHistoryItemLeft.itemWidth,
+                                        itemLength:
+                                            testHistoryItemLeft.itemLength,
+                                        isTestPassed:
+                                            testHistoryItemLeft.isTestPassed,
+                                      ),
+                                      const SizedBox(
+                                        height: AppDimens.sizedBoxWidth10,
+                                      ),
+                                      if (testHistoryItemRight != null)
+                                        ItemInfoWidget(
+                                          roomName:
+                                              testHistoryItemRight.roomName,
+                                          itemHigh:
+                                              testHistoryItemRight.itemHeight,
+                                          itemWidth:
+                                              testHistoryItemRight.itemWidth,
+                                          itemLength:
+                                              testHistoryItemRight.itemLength,
+                                          isTestPassed:
+                                              testHistoryItemRight.isTestPassed,
+                                        ),
+                                    ],
+                                  ),
+                                ],
+                              );
                       },
                     ),
                   ),

@@ -8,14 +8,20 @@ part 'edit_room_event.dart';
 class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
   EditRoomBloc({
     required GetRoomUseCase getRoomUseCase,
-    required int roomId,
+    required UpdateRoomUseCase updateRoomUseCase,
+    required String roomId,
   })  : _getRoomUseCase = getRoomUseCase,
+        _updateRoomUseCase = updateRoomUseCase,
         super(const EditRoomState()) {
     on<LoadEditRoomEvent>(_loadRoom);
-    add(LoadEditRoomEvent(roomId));
+    on<UpdateRoomEvent>(_updateRoom);
+    add(
+      LoadEditRoomEvent(roomId),
+    );
   }
 
   final GetRoomUseCase _getRoomUseCase;
+  final UpdateRoomUseCase _updateRoomUseCase;
 
   Future<void> _loadRoom(
     LoadEditRoomEvent event,
@@ -34,9 +40,35 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
 
       emit(
         state.copyWith(
-          status: EditRoomStatus.loaded,
           room: room,
+          status: EditRoomStatus.loaded,
         ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(status: EditRoomStatus.failure),
+      );
+    }
+  }
+
+  Future<void> _updateRoom(
+    UpdateRoomEvent event,
+    Emitter<EditRoomState> emit,
+  ) async {
+    emit(state.copyWith(status: EditRoomStatus.loading));
+    try {
+      final RoomModel roomModel = RoomModel(
+        id: event.id,
+        name: event.name,
+        length: event.length,
+        width: event.width,
+        height: event.height,
+        userId: 1, //Todo change logic
+      );
+
+      await _updateRoomUseCase.execute(roomModel);
+      emit(
+        state.copyWith(status: EditRoomStatus.edited, room: roomModel),
       );
     } catch (e) {
       emit(

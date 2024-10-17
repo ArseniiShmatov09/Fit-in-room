@@ -29,7 +29,16 @@ class AllRoomsPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Expanded(
-                    child: Stack(
+                    child: state.rooms.isEmpty
+                        ? Center(
+                      child: Text(
+                        'No available data',
+                        style: AppStyles.subtitleTextStyle.copyWith(
+                          color: AppColors.of(context).black,
+                        ),
+                      ),
+                    )
+                        : Stack(
                       children: <Widget>[
                         Container(
                           decoration: AppStyles.boxDecoration.copyWith(
@@ -38,13 +47,14 @@ class AllRoomsPage extends StatelessWidget {
                           child: ListView.builder(
                             itemExtent: 120,
                             itemCount: state.rooms.length,
-                            itemBuilder: (BuildContext context, int index) {
+                            itemBuilder:
+                                (BuildContext context, int index) {
                               final RoomModel room = state.rooms[index];
                               return InkWell(
                                 onTap: () {
                                   AutoRouter.of(context).push(
                                     RoomDetailsRoute(
-                                      roomId: index,
+                                      roomId: room.id,
                                     ),
                                   );
                                 },
@@ -60,7 +70,9 @@ class AllRoomsPage extends StatelessWidget {
                                           style: AppStyles
                                               .subtitleTextStyle
                                               .copyWith(
-                                            color: AppColors.of(context).black,
+                                            color: AppColors
+                                                .of(context)
+                                                .black,
                                           ),
                                         ),
                                       ),
@@ -98,9 +110,11 @@ class AllRoomsPage extends StatelessWidget {
               ),
             );
           }
+
           return const Center(child: CircularProgressIndicator());
         },
       ),
     );
   }
 }
+

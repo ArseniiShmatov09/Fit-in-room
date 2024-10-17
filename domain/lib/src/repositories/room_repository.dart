@@ -1,11 +1,11 @@
 import '../../domain.dart';
 
 abstract class RoomRepository {
-  RoomModel getRoom(int roomId);
+  Future<RoomModel> getRoom(String roomId);
 
-  void addRoom(RoomModel roomModel);
+  Future<void> addRoom(RoomModel roomModel);
 
-  void deleteRoom(int roomId);
+  Future<void> deleteRoom(String roomId);
 
-  void updateRoom(RoomModel newRoom);
+  Future<void> updateRoom(RoomModel newRoom);
 }

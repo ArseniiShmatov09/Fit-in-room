@@ -8,7 +8,7 @@ class UpdateRoomUseCase implements FutureUseCase<RoomModel, void> {
   final RoomRepository _roomRepository;
 
   @override
-  Future<void> execute(RoomModel newRoom) async {
-    _roomRepository.updateRoom(newRoom);
+  Future<void> execute(RoomModel newRoom) {
+    return _roomRepository.updateRoom(newRoom);
   }
 }

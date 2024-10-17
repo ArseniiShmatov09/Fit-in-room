@@ -8,7 +8,7 @@ class GetAllRoomsUseCase implements FutureUseCase<NoParams, List<RoomModel>>{
   final AllRoomsRepository _allRoomsRepository;
 
   @override
-  Future<List<RoomModel>> execute(NoParams noParams) async {
+  Future<List<RoomModel>> execute(NoParams noParams) {
     return _allRoomsRepository.getAllRooms();
   }
 }

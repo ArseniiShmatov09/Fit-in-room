@@ -4,42 +4,33 @@ import '../../data.dart';
 class RoomRepositoryImpl implements RoomRepository {
 
   RoomRepositoryImpl({
-    required ApiProvider apiProvider,
+    required FirebaseProviderImpl apiProvider,
     required RoomMapper roomMapper,
   })  : _apiProvider = apiProvider,
         _roomMapper = roomMapper;
 
-  final ApiProvider _apiProvider;
+  final FirebaseProviderImpl _apiProvider;
   final RoomMapper _roomMapper;
 
-  final List<RoomEntity> _rooms = List<RoomEntity>.generate(100, (int index) {
-    return RoomEntity(
-      id: index,
-      name: 'Room $index',
-      length: 10 + index,
-      width: 8 + index,
-      height: 3,
-      userId: index % 10,
-    );
-  });
-
   @override
-  void addRoom(RoomModel roomModel) {
-    _apiProvider.addRoom(_roomMapper.toData(roomModel));
+  Future<void> addRoom(RoomModel roomModel) {
+    return _apiProvider.addRoom(_roomMapper.toData(roomModel).toJson());
   }
 
   @override
-  void deleteRoom(int roomId) {
-    // _rooms.removeWhere((RoomModel room) => room.id == roomId);
+  Future<void> deleteRoom(String roomId) async {
+    final String docId = await _apiProvider.getDocId(roomId);
+    return _apiProvider.deleteRoom(docId);
   }
 
   @override
-  RoomModel getRoom(int roomId) {
-    return _roomMapper.toDomain(_rooms[roomId]);
+  Future<RoomModel> getRoom(String roomId) async{
+    return _roomMapper.toDomain(RoomEntity.fromJson(await _apiProvider.getRoom(roomId)));
   }
 
   @override
-  void updateRoom(RoomModel newRoom) {
-    //_rooms[oldRoomId] = newRoom;
+  Future<void> updateRoom(RoomModel newRoom) async {
+    final String docId = await _apiProvider.getDocId(newRoom.id);
+    return _apiProvider.updateRoom(docId, _roomMapper.toData(newRoom).toJson());
   }
 }

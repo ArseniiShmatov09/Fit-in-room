@@ -21,7 +21,9 @@ dependencies:
     path: ../../navigation
   edit_room:
     path: .././edit_room
-
+  all_rooms:
+    path: .././all_rooms
+  uuid: ^3.0.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

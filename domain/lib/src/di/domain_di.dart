@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-
 import '../../domain.dart';
 
 abstract class DomainDI {
@@ -41,6 +40,18 @@ abstract class DomainDI {
     locator.registerLazySingleton<GetTestHistoriesUseCase>(
       () => GetTestHistoriesUseCase(
         testHistoryRepository: locator<TestHistoryRepository>(),
+      ),
+    );
+
+    locator.registerLazySingleton<AddTestHistoryUseCase>(
+      () => AddTestHistoryUseCase(
+        testHistoryRepository: locator<TestHistoryRepository>(),
+      ),
+    );
+
+    locator.registerLazySingleton<TestRoomFitUseCase>(
+      () => TestRoomFitUseCase(
+        testRoomFitRepository: locator<TestRoomFitRepository>(),
       ),
     );
   }

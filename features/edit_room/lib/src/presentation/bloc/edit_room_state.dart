@@ -1,6 +1,6 @@
 part of 'edit_room_bloc.dart';
 
-enum EditRoomStatus { loading, loaded, failure }
+enum EditRoomStatus { loading, loaded, edited, failure }
 
 class EditRoomState {
   const EditRoomState({

@@ -8,14 +8,24 @@ part 'room_detail_event.dart';
 class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
   RoomDetailBloc({
     required GetRoomUseCase getRoomUseCase,
-    required int roomId,
+    required DeleteRoomUseCase deleteRoomUseCase,
+    required String roomId,
   })  : _getRoomUseCase = getRoomUseCase,
+        _deleteRoomUseCase = deleteRoomUseCase,
         super(const RoomDetailState()) {
     on<LoadRoomDetailEvent>(_loadRoom);
-    add(LoadRoomDetailEvent(roomId));
+    on<DeleteRoomDetailEvent>(_deleteRoom);
+    on<UpdateRoomDetailEvent>(
+        (UpdateRoomDetailEvent event, Emitter<RoomDetailState> emit) async {
+      await _loadRoom(LoadRoomDetailEvent(roomId: event.roomId), emit);
+    });
+    add(
+      LoadRoomDetailEvent(roomId: roomId),
+    );
   }
 
   final GetRoomUseCase _getRoomUseCase;
+  final DeleteRoomUseCase _deleteRoomUseCase;
 
   Future<void> _loadRoom(
     LoadRoomDetailEvent event,
@@ -34,14 +44,28 @@ class RoomDetailBloc extends Bloc<RoomDetailEvent, RoomDetailState> {
 
       emit(
         state.copyWith(
-          status: RoomDetailStatus.loaded,
           room: room,
+          status: RoomDetailStatus.loaded,
         ),
       );
     } catch (e) {
       emit(
         state.copyWith(status: RoomDetailStatus.failure),
       );
+    }
+  }
+
+  Future<void> _deleteRoom(
+    DeleteRoomDetailEvent event,
+    Emitter<RoomDetailState> emit,
+  ) async {
+    try {
+      await _deleteRoomUseCase.execute(event.roomId);
+      emit(
+        state.copyWith(status: RoomDetailStatus.successfullyDeleted),
+      );
+    } catch (e) {
+      state.copyWith(status: RoomDetailStatus.failureDeleted);
     }
   }
 }
