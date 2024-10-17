@@ -89,15 +89,13 @@ class RoomDetailsPage extends StatelessWidget {
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
-            return PopScope(
-              onPopInvoked: (bool a) => {},
-              child: Scaffold(
+              return Scaffold(
                 appBar: AppBar(
                   automaticallyImplyLeading: false,
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      AutoRouter.of(context).replace(const AllRoomsRoute());
+                      AutoRouter.of(context).maybePop();
                     },
                   ),
                   title: Center(
@@ -171,7 +169,6 @@ class RoomDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
             );
           }
           return const Center(
