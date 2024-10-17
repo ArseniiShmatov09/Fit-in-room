@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../core_ui.dart';
+import '../../theme/app_colors.dart';
 
 class EntryFieldWidget extends StatelessWidget {
   final String labelText;
@@ -16,7 +17,6 @@ class EntryFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
       child: TextField(
@@ -29,15 +29,17 @@ class EntryFieldWidget extends StatelessWidget {
           ),
           filled: true,
           fillColor: AppColors.of(context).white,
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(width: 4.0),
-            borderRadius:
-                BorderRadius.all(Radius.circular(AppDimens.borderRadius20)),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(width: 4.0, color: AppColors.of(context).black),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppDimens.borderRadius20),
+            ),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(width: 4.0),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 4.0, color: AppColors.of(context).black),
             borderRadius:
-                BorderRadius.all(Radius.circular(AppDimens.borderRadius20)),
+               const BorderRadius.all(Radius.circular(AppDimens.borderRadius20)),
           ),
         ),
         style: TextStyle(

@@ -56,7 +56,7 @@ class AllRoomsPage extends StatelessWidget {
                                     RoomDetailsRoute(
                                       roomId: room.id,
                                     ),
-                                  ).then((newRoom) {
+                                  ).then((Object? newRoom) {
                                     if (newRoom != null) {
                                       context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
                                     }

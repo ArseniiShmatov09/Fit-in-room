@@ -9,14 +9,16 @@ class SettingsPage extends StatelessWidget {
 
   void _onThemeChanged(BuildContext context, bool isDarkModeEnabled) {
     context.read<ThemeCubit>().setThemeBrightness(
-      isDarkModeEnabled ? Brightness.dark : Brightness.light,
-    );
+          isDarkModeEnabled ? Brightness.dark : Brightness.light,
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.of(context).white,
       appBar: AppBar(
+        backgroundColor: AppColors.of(context).white,
         title: Text(
           'Settings',
           style: AppStyles.titleTextStyle.copyWith(
@@ -45,7 +47,8 @@ class SettingsPage extends StatelessWidget {
                     ),
                     Switch(
                       value: state.brightness == Brightness.dark,
-                      activeColor: AppColors.of(context).black,
+                      activeColor: AppColors.of(context).green,
+                      inactiveTrackColor: AppColors.of(context).gray,
                       onChanged: (bool isDarkModeEnabled) =>
                           _onThemeChanged(context, isDarkModeEnabled),
                     ),
@@ -71,7 +74,7 @@ class SettingsPage extends StatelessWidget {
                 ),
                 Switch(
                   value: false,
-                  activeColor: AppColors.of(context).black,
+                  inactiveTrackColor: AppColors.of(context).gray,
                   onChanged: null,
                 ),
               ],

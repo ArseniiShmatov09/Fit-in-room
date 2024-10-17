@@ -8,7 +8,6 @@ abstract class AppColors {
         : const DarkColors();
   }
 
-  Color get primaryBg;
 
   Color get white;
 
@@ -25,13 +24,23 @@ abstract class AppColors {
 
 class DarkColors extends LightColors {
   const DarkColors();
+
+  @override
+  Color get white => const Color(0xFF000000);
+
+  @override
+  Color get black => const Color(0xFFFFFFFF);
+
+  @override
+  Color get lightGray => const Color(0xFF808080);
+
+  @override
+  Color get gray => const Color(0xFFD9D9D9);
+
 }
 
 class LightColors implements AppColors {
   const LightColors();
-
-  @override
-  Color get primaryBg => const Color(0xFFeceff1);
 
   @override
   Color get white => const Color(0xFFFFFFFF);

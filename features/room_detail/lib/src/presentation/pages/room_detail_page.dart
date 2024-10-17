@@ -90,7 +90,9 @@ class RoomDetailsPage extends StatelessWidget {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
               return Scaffold(
+                backgroundColor: AppColors.of(context).white,
                 appBar: AppBar(
+                  backgroundColor: AppColors.of(context).white,
                   automaticallyImplyLeading: false,
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),

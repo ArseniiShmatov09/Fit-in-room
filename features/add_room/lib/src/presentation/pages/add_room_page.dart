@@ -58,7 +58,9 @@ class AddRoomPage extends StatelessWidget {
         addRoomUseCase: GetIt.I<AddRoomUseCase>(),
       ),
       child: Scaffold(
+        backgroundColor: AppColors.of(context).white,
         appBar: AppBar(
+          backgroundColor: AppColors.of(context).white,
           title: Center(
             child: Text(
               'Add new room',

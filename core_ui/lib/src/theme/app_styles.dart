@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core_ui.dart';
+import 'app_colors.dart';
 
 class AppStyles {
   static const TextStyle titleTextStyle = TextStyle(
@@ -42,8 +43,10 @@ class AppStyles {
     minimumSize: const Size(double.infinity, 50),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
-      side: const BorderSide(
+      side: BorderSide(
         width: 3.0,
+       //todo button color
+        // color: AppColors.of(context).black,
       ),
     ),
   );

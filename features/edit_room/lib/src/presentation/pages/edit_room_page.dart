@@ -62,7 +62,7 @@ class EditRoomPage extends StatelessWidget {
       child: BlocListener<EditRoomBloc, EditRoomState>(
         listenWhen: (EditRoomState previous, EditRoomState current) =>
             previous.status != current.status &&
-                current.status == EditRoomStatus.edited,
+            current.status == EditRoomStatus.edited,
         listener: (BuildContext context, EditRoomState state) {
           AutoRouter.of(context).maybePop(state.room);
         },
@@ -90,7 +90,9 @@ class EditRoomPage extends StatelessWidget {
                 text: room.height.toString(),
               );
               return Scaffold(
+                backgroundColor: AppColors.of(context).white,
                 appBar: AppBar(
+                  backgroundColor: AppColors.of(context).white,
                   title: Center(
                     child: Text(
                       'Edit room ${room.name}',
