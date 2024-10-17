@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 
 import '../bloc/test_room_bloc/test_room_bloc.dart';
 
@@ -53,7 +52,6 @@ class TestRoomWidget extends StatelessWidget {
                           final int itemWidth = int.tryParse(itemWidthController.text) ?? 0;
                           final int itemLength = int.tryParse(itemLengthController.text) ?? 0;
                           final int itemHeight = int.tryParse(itemHeightController.text) ?? 0;
-                          final String uniqueId = const Uuid().v4();
 
                           if (itemWidth <= 0 || itemLength <= 0 || itemHeight <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -70,7 +68,7 @@ class TestRoomWidget extends StatelessWidget {
                                 roomWidth: roomWidth,
                                 roomLength: roomLength,
                                 roomHeight: roomHeight,
-                                id: uniqueId,
+                                id: '',
                                 roomName: roomName,
                               ),
                             );

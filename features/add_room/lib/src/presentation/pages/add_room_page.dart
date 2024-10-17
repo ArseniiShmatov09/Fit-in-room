@@ -4,7 +4,6 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 
 import '../bloc/add_room_bloc.dart';
 
@@ -34,11 +33,10 @@ class AddRoomPage extends StatelessWidget {
     final int width = int.parse(widthText);
     final int length = int.parse(lengthText);
     final int height = int.parse(heightText);
-    final String uniqueId = const Uuid().v4();
 
     context.read<AddRoomBloc>().add(
           LoadAddRoomEvent(
-            id: uniqueId,
+            id: '1',
             name: name,
             width: width,
             length: length,
@@ -76,7 +74,9 @@ class AddRoomPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Room added successfully!')),
               );
-              AutoRouter.of(context).push(const AllRoomsRoute());
+              AutoRouter.of(context).maybePop(
+                state.roomModel,
+              );
             } else if (state.status == AddRoomStatus.failure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(

@@ -56,7 +56,11 @@ class AllRoomsPage extends StatelessWidget {
                                     RoomDetailsRoute(
                                       roomId: room.id,
                                     ),
-                                  );
+                                  ).then((newRoom) {
+                                    if (newRoom != null) {
+                                      context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
+                                    }
+                                  });;
                                 },
                                 child: Column(
                                   children: <Widget>[
@@ -92,7 +96,11 @@ class AllRoomsPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      AutoRouter.of(context).push(const AddRoomRoute());
+                      AutoRouter.of(context).push(const AddRoomRoute()).then((Object? newRoom) {
+                        if (newRoom != null) {
+                          context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
+                        }
+                      });
                     },
                     style: AppStyles.buttonStyle.copyWith(
                       backgroundColor: MaterialStatePropertyAll<Color>(
@@ -116,5 +124,6 @@ class AllRoomsPage extends StatelessWidget {
       ),
     );
   }
+
 }
 

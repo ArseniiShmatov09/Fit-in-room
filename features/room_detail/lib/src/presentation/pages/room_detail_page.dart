@@ -95,7 +95,7 @@ class RoomDetailsPage extends StatelessWidget {
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      AutoRouter.of(context).maybePop();
+                      AutoRouter.of(context).maybePop(room);
                     },
                   ),
                   title: Center(
