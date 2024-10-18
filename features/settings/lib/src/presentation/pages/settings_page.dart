@@ -8,9 +8,9 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   void _onThemeChanged(BuildContext context, bool isDarkModeEnabled) {
-    context.read<ThemeCubit>().setThemeBrightness(
-          isDarkModeEnabled ? Brightness.dark : Brightness.light,
-        );
+    context.read<SettingsCubit>().setThemeBrightness(
+      isDarkModeEnabled ? Brightness.dark : Brightness.light,
+    );
   }
 
   @override
@@ -21,7 +21,7 @@ class SettingsPage extends StatelessWidget {
         backgroundColor: AppColors.of(context).white,
         title: Text(
           'Settings',
-          style: AppStyles.titleTextStyle.copyWith(
+          style: AppStyles.of(context).titleTextStyle.copyWith(
             color: AppColors.of(context).black,
           ),
         ),
@@ -34,50 +34,57 @@ class SettingsPage extends StatelessWidget {
             const SizedBox(
               height: AppDimens.sizedBoxHeight15,
             ),
-            BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (BuildContext context, ThemeState state) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            BlocBuilder<SettingsCubit, SettingsState>(
+              builder: (BuildContext context, SettingsState state) {
+                return Column(
                   children: <Widget>[
-                    Text(
-                      'Dark mode',
-                      style: AppStyles.mainHeaderTextStyle.copyWith(
-                        color: AppColors.of(context).black,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Dark mode',
+                          style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
+                            color: AppColors.of(context).black,
+                          ),
+                        ),
+                        Switch(
+                          value: state.brightness == Brightness.dark,
+                          activeColor: AppColors.of(context).green,
+                          inactiveTrackColor: AppColors.of(context).gray,
+                          onChanged: (bool isDarkModeEnabled) =>
+                              _onThemeChanged(context, isDarkModeEnabled),
+                        ),
+                      ],
                     ),
-                    Switch(
-                      value: state.brightness == Brightness.dark,
-                      activeColor: AppColors.of(context).green,
-                      inactiveTrackColor: AppColors.of(context).gray,
-                      onChanged: (bool isDarkModeEnabled) =>
-                          _onThemeChanged(context, isDarkModeEnabled),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight10,
+                    ),
+                    const MainDivider(),
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Increase font',
+                          style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
+                            color: AppColors.of(context).black,
+                          ),
+                        ),
+                        Switch(
+                          value: state.fontScaleFactor == 1.5,
+                          activeColor: AppColors.of(context).green,
+                          inactiveTrackColor: AppColors.of(context).gray,
+                          onChanged: (bool isLargeFont) {
+                            context.read<SettingsCubit>().setFontScaleFactor(isLargeFont ? 1.5 : 1.0);
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 );
               },
-            ),
-            const SizedBox(
-              height: AppDimens.sizedBoxHeight10,
-            ),
-            const MainDivider(),
-            const SizedBox(
-              height: AppDimens.sizedBoxHeight15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  'Increase font',
-                  style: AppStyles.mainHeaderTextStyle.copyWith(
-                    color: AppColors.of(context).black,
-                  ),
-                ),
-                Switch(
-                  value: false,
-                  inactiveTrackColor: AppColors.of(context).gray,
-                  onChanged: null,
-                ),
-              ],
             ),
             const SizedBox(
               height: AppDimens.sizedBoxHeight15,

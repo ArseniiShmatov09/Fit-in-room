@@ -35,7 +35,8 @@ class TestRoomWidget extends StatelessWidget {
       child: BlocBuilder<TestRoomBloc, TestRoomState>(
         builder: (BuildContext context, TestRoomState state) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
+            padding:
+                const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
             child: Container(
               decoration: AppStyles.boxDecoration.copyWith(
                 color: AppColors.of(context).lightGray,
@@ -45,43 +46,62 @@ class TestRoomWidget extends StatelessWidget {
                 children: <Widget>[
                   const SizedBox(height: AppDimens.sizedBoxHeight20),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding30),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimens.padding30,),
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          final int itemWidth = int.tryParse(itemWidthController.text) ?? 0;
-                          final int itemLength = int.tryParse(itemLengthController.text) ?? 0;
-                          final int itemHeight = int.tryParse(itemHeightController.text) ?? 0;
+                          final int itemWidth =
+                              int.tryParse(itemWidthController.text) ?? 0;
+                          final int itemLength =
+                              int.tryParse(itemLengthController.text) ?? 0;
+                          final int itemHeight =
+                              int.tryParse(itemHeightController.text) ?? 0;
 
-                          if (itemWidth <= 0 || itemLength <= 0 || itemHeight <= 0) {
+                          if (itemWidth <= 0 ||
+                              itemLength <= 0 ||
+                              itemHeight <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('All dimensions must be greater than zero.'),
+                                content: Text(
+                                    'All dimensions must be greater than zero.',),
                               ),
                             );
                           } else {
                             context.read<TestRoomBloc>().add(
-                              RunTestEvent(
-                                itemWidth: itemWidth,
-                                itemLength: itemLength,
-                                itemHeight: itemHeight,
-                                roomWidth: roomWidth,
-                                roomLength: roomLength,
-                                roomHeight: roomHeight,
-                                id: '',
-                                roomName: roomName,
-                              ),
-                            );
+                                  RunTestEvent(
+                                    itemWidth: itemWidth,
+                                    itemLength: itemLength,
+                                    itemHeight: itemHeight,
+                                    roomWidth: roomWidth,
+                                    roomLength: roomLength,
+                                    roomHeight: roomHeight,
+                                    id: '',
+                                    roomName: roomName,
+                                  ),
+                                );
                           }
                         },
                         style: AppStyles.roundButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll<Color>(
                             AppColors.of(context).white,
                           ),
+                          shape:
+                              MaterialStatePropertyAll<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                AppDimens.borderRadius20,
+                              ),
+                              side: AppStyles.appBorderSide.copyWith(
+                                color: AppColors.of(context).black,
+                              ),
+                            ),
+                          ),
                         ),
                         child: Text(
+                          textAlign: TextAlign.center,
                           'Start test',
-                          style: AppStyles.mainHeaderTextStyle.copyWith(
+                          style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
                             color: AppColors.of(context).black,
                           ),
                         ),
@@ -89,19 +109,20 @@ class TestRoomWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: AppDimens.sizedBoxHeight30),
-
                   if (state.status == TestRoomStatus.loading)
                     Center(
                       child: CircularProgressIndicator(
                         color: AppColors.of(context).black,
                       ),
                     ),
-
-                  if (state.status == TestRoomStatus.passed || state.status == TestRoomStatus.notPassed)
+                  if (state.status == TestRoomStatus.passed ||
+                      state.status == TestRoomStatus.notPassed)
                     Center(
                       child: Text(
-                        state.status == TestRoomStatus.passed ? 'PASSED' : 'NOT PASSED',
-                        style: AppStyles.mainHeaderTextStyle.copyWith(
+                        state.status == TestRoomStatus.passed
+                            ? 'PASSED'
+                            : 'NOT PASSED',
+                        style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
                           color: state.status == TestRoomStatus.passed
                               ? AppColors.of(context).green
                               : AppColors.of(context).red,

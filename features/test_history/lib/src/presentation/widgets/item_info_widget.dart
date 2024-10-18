@@ -32,19 +32,19 @@ class ItemInfoWidget extends StatelessWidget {
         children: <Widget>[
           TestHistoryInfoTextWidget(
             text: roomName,
-            style: AppStyles.mainHeaderTextStyle.copyWith(
+            style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
           ),
           TestHistoryInfoTextWidget(
             text: 'Item $itemWidth ⨯ $itemLength ⨯ $itemHigh',
-            style: AppStyles.detailsTextStyle.copyWith(
+            style: AppStyles.of(context).detailsTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
           ),
           Text(
             isTestPassed ? 'PASSED' : 'NOT PASSED',
-            style: AppStyles.headerTextStyle.copyWith(
+            style: AppStyles.of(context).headerTextStyle.copyWith(
               color: isTestPassed
               ? AppColors.of(context).green
               : AppColors.of(context).red,

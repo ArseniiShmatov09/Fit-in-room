@@ -96,7 +96,7 @@ class EditRoomPage extends StatelessWidget {
                   title: Center(
                     child: Text(
                       'Edit room ${room.name}',
-                      style: AppStyles.titleTextStyle.copyWith(
+                      style: AppStyles.of(context).titleTextStyle.copyWith(
                         color: AppColors.of(context).black,
                       ),
                     ),
@@ -157,10 +157,22 @@ class EditRoomPage extends StatelessWidget {
                             backgroundColor: MaterialStatePropertyAll<Color>(
                               AppColors.of(context).white,
                             ),
+                            shape:
+                            MaterialStatePropertyAll<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  AppDimens.borderRadius20,
+                                ),
+                                side: AppStyles.appBorderSide.copyWith(
+                                  color: AppColors.of(context).black,
+                                ),
+                              ),
+                            ),
                           ),
                           child: Text(
+                            textAlign: TextAlign.center,
                             'Edit room',
-                            style: AppStyles.titleTextStyle.copyWith(
+                            style: AppStyles.of(context).titleTextStyle.copyWith(
                               color: AppColors.of(context).black,
                             ),
                           ),

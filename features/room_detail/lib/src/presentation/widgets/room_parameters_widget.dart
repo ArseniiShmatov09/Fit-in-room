@@ -39,36 +39,36 @@ class _RoomParametersWidgetState extends State<RoomParametersWidget> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: AppDimens.padding24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text(
-                    'Room parameters',
-                    style: AppStyles.mainHeaderTextStyle.copyWith(
-                      color: AppColors.of(context).black,
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: _onEditButtonPressed,
-                  ),
-                ],
+              child: Text(
+                'Room parameters',
+                style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
+                  color: AppColors.of(context).black,
+                ),
               ),
             ),
             const MainDivider(),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: AppDimens.padding24),
-              child: Center(
-                child: Text(
-                  '${updatedRoom?.width ?? widget.roomWidth} ⨯ '
-                  '${updatedRoom?.length ?? widget.roomLength} ⨯ '
-                  '${updatedRoom?.height ?? widget.roomHeight}',
-                  style: AppStyles.mainHeaderTextStyle.copyWith(
-                    color: AppColors.of(context).black,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppDimens.padding24),
+                  child: Center(
+                    child: Text(
+                      '${updatedRoom?.width ?? widget.roomWidth} ⨯ '
+                      '${updatedRoom?.length ?? widget.roomLength} ⨯ '
+                      '${updatedRoom?.height ?? widget.roomHeight}',
+                      style: AppStyles.of(context).mainHeaderTextStyle.copyWith(
+                        color: AppColors.of(context).black,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: _onEditButtonPressed,
+                ),
+              ],
             ),
             const MainDivider(),
           ],

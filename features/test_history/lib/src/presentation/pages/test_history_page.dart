@@ -53,7 +53,7 @@ class TestHistoryPage extends StatelessWidget {
                               ? Center(
                                   child: Text(
                                     'No available data',
-                                    style: AppStyles.subtitleTextStyle.copyWith(
+                                    style: AppStyles.of(context).subtitleTextStyle.copyWith(
                                       color: AppColors.of(context).black,
                                     ),
                                   ),

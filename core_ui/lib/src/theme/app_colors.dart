@@ -8,7 +8,6 @@ abstract class AppColors {
         : const DarkColors();
   }
 
-
   Color get white;
 
   Color get black;

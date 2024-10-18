@@ -33,7 +33,7 @@ class AllRoomsPage extends StatelessWidget {
                         ? Center(
                       child: Text(
                         'No available data',
-                        style: AppStyles.subtitleTextStyle.copyWith(
+                        style: AppStyles.of(context).subtitleTextStyle.copyWith(
                           color: AppColors.of(context).black,
                         ),
                       ),
@@ -66,13 +66,13 @@ class AllRoomsPage extends StatelessWidget {
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                        vertical: AppDimens.padding30,
+                                        vertical: AppDimens.padding10,
                                       ),
                                       child: Center(
                                         child: Text(
                                           room.name,
                                           style: AppStyles
-                                              .subtitleTextStyle
+                                              .of(context).subtitleTextStyle
                                               .copyWith(
                                             color: AppColors
                                                 .of(context)
@@ -109,7 +109,7 @@ class AllRoomsPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Add new room',
-                      style: AppStyles.buttonTextStyle.copyWith(
+                      style: AppStyles.of(context).buttonTextStyle.copyWith(
                         color: AppColors.of(context).white,
                       ),
                     ),

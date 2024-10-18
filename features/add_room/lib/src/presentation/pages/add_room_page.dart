@@ -1,4 +1,3 @@
-import 'package:all_rooms/all_rooms.gm.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
@@ -64,7 +63,7 @@ class AddRoomPage extends StatelessWidget {
           title: Center(
             child: Text(
               'Add new room',
-              style: AppStyles.titleTextStyle.copyWith(
+              style: AppStyles.of(context).titleTextStyle.copyWith(
                 color: AppColors.of(context).black,
               ),
             ),
@@ -134,10 +133,22 @@ class AddRoomPage extends StatelessWidget {
                           backgroundColor: MaterialStatePropertyAll<Color>(
                             AppColors.of(context).white,
                           ),
+                          shape:
+                              MaterialStatePropertyAll<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                AppDimens.borderRadius20,
+                              ),
+                              side: AppStyles.appBorderSide.copyWith(
+                                color: AppColors.of(context).black,
+                              ),
+                            ),
+                          ),
                         ),
                         child: Text(
                           'Add new room',
-                          style: AppStyles.subtitleTextStyle.copyWith(
+                          textAlign: TextAlign.center,
+                          style: AppStyles.of(context).subtitleTextStyle.copyWith(
                             color: AppColors.of(context).black,
                           ),
                         ),

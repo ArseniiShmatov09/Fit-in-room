@@ -27,16 +27,6 @@ TextTheme _getLightTextTheme() {
   );
 }
 
-TextTheme _getDarkTextTheme() {
-  return TextTheme(
-    titleMedium: AppFonts.normal13,
-    bodyMedium: AppFonts.normal13,
-  ).apply(
-    bodyColor: _appColors.white,
-    displayColor: _appColors.white,
-  );
-}
-
 InputDecorationTheme _getInputDecorationTheme() {
   return InputDecorationTheme(
     hintStyle: AppFonts.normal13.copyWith(color: _appColors.white),

@@ -1,54 +1,59 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import '../../core_ui.dart';
-import 'app_colors.dart';
 
 class AppStyles {
-  static const TextStyle titleTextStyle = TextStyle(
+  final double fontScaleFactor;
+
+  AppStyles(this.fontScaleFactor);
+
+  static AppStyles of(BuildContext context) {
+    final double fontScaleFactor = context.watch<SettingsCubit>().state.fontScaleFactor;
+    return AppStyles(fontScaleFactor);
+  }
+
+  TextStyle get titleTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 48,
+    fontSize: 40 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
-   static const TextStyle subtitleTextStyle = TextStyle(
+  TextStyle get subtitleTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 40,
+    fontSize: 32 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
-  static const TextStyle mainHeaderTextStyle = TextStyle(
+  TextStyle get mainHeaderTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 32,
+    fontSize: 28 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
-  static const TextStyle headerTextStyle = TextStyle(
+  TextStyle get headerTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 24,
+    fontSize: 20 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
-  static const TextStyle detailsTextStyle = TextStyle(
+  TextStyle get detailsTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 20,
+    fontSize: 16 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
-  static const TextStyle buttonTextStyle = TextStyle(
+  TextStyle get buttonTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 32,
+    fontSize: 28 * fontScaleFactor,
     fontWeight: FontWeight.w900,
   );
 
   static ButtonStyle roundButtonStyle = ElevatedButton.styleFrom(
     minimumSize: const Size(double.infinity, 50),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
-      side: BorderSide(
-        width: 3.0,
-       //todo button color
-        // color: AppColors.of(context).black,
-      ),
-    ),
+  );
+
+  static const BorderSide appBorderSide = BorderSide(
+    width: 3.0,
   );
 
   static ButtonStyle buttonStyle = ElevatedButton.styleFrom(
@@ -59,5 +64,4 @@ class AppStyles {
   static BoxDecoration boxDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(AppDimens.borderRadius20),
   );
-
 }

@@ -39,10 +39,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppRouter appRouter = appLocator<AppRouter>();
-    return BlocProvider<ThemeCubit>(
-      create: (BuildContext context) => ThemeCubit(themeRepository: GetIt.I<ThemeRepository>()),
-      child: BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (BuildContext context, ThemeState state) {
+    return BlocProvider<SettingsCubit>(
+      create: (BuildContext context) =>
+          SettingsCubit(themeRepository: GetIt.I<SettingsRepository>()),
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (BuildContext context, SettingsState state) {
           return EasyLocalization(
             path: AppLocalization.langFolderPath,
             supportedLocales: AppLocalization.supportedLocales,
@@ -55,7 +56,9 @@ class App extends StatelessWidget {
                     localizationsDelegates: context.localizationDelegates,
                     supportedLocales: context.supportedLocales,
                     locale: context.locale,
-                    theme: state.brightness == Brightness.dark ? darkTheme : lightTheme,
+                    theme: state.brightness == Brightness.dark
+                        ? darkTheme
+                        : lightTheme,
                     routerConfig: appRouter.config(),
                   ),
                 );
