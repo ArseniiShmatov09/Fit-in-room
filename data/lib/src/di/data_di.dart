@@ -3,8 +3,8 @@ import 'package:domain/domain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data.dart';
+import '../repositories/settings_repository_impl.dart';
 import '../repositories/test_room_fit_repository_impl.dart';
-import '../repositories/theme_repository_impl.dart';
 
 abstract class DataDI {
   static void initDependencies(GetIt locator) {
@@ -77,8 +77,8 @@ abstract class DataDI {
     locator.registerLazySingleton<TestRoomFitRepository>(
       TestRoomFitRepositoryImpl.new,
     );
-    locator.registerLazySingleton<ThemeRepository>(
-      () => ThemeRepositoryImpl(
+    locator.registerLazySingleton<SettingsRepository>(
+      () => SettingsRepositoryImpl(
         preferences: locator<SharedPreferences>(),
       ),
     );

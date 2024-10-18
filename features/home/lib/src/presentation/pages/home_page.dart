@@ -20,12 +20,14 @@ class HomePage extends StatelessWidget {
         final TabsRouter tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
+          backgroundColor: AppColors.of(context).white,
           appBar: AppBar(
+            backgroundColor: AppColors.of(context).white,
             automaticallyImplyLeading: false,
             title: Center(
               child: Text(
                 tabsRouter.activeIndex == 0 ? 'All Rooms' : 'Test History',
-                style: AppStyles.titleTextStyle.copyWith(
+                style: AppStyles.of(context).titleTextStyle.copyWith(
                   color: AppColors.of(context).black,
                 ),
               ),
@@ -40,16 +42,17 @@ class HomePage extends StatelessWidget {
             ],
           ),
           bottomNavigationBar: NavigationBar(
+            backgroundColor: AppColors.of(context).lightGray,
             onDestinationSelected: tabsRouter.setActiveIndex,
             selectedIndex: tabsRouter.activeIndex,
-            indicatorColor: AppColors.of(context).black,
-            destinations: const <Widget>[
+            indicatorColor: AppColors.of(context).white,
+            destinations: <Widget>[
               NavigationDestination(
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.home, color: AppColors.of(context).black,),
                 label: 'All rooms',
               ),
               NavigationDestination(
-                icon: Icon(Icons.history),
+                icon: Icon(Icons.history, color: AppColors.of(context).black,),
                 label: 'Test history',
               ),
             ],

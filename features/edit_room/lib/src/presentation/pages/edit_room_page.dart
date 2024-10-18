@@ -3,8 +3,6 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:room_detail/room_detail.dart';
-import 'package:room_detail/room_detail.gm.dart';
 
 import '../bloc/edit_room_bloc.dart';
 
@@ -66,9 +64,7 @@ class EditRoomPage extends StatelessWidget {
             previous.status != current.status &&
             current.status == EditRoomStatus.edited,
         listener: (BuildContext context, EditRoomState state) {
-          AutoRouter.of(context).push(
-            RoomDetailsRoute(roomId: roomId),
-          );
+          AutoRouter.of(context).maybePop(state.room);
         },
         child: BlocBuilder<EditRoomBloc, EditRoomState>(
           builder: (BuildContext context, EditRoomState state) {
@@ -94,11 +90,13 @@ class EditRoomPage extends StatelessWidget {
                 text: room.height.toString(),
               );
               return Scaffold(
+                backgroundColor: AppColors.of(context).white,
                 appBar: AppBar(
+                  backgroundColor: AppColors.of(context).white,
                   title: Center(
                     child: Text(
                       'Edit room ${room.name}',
-                      style: AppStyles.titleTextStyle.copyWith(
+                      style: AppStyles.of(context).titleTextStyle.copyWith(
                         color: AppColors.of(context).black,
                       ),
                     ),
@@ -159,10 +157,22 @@ class EditRoomPage extends StatelessWidget {
                             backgroundColor: MaterialStatePropertyAll<Color>(
                               AppColors.of(context).white,
                             ),
+                            shape:
+                            MaterialStatePropertyAll<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  AppDimens.borderRadius20,
+                                ),
+                                side: AppStyles.appBorderSide.copyWith(
+                                  color: AppColors.of(context).black,
+                                ),
+                              ),
+                            ),
                           ),
                           child: Text(
+                            textAlign: TextAlign.center,
                             'Edit room',
-                            style: AppStyles.titleTextStyle.copyWith(
+                            style: AppStyles.of(context).titleTextStyle.copyWith(
                               color: AppColors.of(context).black,
                             ),
                           ),

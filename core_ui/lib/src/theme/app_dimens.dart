@@ -4,6 +4,7 @@ class AppDimens {
   static const double borderRadius20 = 20.0;
 
   static const double padding5 = 5.0;
+  static const double padding10 = 10.0;
   static const double padding16 = 16.0;
   static const double padding20 = 20.0;
   static const double padding24 = 24.0;

@@ -4,13 +4,15 @@ import 'firebase_provider.dart';
 
 class FirebaseProviderImpl implements FirebaseProvider {
   final CollectionReference<Map<String, dynamic>> _rooms =
-  FirebaseFirestore.instance.collection('rooms');
+      FirebaseFirestore.instance.collection('rooms');
   final CollectionReference<Map<String, dynamic>> _testHistories =
-  FirebaseFirestore.instance.collection('testHistories');
+      FirebaseFirestore.instance.collection('testHistories');
 
   @override
-  Future<void> addRoom(Map<String, dynamic> roomData) {
-    return _rooms.add(roomData);
+  Future<void> addRoom(Map<String, dynamic> roomData) async {
+    final DocumentReference<Object?> docRef = _rooms.doc();
+    roomData['id'] = docRef.id;
+    await docRef.set(roomData);
   }
 
   @override
@@ -21,7 +23,7 @@ class FirebaseProviderImpl implements FirebaseProvider {
   @override
   Future<List<Map<String, dynamic>>> getAllRooms() async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-    await _rooms.orderBy('id', descending: false).get();
+        await _rooms.orderBy('id', descending: false).get();
 
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs
@@ -35,14 +37,14 @@ class FirebaseProviderImpl implements FirebaseProvider {
   @override
   Future<String> getDocId(String roomId) async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-    await _rooms.where('id', isEqualTo: roomId).get();
+        await _rooms.where('id', isEqualTo: roomId).get();
     return snapshot.docs.first.id;
   }
 
   @override
   Future<Map<String, dynamic>> getRoom(String roomId) async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-    await _rooms.where('id', isEqualTo: roomId).get();
+        await _rooms.where('id', isEqualTo: roomId).get();
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs.first.data();
     } else {
@@ -58,7 +60,7 @@ class FirebaseProviderImpl implements FirebaseProvider {
   @override
   Future<List<Map<String, dynamic>>> getAllTestHistories() async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-    await _testHistories.orderBy('roomName', descending: false).get();
+        await _testHistories.orderBy('roomName', descending: false).get();
 
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs
@@ -70,7 +72,9 @@ class FirebaseProviderImpl implements FirebaseProvider {
   }
 
   @override
-  Future<void> addTestHistory(Map<String, dynamic> testHistoryData) {
-    return _testHistories.add(testHistoryData);
+  Future<void> addTestHistory(Map<String, dynamic> testHistoryData) async {
+    final DocumentReference<Object?> docRef = _testHistories.doc();
+    testHistoryData['id'] = docRef.id;
+    await docRef.set(testHistoryData);
   }
 }

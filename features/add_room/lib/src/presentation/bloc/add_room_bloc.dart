@@ -32,6 +32,7 @@ class AddRoomBloc extends Bloc<AddRoomEvent, AddRoomState> {
       emit(
         state.copyWith(
           status: AddRoomStatus.added,
+          roomModel: roomModel,
         ),
       );
     } catch (e) {

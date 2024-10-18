@@ -33,7 +33,7 @@ class AllRoomsPage extends StatelessWidget {
                         ? Center(
                       child: Text(
                         'No available data',
-                        style: AppStyles.subtitleTextStyle.copyWith(
+                        style: AppStyles.of(context).subtitleTextStyle.copyWith(
                           color: AppColors.of(context).black,
                         ),
                       ),
@@ -56,19 +56,23 @@ class AllRoomsPage extends StatelessWidget {
                                     RoomDetailsRoute(
                                       roomId: room.id,
                                     ),
-                                  );
+                                  ).then((Object? newRoom) {
+                                    if (newRoom != null) {
+                                      context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
+                                    }
+                                  });;
                                 },
                                 child: Column(
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                        vertical: AppDimens.padding30,
+                                        vertical: AppDimens.padding10,
                                       ),
                                       child: Center(
                                         child: Text(
                                           room.name,
                                           style: AppStyles
-                                              .subtitleTextStyle
+                                              .of(context).subtitleTextStyle
                                               .copyWith(
                                             color: AppColors
                                                 .of(context)
@@ -92,7 +96,11 @@ class AllRoomsPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      AutoRouter.of(context).push(const AddRoomRoute());
+                      AutoRouter.of(context).push(const AddRoomRoute()).then((Object? newRoom) {
+                        if (newRoom != null) {
+                          context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
+                        }
+                      });
                     },
                     style: AppStyles.buttonStyle.copyWith(
                       backgroundColor: MaterialStatePropertyAll<Color>(
@@ -101,7 +109,7 @@ class AllRoomsPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Add new room',
-                      style: AppStyles.buttonTextStyle.copyWith(
+                      style: AppStyles.of(context).buttonTextStyle.copyWith(
                         color: AppColors.of(context).white,
                       ),
                     ),
@@ -116,5 +124,6 @@ class AllRoomsPage extends StatelessWidget {
       ),
     );
   }
+
 }
 

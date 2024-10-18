@@ -24,13 +24,13 @@ class RoomDetailsPage extends StatelessWidget {
         return AlertDialog(
           title: Text(
             'Deleting room',
-            style: AppStyles.subtitleTextStyle.copyWith(
+            style: AppStyles.of(context).subtitleTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
           ),
           content: Text(
             'Are you sure you want to delete this room?',
-            style: AppStyles.detailsTextStyle.copyWith(
+            style: AppStyles.of(context).detailsTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
           ),
@@ -41,7 +41,7 @@ class RoomDetailsPage extends StatelessWidget {
               },
               child: Text(
                 'Back',
-                style: AppStyles.subtitleTextStyle.copyWith(
+                style: AppStyles.of(context).subtitleTextStyle.copyWith(
                   color: AppColors.of(context).black,
                 ),
               ),
@@ -55,7 +55,7 @@ class RoomDetailsPage extends StatelessWidget {
               },
               child: Text(
                 'Delete',
-                style: AppStyles.subtitleTextStyle.copyWith(
+                style: AppStyles.of(context).subtitleTextStyle.copyWith(
                   color: AppColors.of(context).red,
                 ),
               ),
@@ -89,21 +89,21 @@ class RoomDetailsPage extends StatelessWidget {
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
-            return PopScope(
-              onPopInvoked: (bool a) => {},
-              child: Scaffold(
+              return Scaffold(
+                backgroundColor: AppColors.of(context).white,
                 appBar: AppBar(
+                  backgroundColor: AppColors.of(context).white,
                   automaticallyImplyLeading: false,
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      AutoRouter.of(context).replace(const AllRoomsRoute());
+                      AutoRouter.of(context).maybePop(room);
                     },
                   ),
                   title: Center(
                     child: Text(
                       room.name,
-                      style: AppStyles.titleTextStyle.copyWith(
+                      style: AppStyles.of(context).titleTextStyle.copyWith(
                         color: AppColors.of(context).black,
                       ),
                     ),
@@ -171,7 +171,6 @@ class RoomDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
             );
           }
           return const Center(
