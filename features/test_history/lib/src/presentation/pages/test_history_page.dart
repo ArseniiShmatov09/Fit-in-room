@@ -19,7 +19,11 @@ class TestHistoryPage extends StatelessWidget {
       child: BlocBuilder<TestHistoryBloc, TestHistoryState>(
         builder: (BuildContext context, TestHistoryState state) {
           if (state.status == TestHistoryStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.of(context).black,
+              ),
+            );
           }
           if (state.status == TestHistoryStatus.loaded) {
             final int testHistoriesLength = state.testHistories.length;
@@ -53,9 +57,11 @@ class TestHistoryPage extends StatelessWidget {
                               ? Center(
                                   child: Text(
                                     'No available data',
-                                    style: AppStyles.of(context).subtitleTextStyle.copyWith(
-                                      color: AppColors.of(context).black,
-                                    ),
+                                    style: AppStyles.of(context)
+                                        .subtitleTextStyle
+                                        .copyWith(
+                                          color: AppColors.of(context).black,
+                                        ),
                                   ),
                                 )
                               : Column(
@@ -107,7 +113,11 @@ class TestHistoryPage extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(
+              color: AppColors.of(context).black,
+            ),
+          );
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import '../../core_ui.dart';
+import '../../gen/fonts.gen.dart';
 
 class AppStyles {
   final double fontScaleFactor;
@@ -20,8 +21,8 @@ class AppStyles {
 
   TextStyle get subtitleTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 32 * fontScaleFactor,
-    fontWeight: FontWeight.w900,
+    fontSize: 30 * fontScaleFactor,
+    fontWeight: FontWeight.w700,
   );
 
   TextStyle get mainHeaderTextStyle => TextStyle(
@@ -39,13 +40,13 @@ class AppStyles {
   TextStyle get detailsTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
     fontSize: 16 * fontScaleFactor,
-    fontWeight: FontWeight.w900,
+    fontWeight: FontWeight.w700,
   );
 
   TextStyle get buttonTextStyle => TextStyle(
     fontFamily: FontFamily.sofiaSans,
-    fontSize: 28 * fontScaleFactor,
-    fontWeight: FontWeight.w900,
+    fontSize: 18 * fontScaleFactor,
+    fontWeight: FontWeight.w700,
   );
 
   static ButtonStyle roundButtonStyle = ElevatedButton.styleFrom(
