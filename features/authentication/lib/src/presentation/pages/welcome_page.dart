@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
                   text: 'CREATE ACCOUNT',
                   onPressed: () {
                     AutoRouter.of(context).replace(
-                      const SignInRoute(),
+                      const SignUpRoute(),
                     );
                   },
                   backgroundColor: AppColors.of(context).black,
@@ -60,7 +60,7 @@ class WelcomePage extends StatelessWidget {
                   text: 'HAVE AN ACCOUNT?',
                   onPressed: () {
                     AutoRouter.of(context).replace(
-                      const SignUpRoute(),
+                      const SignInRoute(),
                     );
                   },
                   backgroundColor: AppColors.of(context).white,

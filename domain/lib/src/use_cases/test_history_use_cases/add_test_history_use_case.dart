@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class AddTestHistoryUseCase implements FutureUseCase<TestHistoryModel, void> {
   AddTestHistoryUseCase({

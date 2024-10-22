@@ -32,6 +32,7 @@ class RunTestEvent extends TestRoomEvent {
   final int roomWidth;
   final int roomLength;
   final int roomHeight;
+  final String username;
 
   RunTestEvent({
     required this.id,
@@ -42,5 +43,6 @@ class RunTestEvent extends TestRoomEvent {
     required this.roomWidth,
     required this.roomLength,
     required this.roomHeight,
+    required this.username,
   });
 }

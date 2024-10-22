@@ -4,7 +4,7 @@ class RoomModel {
   final int length;
   final int width;
   final int height;
-  final int userId;
+  final String username;
 
   factory RoomModel.empty() {
     return RoomModel(
@@ -13,16 +13,17 @@ class RoomModel {
       width: 0,
       length: 0,
       height: 0,
-      userId: 0,
+      username: '',
     );
   }
+
   RoomModel({
     required this.id,
     required this.name,
     required this.length,
     required this.width,
     required this.height,
-    required this.userId,
+    required this.username,
   });
 
   List<Object?> get props => <Object?>[
@@ -31,6 +32,6 @@ class RoomModel {
         length,
         width,
         height,
-        userId,
+        username,
       ];
 }

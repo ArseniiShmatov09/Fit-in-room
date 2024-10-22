@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class DeleteRoomUseCase implements FutureUseCase<String, void> {
   DeleteRoomUseCase({

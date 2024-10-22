@@ -54,6 +54,7 @@ class TestRoomBloc extends Bloc<TestRoomEvent, TestRoomState> {
       itemHeight: event.itemHeight,
       roomName: event.roomName,
       isTestPassed: isTestPassed,
+      username: event.username,
     );
 
     await _addTestHistoryUseCase.execute(testHistoryModel);

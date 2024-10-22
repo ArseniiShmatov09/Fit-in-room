@@ -78,6 +78,7 @@ class TestRoomWidget extends StatelessWidget {
                                     roomHeight: roomHeight,
                                     id: '',
                                     roomName: roomName,
+                                    username: 'arsen', //todo change username
                                   ),
                                 );
                           }

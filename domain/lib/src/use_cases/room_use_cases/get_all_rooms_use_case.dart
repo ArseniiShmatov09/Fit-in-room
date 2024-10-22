@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class GetAllRoomsUseCase implements FutureUseCase<NoParams, List<RoomModel>>{
   GetAllRoomsUseCase({

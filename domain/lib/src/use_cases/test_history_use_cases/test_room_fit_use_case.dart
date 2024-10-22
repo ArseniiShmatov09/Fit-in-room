@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class TestRoomFitUseCase implements UseCase<RoomFitParams, bool> {
   TestRoomFitUseCase({

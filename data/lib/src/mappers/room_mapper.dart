@@ -9,7 +9,7 @@ class RoomMapper {
         length: entity.length,
         width: entity.width,
         height: entity.height,
-        userId: entity.userId,
+        username: entity.username,
       );
 
   RoomEntity toData(RoomModel model) => RoomEntity(
@@ -18,6 +18,6 @@ class RoomMapper {
         length: model.length,
         width: model.width,
         height: model.height,
-        userId: model.userId,
-      );
+        username: model.username,
+  );
 }

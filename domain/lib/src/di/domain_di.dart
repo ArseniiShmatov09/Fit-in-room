@@ -54,5 +54,23 @@ abstract class DomainDI {
         testRoomFitRepository: locator<TestRoomFitRepository>(),
       ),
     );
+
+    locator.registerLazySingleton<SignInUseCase>(
+      () => SignInUseCase(
+        authenticationRepository: locator<AuthenticationRepository>(),
+      ),
+    );
+
+    locator.registerLazySingleton<SignUpUseCase>(
+      () => SignUpUseCase(
+        authenticationRepository: locator<AuthenticationRepository>(),
+      ),
+    );
+
+    locator.registerLazySingleton<LogoutUseCase>(
+      () => LogoutUseCase(
+        authenticationRepository: locator<AuthenticationRepository>(),
+      ),
+    );
   }
 }

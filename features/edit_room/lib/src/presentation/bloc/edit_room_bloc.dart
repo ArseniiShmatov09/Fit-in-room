@@ -67,7 +67,7 @@ class EditRoomBloc extends Bloc<EditRoomEvent, EditRoomState> {
         length: event.length,
         width: event.width,
         height: event.height,
-        userId: 1, //Todo change logic
+        username: event.username,
       );
 
       await _updateRoomUseCase.execute(roomModel);

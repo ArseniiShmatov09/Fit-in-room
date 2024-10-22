@@ -23,7 +23,7 @@ class UpdateRoomEvent extends EditRoomEvent {
   final int width;
   final int length;
   final int height;
-  final int userId;
+  final String username;
 
   UpdateRoomEvent({
     required this.id,
@@ -31,7 +31,7 @@ class UpdateRoomEvent extends EditRoomEvent {
     required this.width,
     required this.length,
     required this.height,
-    required this.userId,
+    required this.username,
   });
 
   @override
@@ -41,6 +41,6 @@ class UpdateRoomEvent extends EditRoomEvent {
         width,
         length,
         height,
-        userId,
+        username,
       ];
 }

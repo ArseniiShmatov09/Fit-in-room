@@ -40,7 +40,7 @@ class AddRoomPage extends StatelessWidget {
             width: width,
             length: length,
             height: height,
-            userId: 1,
+            username: 'arsen',//todo change logic
           ),
         );
   }

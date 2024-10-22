@@ -15,4 +15,5 @@ abstract class FirebaseProvider {
   Future<List<Map<String, dynamic>>> getAllTestHistories();
 
   Future<void> addTestHistory(Map<String, dynamic> testHistoryData);
+
 }

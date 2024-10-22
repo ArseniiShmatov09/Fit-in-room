@@ -3,6 +3,11 @@ import 'package:domain/domain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data.dart';
+import '../mappers/user_mapper.dart';
+import '../providers/authentication_provider.dart';
+import '../providers/authentication_provider_impl.dart';
+import '../providers/firebase_provider.dart';
+import '../repositories/authentication_repository_impl.dart';
 import '../repositories/settings_repository_impl.dart';
 import '../repositories/test_room_fit_repository_impl.dart';
 
@@ -28,7 +33,7 @@ abstract class DataDI {
       ),
     );
 
-    locator.registerLazySingleton<FirebaseProviderImpl>(
+    locator.registerLazySingleton<FirebaseProvider>(
       FirebaseProviderImpl.new,
     );
   }
@@ -48,9 +53,19 @@ abstract class DataDI {
     locator.registerLazySingleton<TestHistoryMapper>(
       TestHistoryMapper.new,
     );
+
+    locator.registerLazySingleton<UserMapper>(
+      UserMapper.new,
+    );
   }
 
-  static void _initProviders(GetIt locator) {}
+  static void _initProviders(GetIt locator) {
+    locator.registerLazySingleton<AuthenticationProvider>(
+      () => AuthenticationProviderImpl(
+        dio: Dio(),
+      ),
+    );
+  }
 
   static void _initRepositories(GetIt locator) {
     locator.registerLazySingleton<AllRoomsRepository>(
@@ -77,9 +92,17 @@ abstract class DataDI {
     locator.registerLazySingleton<TestRoomFitRepository>(
       TestRoomFitRepositoryImpl.new,
     );
+
     locator.registerLazySingleton<SettingsRepository>(
       () => SettingsRepositoryImpl(
         preferences: locator<SharedPreferences>(),
+      ),
+    );
+
+    locator.registerLazySingleton<AuthenticationRepository>(
+      () => AuthenticationRepositoryImpl(
+        apiProvider: locator<AuthenticationProvider>(),
+        userMapper: locator<UserMapper>(),
       ),
     );
   }

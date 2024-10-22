@@ -10,6 +10,7 @@ class TestHistoryEntity {
   final int itemHeight;
   final String roomName;
   final bool isTestPassed;
+  final String username;
 
   TestHistoryEntity({
     required this.id,
@@ -18,6 +19,7 @@ class TestHistoryEntity {
     required this.itemHeight,
     required this.roomName,
     required this.isTestPassed,
+    required this.username,
   });
 
   factory TestHistoryEntity.fromJson(Map<String, dynamic> json) => _$TestHistoryEntityFromJson(json);

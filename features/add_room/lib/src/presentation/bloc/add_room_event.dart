@@ -12,7 +12,7 @@ class LoadAddRoomEvent extends AddRoomEvent {
   final int width;
   final int length;
   final int height;
-  final int userId;
+  final String username;
 
   LoadAddRoomEvent({
     required this.id,
@@ -20,7 +20,7 @@ class LoadAddRoomEvent extends AddRoomEvent {
     required this.width,
     required this.length,
     required this.height,
-    required this.userId,
+    required this.username,
   });
 
   @override
@@ -30,6 +30,6 @@ class LoadAddRoomEvent extends AddRoomEvent {
         width,
         length,
         height,
-    userId,
+        username,
       ];
 }

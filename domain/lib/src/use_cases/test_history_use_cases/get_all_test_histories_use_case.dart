@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class GetTestHistoriesUseCase
     implements FutureUseCase<NoParams, List<TestHistoryModel>> {

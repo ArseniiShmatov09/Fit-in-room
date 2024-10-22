@@ -46,7 +46,7 @@ class EditRoomPage extends StatelessWidget {
             width: width,
             length: length,
             height: height,
-            userId: roomModel.userId,
+            username: roomModel.username,
           ),
         );
   }

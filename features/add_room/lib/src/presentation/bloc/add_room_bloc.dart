@@ -26,7 +26,7 @@ class AddRoomBloc extends Bloc<AddRoomEvent, AddRoomState> {
         length: event.length,
         width: event.width,
         height: event.height,
-        userId: 1,
+        username: event.username,
       );
       await _addRoomUseCase.execute(roomModel);
       emit(

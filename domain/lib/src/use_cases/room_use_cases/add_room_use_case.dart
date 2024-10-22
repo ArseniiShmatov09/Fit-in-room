@@ -1,4 +1,4 @@
-import '../../domain.dart';
+import '../../../domain.dart';
 
 class AddRoomUseCase implements FutureUseCase<RoomModel, void> {
   AddRoomUseCase({

@@ -10,6 +10,7 @@ class TestHistoryMapper {
         itemHeight: entity.itemHeight,
         roomName: entity.roomName,
         isTestPassed: entity.isTestPassed,
+        username: entity.username,
       );
 
   TestHistoryEntity toData(TestHistoryModel model) => TestHistoryEntity(
@@ -19,5 +20,6 @@ class TestHistoryMapper {
         itemHeight: model.itemHeight,
         roomName: model.roomName,
         isTestPassed: model.isTestPassed,
+        username: model.username,
       );
 }

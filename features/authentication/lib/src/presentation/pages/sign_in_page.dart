@@ -11,14 +11,10 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController =
-    TextEditingController(text: '');
-    final TextEditingController passwordController =
-    TextEditingController(text: '');
     final TextEditingController emailController =
-    TextEditingController(text: '');
-    final TextEditingController passwordAgainController =
-    TextEditingController(text: '');
+        TextEditingController(text: '');
+    final TextEditingController passwordController =
+        TextEditingController(text: '');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.of(context).white,
@@ -32,83 +28,63 @@ class SignInPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: AppDimens.padding16,
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight30,
-              ),
-              Text(
-                'Create account',
-                style: AppStyles.of(context).subtitleTextStyle.copyWith(
-                  color: AppColors.of(context).lightBlack,
-                ),
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              AuthEntryFieldWidget(
-                helperText: 'name',
-                labelText: 'Enter your name',
-                isDigitsOnlyEntered: false,
-                controller: nameController,
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              AuthEntryFieldWidget(
-                helperText: 'email',
-                labelText: 'Enter your email',
-                isDigitsOnlyEntered: false,
-                controller: emailController,
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              AuthEntryFieldWidget(
-                helperText: 'password',
-                labelText: 'Enter your password',
-                isDigitsOnlyEntered: false,
-                controller: passwordController,
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              AuthEntryFieldWidget(
-                helperText: 'password again',
-                labelText: 'Enter the password again',
-                isDigitsOnlyEntered: false,
-                controller: passwordAgainController,
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              RectangleButton(
-                text: 'CREATE ACCOUNT',
-                onPressed: () {
-                  AutoRouter.of(context).replace(
-                    const HomeRoute(),
-                  );
-                },
-                backgroundColor: AppColors.of(context).black,
-                textColor: AppColors.of(context).white,
-              ),
-              const SizedBox(
-                height: AppDimens.sizedBoxHeight15,
-              ),
-              RectangleButton(
-                text: 'HAVE AN ACCOUNT?',
-                onPressed: () {
-                  AutoRouter.of(context).replace(
-                    const SignUpRoute(),
-                  );
-                },
-                backgroundColor: AppColors.of(context).white,
-                textColor: AppColors.of(context).black,
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight30,
+            ),
+            Text(
+              'Login',
+              style: AppStyles.of(context).subtitleTextStyle.copyWith(
+                    color: AppColors.of(context).gray,
+                  ),
+            ),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight15,
+            ),
+            AuthEntryFieldWidget(
+              helperText: 'email',
+              labelText: 'Enter your email',
+              isDigitsOnlyEntered: false,
+              controller: emailController,
+            ),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight15,
+            ),
+            AuthEntryFieldWidget(
+              helperText: 'password',
+              labelText: 'Enter your password',
+              isDigitsOnlyEntered: false,
+              controller: passwordController,
+            ),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight30,
+            ),
+            RectangleButton(
+              text: 'LOGIN',
+              onPressed: () {
+                AutoRouter.of(context).replace(
+                   const HomeRoute(),
+                );
+              },
+              backgroundColor: AppColors.of(context).black,
+              textColor: AppColors.of(context).white,
+            ),
+            const SizedBox(
+              height: AppDimens.sizedBoxHeight15,
+            ),
+            RectangleButton(
+              text: 'NEW IN FIT IN ROOM',
+              onPressed: () {
+                AutoRouter.of(context).replace(
+                  const SignInRoute(),
+                );
+              },
+              backgroundColor: AppColors.of(context).white,
+              textColor: AppColors.of(context).black,
+            ),
+          ],
         ),
       ),
     );

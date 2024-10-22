@@ -9,7 +9,7 @@ class RoomEntity {
   final int length;
   final int width;
   final int height;
-  final int userId;
+  final String username;
 
   RoomEntity({
     required this.id,
@@ -17,7 +17,7 @@ class RoomEntity {
     required this.length,
     required this.width,
     required this.height,
-    required this.userId,
+    required this.username,
   });
 
   factory RoomEntity.fromJson(Map<String, dynamic> json) => _$RoomEntityFromJson(json);
