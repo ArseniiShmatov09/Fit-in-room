@@ -42,8 +42,8 @@ app.*.map.json
 /lib/firebase_options.dart
 # Custom
 *.lock
-/ios/
-/android/
+/ios/Runner/
+/android/app/src/main/res/
 android/app/build
 **/*.g.dart
 **/*.gm.dart
