@@ -28,4 +28,6 @@ class AppDimens {
 
   static const double sizedBoxWidth10 = 10;
 
+  static const double strokeWidth4 = 4.0;
+
 }

@@ -69,8 +69,10 @@ class EditRoomPage extends StatelessWidget {
         child: BlocBuilder<EditRoomBloc, EditRoomState>(
           builder: (BuildContext context, EditRoomState state) {
             if (state.status == EditRoomStatus.loading) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.of(context).black,
+                ),
               );
             }
             if (state.status == EditRoomStatus.loaded) {

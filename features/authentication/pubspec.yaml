@@ -1,5 +1,5 @@
 name: authentication
-description: Home feature
+description: authentication feature
 version: 0.0.1
 publish_to: none
 
@@ -19,10 +19,12 @@ dependencies:
     path: ../../core_ui
   navigation:
     path: ../../navigation
+  home:
+    path: ../home
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   auto_route_generator: ^7.3.2
   build_runner: ^2.4.8

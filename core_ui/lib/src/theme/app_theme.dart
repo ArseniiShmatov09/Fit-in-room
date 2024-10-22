@@ -18,7 +18,7 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
 final ThemeData darkTheme = ThemeData.dark();
 
 TextTheme _getLightTextTheme() {
-  return TextTheme(
+  return const TextTheme(
     titleMedium: AppFonts.normal13,
     bodyMedium: AppFonts.normal13,
   ).apply(

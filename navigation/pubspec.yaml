@@ -27,7 +27,8 @@ dependencies:
     path: ../features/all_rooms
   test_history:
     path: ../features/test_history
-
+  authentication:
+    path: ../features/authentication
 
   auto_route: ^7.8.4
 

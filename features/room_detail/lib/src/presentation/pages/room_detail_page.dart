@@ -25,14 +25,14 @@ class RoomDetailsPage extends StatelessWidget {
           title: Text(
             'Deleting room',
             style: AppStyles.of(context).subtitleTextStyle.copyWith(
-              color: AppColors.of(context).black,
-            ),
+                  color: AppColors.of(context).black,
+                ),
           ),
           content: Text(
             'Are you sure you want to delete this room?',
             style: AppStyles.of(context).detailsTextStyle.copyWith(
-              color: AppColors.of(context).black,
-            ),
+                  color: AppColors.of(context).black,
+                ),
           ),
           actions: <Widget>[
             TextButton(
@@ -41,9 +41,9 @@ class RoomDetailsPage extends StatelessWidget {
               },
               child: Text(
                 'Back',
-                style: AppStyles.of(context).subtitleTextStyle.copyWith(
-                  color: AppColors.of(context).black,
-                ),
+                style: AppStyles.of(context).headerTextStyle.copyWith(
+                      color: AppColors.of(context).black,
+                    ),
               ),
             ),
             TextButton(
@@ -55,9 +55,9 @@ class RoomDetailsPage extends StatelessWidget {
               },
               child: Text(
                 'Delete',
-                style: AppStyles.of(context).subtitleTextStyle.copyWith(
-                  color: AppColors.of(context).red,
-                ),
+                style: AppStyles.of(context).headerTextStyle.copyWith(
+                      color: AppColors.of(context).red,
+                    ),
               ),
             ),
           ],
@@ -89,88 +89,97 @@ class RoomDetailsPage extends StatelessWidget {
         builder: (BuildContext context, RoomDetailState state) {
           if (state.status == RoomDetailStatus.loaded) {
             final RoomModel room = state.room ?? RoomModel.empty();
-              return Scaffold(
+            return Scaffold(
+              backgroundColor: AppColors.of(context).white,
+              appBar: AppBar(
                 backgroundColor: AppColors.of(context).white,
-                appBar: AppBar(
-                  backgroundColor: AppColors.of(context).white,
-                  automaticallyImplyLeading: false,
-                  leading: IconButton(
-                    icon: const Icon(Icons.arrow_back),
+                automaticallyImplyLeading: false,
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    AutoRouter.of(context).maybePop(room);
+                  },
+                ),
+                title: Center(
+                  child: Text(
+                    room.name,
+                    style: AppStyles.of(context).titleTextStyle.copyWith(
+                          color: AppColors.of(context).black,
+                        ),
+                  ),
+                ),
+                actions: <Widget>[
+                  IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                      size: 45,
+                    ),
                     onPressed: () {
-                      AutoRouter.of(context).maybePop(room);
+                      _onDeleteButtonPressed(context, room.id);
                     },
                   ),
-                  title: Center(
-                    child: Text(
-                      room.name,
-                      style: AppStyles.of(context).titleTextStyle.copyWith(
-                        color: AppColors.of(context).black,
+                ],
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    const SizedBox(
+                      height: AppDimens.sizedBoxHeight30,
+                    ),
+                    RoomParametersWidget(
+                      roomId: room.id,
+                      roomHeight: room.height,
+                      roomLength: room.length,
+                      roomWidth: room.width,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimens.padding16,
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          const SizedBox(
+                            height: AppDimens.sizedBoxHeight20,
+                          ),
+                          EntryFieldWidget(
+                            labelText: 'Enter width',
+                            controller: itemWidthController,
+                            isDigitsOnlyEntered: true,
+                          ),
+                          const SizedBox(
+                            height: AppDimens.sizedBoxHeight10,
+                          ),
+                          EntryFieldWidget(
+                            labelText: 'Enter length',
+                            controller: itemLengthController,
+                            isDigitsOnlyEntered: true,
+                          ),
+                          const SizedBox(
+                            height: AppDimens.sizedBoxHeight10,
+                          ),
+                          EntryFieldWidget(
+                            labelText: 'Enter height',
+                            controller: itemHeightController,
+                            isDigitsOnlyEntered: true,
+                          ),
+                          const SizedBox(
+                            height: AppDimens.sizedBoxHeight20,
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  actions: <Widget>[
-                    IconButton(
-                      icon: const Icon(
-                        Icons.delete,
-                        size: 45,
-                      ),
-                      onPressed: () {
-                        _onDeleteButtonPressed(context, room.id);
-                      },
+                    TestRoomWidget(
+                      roomName: room.name,
+                      roomWidth: room.width,
+                      roomLength: room.length,
+                      roomHeight: room.height,
+                      itemWidthController: itemWidthController,
+                      itemLengthController: itemLengthController,
+                      itemHeightController: itemHeightController,
                     ),
                   ],
                 ),
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      const SizedBox(
-                        height: AppDimens.sizedBoxHeight30,
-                      ),
-                      RoomParametersWidget(
-                        roomId: room.id,
-                        roomHeight: room.height,
-                        roomLength: room.length,
-                        roomWidth: room.width,
-                      ),
-                      const SizedBox(
-                        height: AppDimens.sizedBoxHeight20,
-                      ),
-                      EntryFieldWidget(
-                        labelText: 'Enter width',
-                        controller: itemWidthController,
-                        isDigitsOnlyEntered: true,
-                      ),
-                      const SizedBox(
-                        height: AppDimens.sizedBoxHeight10,
-                      ),
-                      EntryFieldWidget(
-                        labelText: 'Enter length',
-                        controller: itemLengthController,
-                        isDigitsOnlyEntered: true,
-                      ),
-                      const SizedBox(
-                        height: AppDimens.sizedBoxHeight10,
-                      ),
-                      EntryFieldWidget(
-                        labelText: 'Enter height',
-                        controller: itemHeightController,
-                        isDigitsOnlyEntered: true,
-                      ),
-                      const SizedBox(
-                        height: AppDimens.sizedBoxHeight20,
-                      ),
-                      TestRoomWidget(
-                        roomName: room.name,
-                        roomWidth: room.width,
-                        roomLength: room.length,
-                        roomHeight: room.height,
-                        itemWidthController: itemWidthController,
-                        itemLengthController: itemLengthController,
-                        itemHeightController: itemHeightController,
-                      ),
-                    ],
-                  ),
-                ),
+              ),
             );
           }
           return const Center(

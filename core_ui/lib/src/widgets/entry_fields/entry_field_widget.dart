@@ -16,43 +16,40 @@ class EntryFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.padding16),
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: AppStyles.of(context).detailsTextStyle.copyWith(
-                color: AppColors.of(context).black,
-              ),
-          filled: true,
-          fillColor: AppColors.of(context).white,
-          enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(width: 4.0, color: AppColors.of(context).black),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(AppDimens.borderRadius20),
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(width: 4.0, color: AppColors.of(context).black),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(AppDimens.borderRadius20),
-            ),
-          ),
-        ),
-        style: AppStyles.of(context).detailsTextStyle.copyWith(
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: labelText,
+        labelStyle: AppStyles.of(context).detailsTextStyle.copyWith(
               color: AppColors.of(context).black,
             ),
-        keyboardType:
-            isDigitsOnlyEntered ? TextInputType.number : TextInputType.text,
-        inputFormatters: isDigitsOnlyEntered
-            ? <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ]
-            : <TextInputFormatter>[],
+        filled: true,
+        fillColor: AppColors.of(context).white,
+        enabledBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(width: 4.0, color: AppColors.of(context).black),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(AppDimens.borderRadius20),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(width: 4.0, color: AppColors.of(context).black),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(AppDimens.borderRadius20),
+          ),
+        ),
       ),
+      style: AppStyles.of(context).detailsTextStyle.copyWith(
+            color: AppColors.of(context).black,
+          ),
+      keyboardType:
+          isDigitsOnlyEntered ? TextInputType.number : TextInputType.text,
+      inputFormatters: isDigitsOnlyEntered
+          ? <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly,
+            ]
+          : <TextInputFormatter>[],
     );
   }
 }

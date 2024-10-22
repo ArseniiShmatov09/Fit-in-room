@@ -32,6 +32,8 @@ dependencies:
     path: ./features/settings
   add_room:
     path: ./features/add_room
+  authentication:
+    path: ./features/authentication
 
   cupertino_icons: ^1.0.6
   firebase_core: ^2.32.0
@@ -44,12 +46,23 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
   flutter_gen:
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icons/fit_in_room_logo.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/images/jpg/
   fonts:
     - family: SofiaSans
       fonts:
         - asset: assets/fonts/SofiaSans-Bold.ttf
           weight: 900
+
+
