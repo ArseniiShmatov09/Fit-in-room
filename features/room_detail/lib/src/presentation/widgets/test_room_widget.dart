@@ -13,9 +13,11 @@ class TestRoomWidget extends StatelessWidget {
   final int roomLength;
   final int roomHeight;
   final String roomName;
+  final UserModel user;
 
   const TestRoomWidget({
     super.key,
+    required this.user,
     required this.itemWidthController,
     required this.itemLengthController,
     required this.itemHeightController,
@@ -78,7 +80,7 @@ class TestRoomWidget extends StatelessWidget {
                                     roomHeight: roomHeight,
                                     id: '',
                                     roomName: roomName,
-                                    username: 'arsen', //todo change username
+                                    username: user.username,
                                   ),
                                 );
                           }

@@ -7,11 +7,10 @@ sealed class AllRoomsEvent {
 }
 
 class LoadAllRoomsEvent extends AllRoomsEvent {
-  const LoadAllRoomsEvent();
+  const LoadAllRoomsEvent({required this.user});
+
+  final UserModel user;
 
   @override
-  List<Object> get props => <Object>[];
+  List<Object> get props => <Object>[user];
 }
-
-
-

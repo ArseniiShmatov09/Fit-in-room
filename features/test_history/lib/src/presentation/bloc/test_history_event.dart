@@ -7,8 +7,10 @@ sealed class TestHistoryEvent {
 }
 
 class LoadTestHistoryEvent extends TestHistoryEvent {
-  const LoadTestHistoryEvent();
+  final UserModel user;
+
+  const LoadTestHistoryEvent({required this.user});
 
   @override
-  List<Object> get props => <Object>[];
+  List<Object> get props => <Object>[user];
 }

@@ -10,12 +10,19 @@ import '../bloc/all_rooms_bloc.dart';
 
 @RoutePage()
 class AllRoomsPage extends StatelessWidget {
-  const AllRoomsPage({Key? key}) : super(key: key);
+  final UserModel user;
+
+  const AllRoomsPage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   void _onAddRoomButtonPressed(BuildContext context) {
-    AutoRouter.of(context).push(const AddRoomRoute()).then((Object? newRoom) {
+    AutoRouter.of(context).push(AddRoomRoute(user: user)).then((Object? newRoom) {
       if (newRoom != null) {
-        context.read<AllRoomsBloc>().add(const LoadAllRoomsEvent());
+        context.read<AllRoomsBloc>().add(
+              LoadAllRoomsEvent(user: user),
+            );
       }
     });
   }
@@ -24,6 +31,7 @@ class AllRoomsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AllRoomsBloc>(
       create: (_) => AllRoomsBloc(
+        user: user,
         getAllRoomsUseCase: GetIt.I<GetAllRoomsUseCase>(),
       ),
       child: BlocBuilder<AllRoomsBloc, AllRoomsState>(
@@ -69,14 +77,15 @@ class AllRoomsPage extends StatelessWidget {
                                         AutoRouter.of(context)
                                             .push(
                                           RoomDetailsRoute(
+                                            user: user,
                                             roomId: room.id,
                                           ),
                                         )
                                             .then((Object? newRoom) {
                                           if (newRoom != null) {
-                                            context
-                                                .read<AllRoomsBloc>()
-                                                .add(const LoadAllRoomsEvent());
+                                            context.read<AllRoomsBloc>().add(
+                                                  LoadAllRoomsEvent(user: user),
+                                                );
                                           }
                                         });
                                         ;

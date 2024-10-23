@@ -21,9 +21,9 @@ class FirebaseProviderImpl implements FirebaseProvider {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getAllRooms() async {
+  Future<List<Map<String, dynamic>>> getAllRooms(String username) async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-        await _rooms.orderBy('id', descending: false).get();
+        await _rooms.where('username', isEqualTo: username).get();
 
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs
@@ -58,9 +58,11 @@ class FirebaseProviderImpl implements FirebaseProvider {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getAllTestHistories() async {
+  Future<List<Map<String, dynamic>>> getAllTestHistories(
+    String username,
+  ) async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
-        await _testHistories.orderBy('roomName', descending: false).get();
+        await _testHistories.where('username', isEqualTo: username).get();
 
     if (snapshot.docs.isNotEmpty) {
       return snapshot.docs

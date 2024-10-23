@@ -12,9 +12,9 @@ class TestHistoryRepositoryImpl implements TestHistoryRepository {
   final TestHistoryMapper _testHistoryMapper;
 
   @override
-  Future<List<TestHistoryModel>> getAllTestHistories() async {
+  Future<List<TestHistoryModel>> getAllTestHistories(String username) async {
     final List<Map<String, dynamic>> testHistoryData =
-        await _apiProvider.getAllTestHistories();
+        await _apiProvider.getAllTestHistories(username);
     final List<TestHistoryEntity> testHistoryEntities =
         testHistoryData.map(TestHistoryEntity.fromJson).toList();
     return testHistoryEntities.map(_testHistoryMapper.toDomain).toList();

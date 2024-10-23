@@ -8,10 +8,11 @@ part 'test_history_event.dart';
 class TestHistoryBloc extends Bloc<TestHistoryEvent, TestHistoryState> {
   TestHistoryBloc({
     required GetTestHistoriesUseCase getTestHistoriesUseCase,
+    required UserModel user,
   })  : _getTestHistoriesUseCase = getTestHistoriesUseCase,
         super(const TestHistoryState()) {
     on<LoadTestHistoryEvent>(_loadTestHistories);
-    add(const LoadTestHistoryEvent());
+    add(LoadTestHistoryEvent(user: user));
   }
 
   final GetTestHistoriesUseCase _getTestHistoriesUseCase;
@@ -31,7 +32,7 @@ class TestHistoryBloc extends Bloc<TestHistoryEvent, TestHistoryState> {
 
       final List<TestHistoryModel> testHistories =
           await _getTestHistoriesUseCase.execute(
-        const NoParams(),
+        event.user.username,
       );
 
       emit(

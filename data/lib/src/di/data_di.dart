@@ -33,7 +33,7 @@ abstract class DataDI {
       ),
     );
 
-    locator.registerLazySingleton<FirebaseProvider>(
+    locator.registerLazySingleton<FirebaseProviderImpl>(
       FirebaseProviderImpl.new,
     );
   }

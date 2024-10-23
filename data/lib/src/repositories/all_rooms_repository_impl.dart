@@ -12,9 +12,9 @@ class AllRoomsRepositoryImpl implements AllRoomsRepository {
   final RoomMapper _roomMapper;
 
   @override
-  Future<List<RoomModel>> getAllRooms() async {
+  Future<List<RoomModel>> getAllRooms(String username) async {
     final List<Map<String, dynamic>> roomData =
-        await _apiProvider.getAllRooms();
+        await _apiProvider.getAllRooms(username);
     final List<RoomEntity> roomEntity =
         roomData.map(RoomEntity.fromJson).toList();
     return roomEntity.map(_roomMapper.toDomain).toList();

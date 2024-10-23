@@ -4,15 +4,15 @@ import '../../../core_ui.dart';
 class AuthEntryFieldWidget extends StatelessWidget {
   final String labelText;
   final String helperText;
-  final bool isDigitsOnlyEntered;
   final TextEditingController controller;
+  final bool shouldObscure;
 
   const AuthEntryFieldWidget({
     super.key,
     required this.labelText,
-    required this.isDigitsOnlyEntered,
     required this.controller,
     required this.helperText,
+    required this.shouldObscure,
   });
 
   @override
@@ -21,19 +21,20 @@ class AuthEntryFieldWidget extends StatelessWidget {
       height: 70.0,
       child: TextField(
         controller: controller,
+        obscureText: shouldObscure,
         decoration: InputDecoration(
           labelText: labelText,
           helperText: helperText,
           labelStyle: AppStyles.of(context).detailsTextStyle.copyWith(
-                color: AppColors.of(context).gray,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
+            color: AppColors.of(context).gray,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
           helperStyle: AppStyles.of(context).detailsTextStyle.copyWith(
-                color: AppColors.of(context).lightBlack,
-                fontSize: 20,
-                fontWeight: FontWeight.w400,
-              ),
+            color: AppColors.of(context).lightBlack,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
           filled: true,
           fillColor: AppColors.of(context).white,
           focusedBorder: OutlineInputBorder(
@@ -54,10 +55,11 @@ class AuthEntryFieldWidget extends StatelessWidget {
           ),
         ),
         style: AppStyles.of(context).detailsTextStyle.copyWith(
-              color: AppColors.of(context).black,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+          color: AppColors.of(context).black,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+        keyboardType: TextInputType.text,
       ),
     );
   }

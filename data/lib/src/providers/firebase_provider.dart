@@ -6,13 +6,13 @@ abstract class FirebaseProvider {
 
   Future<String> getDocId(String roomId);
 
-  Future<List<Map<String, dynamic>>> getAllRooms();
+  Future<List<Map<String, dynamic>>> getAllRooms(String username);
 
   Future<void> updateRoom(String docId, Map<String, dynamic> roomData);
 
   Future<void> deleteRoom(String docId);
 
-  Future<List<Map<String, dynamic>>> getAllTestHistories();
+  Future<List<Map<String, dynamic>>> getAllTestHistories(String username);
 
   Future<void> addTestHistory(Map<String, dynamic> testHistoryData);
 

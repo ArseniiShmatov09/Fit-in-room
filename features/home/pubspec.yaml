@@ -25,6 +25,8 @@ dependencies:
     path: ../test_history
   settings:
     path: ../settings
+  authentication:
+    path: ../authentication
 
 
 dev_dependencies:

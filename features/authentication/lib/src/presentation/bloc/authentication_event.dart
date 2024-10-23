@@ -22,11 +22,3 @@ class SignInRequestedEvent extends AuthEvent {
   List<Object?> get props => <Object?>[user];
 }
 
-class LogoutRequestedEvent extends AuthEvent {
-  final UserModel user;
-
-  LogoutRequestedEvent(this.user);
-
-  @override
-  List<Object?> get props => <Object?>[user];
-}

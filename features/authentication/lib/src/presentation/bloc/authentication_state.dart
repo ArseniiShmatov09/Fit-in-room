@@ -1,29 +1,29 @@
 part of 'authentication_bloc.dart';
 
-enum AuthStatus { initial, loading, success, failure, loggedOut }
+enum AuthStatus { initial, loading, success, failure }
 
 class AuthState {
   const AuthState({
     this.status = AuthStatus.initial,
-    this.token,
+    this.user,
     this.error,
   });
 
   final AuthStatus status;
-  final String? token;
+  final UserModel? user;
   final String? error;
 
   AuthState copyWith({
     AuthStatus? status,
-    String? token,
+    UserModel? user,
     String? error,
   }) {
     return AuthState(
       status: status ?? this.status,
-      token: token ?? this.token,
+      user: user ?? this.user,
       error: error ?? this.error,
     );
   }
 
-  List<Object?> get props => <Object?>[status, token, error];
+  List<Object?> get props => <Object?>[status, user, error];
 }

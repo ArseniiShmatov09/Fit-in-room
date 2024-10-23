@@ -8,11 +8,12 @@ part 'all_rooms_event.dart';
 class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
   AllRoomsBloc({
     required GetAllRoomsUseCase getAllRoomsUseCase,
+    required UserModel user,
   })  : _getAllRoomsUseCase = getAllRoomsUseCase,
         super(const AllRoomsState()) {
     on<LoadAllRoomsEvent>(_loadAllRooms);
 
-    add(const LoadAllRoomsEvent());
+    add(LoadAllRoomsEvent(user: user));
   }
 
   final GetAllRoomsUseCase _getAllRoomsUseCase;
@@ -25,7 +26,7 @@ class AllRoomsBloc extends Bloc<AllRoomsEvent, AllRoomsState> {
       emit(state.copyWith(status: AllRoomsStatus.loading));
 
       final List<RoomModel> rooms =
-          await _getAllRoomsUseCase.execute(const NoParams());
+          await _getAllRoomsUseCase.execute(event.user.username);
 
       emit(
         state.copyWith(

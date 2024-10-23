@@ -23,6 +23,9 @@ dependencies:
     path: .././edit_room
   all_rooms:
     path: .././all_rooms
+  home:
+    path: .././home
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -8,9 +8,13 @@ import '../bloc/add_room_bloc.dart';
 
 @RoutePage()
 class AddRoomPage extends StatelessWidget {
-  const AddRoomPage({super.key});
+  final UserModel user;
 
-  void _onEditButtonPressed(
+  const AddRoomPage({super.key,
+    required this.user,
+  });
+
+  void _onAddButtonPressed(
     String name,
     String widthText,
     String lengthText,
@@ -40,7 +44,7 @@ class AddRoomPage extends StatelessWidget {
             width: width,
             length: length,
             height: height,
-            username: 'arsen',//todo change logic
+            username: user.username,
           ),
         );
   }
@@ -122,7 +126,7 @@ class AddRoomPage extends StatelessWidget {
                         horizontal: AppDimens.padding16,
                       ),
                       child: ElevatedButton(
-                        onPressed: () => _onEditButtonPressed(
+                        onPressed: () => _onAddButtonPressed(
                           nameController.text,
                           widthController.text,
                           lengthController.text,

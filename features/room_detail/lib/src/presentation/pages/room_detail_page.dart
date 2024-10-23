@@ -1,8 +1,8 @@
-import 'package:all_rooms/all_rooms.gm.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:home/home.gm.dart';
 import 'package:navigation/navigation.dart';
 import '../bloc/room_detail_bloc/room_detail_bloc.dart';
 import '../widgets/room_parameters_widget.dart';
@@ -11,8 +11,10 @@ import '../widgets/test_room_widget.dart';
 @RoutePage()
 class RoomDetailsPage extends StatelessWidget {
   final String roomId;
+  final UserModel user;
 
   const RoomDetailsPage({
+    required this.user,
     Key? key,
     @PathParam('id') required this.roomId,
   }) : super(key: key);
@@ -51,7 +53,7 @@ class RoomDetailsPage extends StatelessWidget {
                 parentContext.read<RoomDetailBloc>().add(
                       DeleteRoomDetailEvent(roomId: roomId),
                     );
-                AutoRouter.of(context).push(const AllRoomsRoute());
+                AutoRouter.of(context).replace(HomeRoute(user: user));
               },
               child: Text(
                 'Delete',
@@ -169,6 +171,7 @@ class RoomDetailsPage extends StatelessWidget {
                       ),
                     ),
                     TestRoomWidget(
+                      user: user,
                       roomName: room.name,
                       roomWidth: room.width,
                       roomLength: room.length,

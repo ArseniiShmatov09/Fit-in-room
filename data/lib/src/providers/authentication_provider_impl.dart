@@ -9,28 +9,64 @@ class AuthenticationProviderImpl implements AuthenticationProvider {
 
   @override
   Future<String> logout(Map<String, dynamic> userData) async {
-    final Response<Map<String, dynamic>> response = await dio.post(
-      'http://localhost:8080/logout',
-      data: userData,
-    );
-    return response.data! as String;
+    try {
+      final Response<Map<String, dynamic>> response = await dio.post(
+        'http://10.201.32.220:8080/logout',
+        data: userData,
+      );
+      if (response.statusCode == 200) {
+        return response.data.toString();
+      } else {
+        return 'Unexpected error occurred: ${response.statusCode}';
+      }
+    } on DioException catch (e) {
+      if (e.response != null && e.response?.statusCode == 400) {
+        throw e.response?.data;
+      } else {
+        return 'Error: ${e.message}';
+      }
+    }
   }
 
   @override
   Future<String> signIn(Map<String, dynamic> userData) async {
-    final Response<Map<String, dynamic>> response = await dio.post(
-      'http://localhost:8080/auth',
-      data: userData,
-    );
-    return response.data! as String;
+    try {
+      final Response<String> response = await dio.post(
+        'http://10.201.32.220:8080/auth',
+        data: userData,
+      );
+      if (response.statusCode == 200) {
+        return response.data.toString();
+      } else {
+        return 'Unexpected error occurred: ${response.statusCode}';
+      }
+    } on DioException catch (e) {
+      if (e.response != null && e.response?.statusCode == 400) {
+        throw e.response?.data;
+      } else {
+        return 'Error: ${e.message}';
+      }
+    }
   }
 
   @override
   Future<String> signUp(Map<String, dynamic> userData) async {
-    final Response<Map<String, dynamic>> response = await dio.post(
-      'http://localhost:8080/signUp',
-      data: userData,
-    );
-    return response.data! as String;
+    try {
+      final Response<String> response = await dio.post(
+        'http://10.201.32.220:8080/signUp',
+        data: userData,
+      );
+      if (response.statusCode == 200) {
+        return response.data.toString();
+      } else {
+        return 'Unexpected error occurred: ${response.statusCode}';
+      }
+    } on DioException catch (e) {
+      if (e.response != null && e.response?.statusCode == 400) {
+        throw e.response?.data;
+      } else {
+        return 'Error: ${e.message}';
+      }
+    }
   }
 }
